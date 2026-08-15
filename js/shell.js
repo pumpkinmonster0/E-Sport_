@@ -5,14 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     //Define the HTML Switch layout 
     const switchLayout = `
         <div class="switch-container">
-            <!-- Left Screen Area (4/5) -->
+        
+            <!-- Left Screen Area -->
             <div class="screen-area">
                 <div class="screen-content" id="screenContent">
                     ${pageContent} //BODY CONTENT
                 </div>
             </div>
 
-            <!-- Right Controller Area (1/5) -->
+            <!-- Right Controller Area -->
             <div class="controller-area">
                 <!-- Button Group (YABX) -->
                 <div class="diamond-group">
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- OK Button -->
                 <button class="btn-ok">OK</button>
 
-                <!-- 🔥 新增：回到頂端按鈕 -->
+                <!-- TOP BUTTON -->
                 <button class="btn-top" id="btnTop">Top</button>
 
             </div>
