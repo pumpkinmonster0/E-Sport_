@@ -942,6 +942,12 @@ h2, h3,h4 {
     animation: fadeIn 0.2s ease;
 }
 
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
 /* ========== 动画 ========== */
 @keyframes dialogFadeIn {
     from {

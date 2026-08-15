@@ -1,7 +1,7 @@
 //  Ensure DOM has fully load --> Ensure document.getElementById can find all element
 document.addEventListener('DOMContentLoaded', () => {
 
-
+///////////////////A AND Y BUTTON///////////////////////////////////
     //Get screen content element --> Find element in shell.js (ensure all button element can use)
     const screenContent = document.getElementById('screenContent');
 
@@ -100,31 +100,30 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('E-SPORT CLUB FULLY LOADED');
     console.log('ALL BUTTON AND KEYBOARD LISTENER FOR SCROLL READY');
 
-    // ============================================================
-    //  回到頂端功能
-    // ============================================================
+
+ ///////////////////////TOP BUTTON/////////////////////////
+    //  Return Top
     function scrollToTop() {
         const screenContent = document.getElementById('screenContent');
         if (!screenContent) return;
 
         screenContent.scrollTo({ top: 0, behavior: 'smooth' });
-        console.log('⬆️ 回到頁面頂端');
+        console.log('Top button has pressed');//once press, it will show in console
     }
 
-    // ============================================================
-    //  綁定回到頂端按鈕
-    // ============================================================
+    
+    //  Prepare  the button
     const btnTop = document.getElementById('btnTop');
     if (btnTop) {
         btnTop.addEventListener('click', (e) => {
             e.preventDefault();
             scrollToTop();
 
-            // 按鈕點擊視覺回饋
+            // press feedback
             btnTop.classList.add('active');
             setTimeout(() => btnTop.classList.remove('active'), 150);
         });
-        console.log('✅ TOP 按鈕已綁定');
+        console.log('Top button ready');
     }
 
 });
