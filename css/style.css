@@ -1,0 +1,1094 @@
+ @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+
+/* ========== 全局重置 & 基础样式 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /*background for switch*/
+    background:
+        /* 手把圖示層（用 SVG 或 Unicode） */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ctext y='50' font-size='40' opacity='0.60'%3E🎮%3C/text%3E%3C/svg%3E") repeat,
+        linear-gradient(135deg, #0b0b1a, #1a0b2e, #0b1a2e, #0b0b1a);
+    background-size: 120px 120px, 400% 400%;
+    animation: bodyGradient 18s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2vw;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+@keyframes bodyGradient {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    25% {
+        background-position: 100% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    75% {
+        background-position: 0% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* ========== Switch 主机容器 ========== */
+.switch-container {
+    max-width: 950px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(145deg, #000000, #000000, #000000, #000000);
+    background-size: 300% 300%;
+    animation: switchGradient 14s ease-in-out infinite alternate;
+    border-radius: 30px;
+    padding: 18px;
+    box-shadow:
+        0 20px 80px rgba(0, 0, 0, 0.9),
+        inset 0 2px 0 rgba(255, 255, 255, 0.05);
+    display: flex;
+    gap: 16px;
+    position: relative;
+    border: 1px solid #4a4a6a;
+}
+
+
+/* ========== Switch区域 (7/8) ========== */
+.screen-area {
+    flex: 7;
+    background: #080606;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+        inset 0 0 60px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid #000000;
+    background: radial-gradient(ellipse at 30% 40% 50%, #353543, #1e1e5f, #1a0b2e);
+    animation: screenBg 20s ease-in-out infinite alternate;
+}
+
+/*Switch裏面的背景*/
+@keyframes screenBg {
+    0% {
+        background: radial-gradient(ellipse at 20% 30%, #442181, #1a0b2e);
+    }
+
+    50% {
+        background: radial-gradient(ellipse at 80% 70%, #563575, #0b0b1a);
+    }
+
+    100% {
+        background: radial-gradient(ellipse at 40% 60%, #2a1847, #05050a);
+    }
+}
+
+/* 屏幕内容滚动容器 */
+.screen-content {
+    height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 30px 25px;
+    color: #e8e8e8;
+    /* 隐藏默认滚动条 */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+}
+
+.screen-content::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari/Opera */
+}
+
+/* ========== 屏幕内容样式 For h1 ========== */
+.screen-content h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcbff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+    font-family: 'Orbitron', 'Courier New', monospace;
+}
+
+/*For p*/
+.screen-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    color: #ccc;
+}
+
+/*<div class="content-row">HOW TO USE</div>*/
+.screen-content .content-row {
+    height: 60px;
+    border-bottom: 1px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: #999;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+/*when mouse over, it will change background color*/
+.screen-content .content-row:hover {
+    background: #1a1a1a;
+}
+
+/* ========== 🆕 统一标题样式 ========== */
+.screen-content h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 28px;
+    margin-bottom: 16px;
+    color: #e8e8e8;
+    border-bottom: 2px solid #2a2a4a;
+    padding-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.screen-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    color: #d0d0d0;
+    letter-spacing: 0.3px;
+}
+
+.screen-content h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    color: #bebebe;
+}
+
+h2, h3,h4 {
+    font-family: 'Orbitron', 'Courier New', monospace;
+}
+
+/* ========== 🆕 统一链接样式 ========== */
+/*normal*/
+.screen-content a { 
+    color: #6bcbff;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border-bottom: 1px solid transparent;
+}
+
+/*mouse over*/
+.screen-content a:hover {
+    color: #ffd93d;
+    border-bottom-color: #ffd93d;
+}
+
+/*when click it*/
+.screen-content a:active {
+    color: #ff6b6b;
+}
+
+/* ========== 🆕 统一列表样式 ========== */
+.screen-content ul, .screen-content ol {
+    padding-left: 28px; /* 左邊縮排，讓列表內縮 */
+    margin-bottom: 16px;  /* 下方留白 */
+    color: #ccc;
+    line-height: 1.8;
+}
+
+.screen-content li {
+    margin-bottom: 6px;  /* 每個項目之間留 6px 空隙 */
+}
+
+.screen-content ul {
+    list-style-type: none; /* 移除原本的 • 圓點 */
+}
+
+.screen-content ul li::before {
+    content: "▸ ";/* 在每個項目前面加上 ▸ */
+    color: #6bcbff;
+    font-weight: 700;
+}
+
+.screen-content ol {
+    list-style-type: decimal-leading-zero;/* 1 → 01, 2 → 02 */
+}
+
+/* ========== 🆕 统一引用块样式 ========== */
+.screen-content blockquote {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-left: 4px solid #6bcbff;
+    padding: 16px 22px;
+    margin: 16px 0 20px 0;
+    border-radius: 0 8px 8px 0;
+    color: #ccc;
+    font-style: italic;
+}
+
+.screen-content blockquote cite {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #888;
+    font-style: normal;
+}
+
+/* ========== 🆕 统一通用卡片样式 ========== */
+.screen-content .card {
+    background: linear-gradient(145deg, #1a1a2e, #14142a);
+    border-radius: 12px;
+    padding: 22px 24px;
+    border: 1px solid #2a2a4a;
+    margin-bottom: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.screen-content .card:hover {
+    border-color: #4a4a6a;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+}
+
+/* ========== 🆕 统一通用按钮样式（非手柄按钮） ========== */
+.screen-content .btn-generic {
+    display: inline-block;
+    padding: 10px 28px;
+    background: linear-gradient(145deg, #2a2a4a, #1e1e3a);
+    color: #fff;
+    border: 1px solid #4a4a6a;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    user-select: none;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.screen-content .btn-generic:hover {
+    background: linear-gradient(145deg, #3a3a6a, #2a2a5a);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+    border-color: #6a6a8a;
+}
+
+.screen-content .btn-generic:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 不同颜色的按钮变体 */
+.screen-content .btn-generic.primary {
+    background: linear-gradient(145deg, #4a6acf, #3a5abf);
+    border-color: #5a7adf;
+}
+
+.screen-content .btn-generic.primary:hover {
+    background: linear-gradient(145deg, #5a7adf, #4a6acf);
+}
+
+.screen-content .btn-generic.success {
+    background: linear-gradient(145deg, #4ad94a, #2db82d);
+    border-color: #5ae95a;
+}
+
+.screen-content .btn-generic.success:hover {
+    background: linear-gradient(145deg, #5ae95a, #4ad94a);
+}
+
+.screen-content .btn-generic.danger {
+    background: linear-gradient(145deg, #d94a4a, #b82d2d);
+    border-color: #e95a5a;
+}
+
+.screen-content .btn-generic.danger:hover {
+    background: linear-gradient(145deg, #e95a5a, #d94a4a);
+}
+
+.screen-content .btn-generic.small {
+    padding: 6px 16px;
+    font-size: 0.8rem;
+}
+
+.screen-content .btn-generic.large {
+    padding: 14px 36px;
+    font-size: 1.1rem;
+}
+
+/* ========== 🆕 统一表格样式 ========== */
+.screen-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 20px 0;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.screen-content table th {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    color: #e0e0e0;
+    border-bottom: 2px solid #3a3a5a;
+}
+
+.screen-content table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #2a2a3a;
+}
+
+.screen-content table tr:hover td {
+    background: #1a1a2e;
+}
+
+/* ========== 🆕 统一代码块样式 ========== */
+.screen-content code {
+    background: #1a1a2e;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #ffd93d;
+    border: 1px solid #2a2a4a;
+}
+
+.screen-content pre {
+    background: #0d0d1a;
+    padding: 18px 22px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 16px 0 20px 0;
+    border: 1px solid #2a2a4a;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #d0d0d0;
+    line-height: 1.7;
+}
+
+.screen-content pre code {
+    background: transparent;
+    padding: 0;
+    border: none;
+    color: inherit;
+}
+
+/* ========== 🆕 统一标签/徽章样式 ========== */
+.screen-content .badge {
+    display: inline-block;
+    padding: 2px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: #2a2a4a;
+    color: #ccc;
+    border: 1px solid #3a3a5a;
+}
+
+.screen-content .badge.blue {
+    background: #1a3a6a;
+    border-color: #3a5a9a;
+    color: #8ab4ff;
+}
+
+.screen-content .badge.green {
+    background: #1a4a2a;
+    border-color: #3a7a4a;
+    color: #7ae09a;
+}
+
+.screen-content .badge.red {
+    background: #4a1a1a;
+    border-color: #7a3a3a;
+    color: #ff8a8a;
+}
+
+.screen-content .badge.yellow {
+    background: #4a3a1a;
+    border-color: #7a6a3a;
+    color: #ffd93d;
+}
+
+/* ========== 🆕 统一分隔线样式 ========== */
+.screen-content hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #3a3a5a, transparent);
+    margin: 24px 0;
+}
+
+/* ========== 🆕 统一图片样式 ========== */
+.screen-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #2a2a4a;
+    margin: 12px 0;
+}
+
+/* ========== 🆕 统一工具类 ========== */
+.screen-content .text-center {
+    text-align: center;
+}
+
+.screen-content .text-right {
+    text-align: right;
+}
+
+.screen-content .text-muted {
+    color: #888;
+}
+
+.screen-content .text-small {
+    font-size: 0.85rem;
+}
+
+.screen-content .mt-1 {
+    margin-top: 8px;
+}
+
+.screen-content .mt-2 {
+    margin-top: 16px;
+}
+
+.screen-content .mt-3 {
+    margin-top: 24px;
+}
+
+.screen-content .mb-1 {
+    margin-bottom: 8px;
+}
+
+.screen-content .mb-2 {
+    margin-bottom: 16px;
+}
+
+.screen-content .mb-3 {
+    margin-bottom: 24px;
+}
+
+.screen-content .flex {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.screen-content .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ========== Footer 样式 (鼠标交互区) ========== */
+.screen-content .footer {
+    margin-top: 40px;
+    padding: 25px 20px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 12px;
+    border: 1px solid #2a2a4a;
+    text-align: center;
+}
+
+.screen-content .footer p {
+    color: #aaa;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.screen-content .footer .mouse-only {
+    display: inline-block;
+    padding: 10px 28px;
+    margin: 0 8px;
+    background: #2a2a4a;
+    color: #fff;
+    border: 1px solid #4a4a6a;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.screen-content .footer .mouse-only:hover {
+    background: #3a3a6a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.screen-content .footer .mouse-only:active {
+    transform: translateY(0);
+}
+
+.screen-content .footer .mouse-link {
+    color: #6bcbff;
+    text-decoration: none;
+    border-bottom: 1px dashed #6bcbff;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.screen-content .footer .mouse-link:hover {
+    color: #ffd93d;
+    border-bottom-color: #ffd93d;
+}
+
+/* ========== 手柄区域 ========== */
+.controller-area {
+    flex: 1;
+    background: linear-gradient(145deg, #FF3B56);
+    border-radius: 12px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #d62a46;
+    /* 边框也稍微调整颜色 */
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2);
+    /* 增加一点透亮感 */
+}
+
+.controller-label {
+    color: #666;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* ========== 手柄按键网格 ========== */
+/* ========== 十字按键布局 (完美正十字) ========== */
+
+/* 把整体变成 3列3行 的隐形网格 */
+.diamond-group {
+    display: grid;
+    /* 3列：左侧空位 | 中心按键 | 右侧空位 */
+    grid-template-columns: 58px 58px 58px;
+    /* 3行：上方空位 | 中心按键 | 下方空位 */
+    grid-template-rows: 58px 58px 58px;
+    gap: 0px;
+    /* 因为中心点对齐，我们不需要空白格子 */
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+    margin-bottom: 12px;
+}
+
+/* 精准指定每个按钮在 3x3 网格里的确切位置 */
+.btn-y {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* 第1行，第2列 -> 顶部居中 */
+.btn-x {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+/* 第2行，第1列 -> 左侧居中 */
+.btn-b {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+/* 第2行，第3列 -> 右侧居中 */
+.btn-a {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+/* 第3行，第2列 -> 底部居中 */
+
+/* ========== 通用按钮样式 ========== */
+.btn {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: all 0.08s ease;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.3),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.15);
+    user-select: none;
+    position: relative;
+}
+
+.btn:active,
+.btn.active {
+    transform: scale(0.88);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ========== 各按键颜色 ========== */
+/* X键 (左上) - 蓝色 */
+.btn-x {
+    background: #1a1a1a;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-x:active,
+.btn-x.active {
+    background: #0a0a0a;
+    /* 按下时更深一点点 */
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Y键 (右上) - 黄色 (原代码里B是红色，我们改成Y是黄色) */
+/* 注意：根据你的代码顺序，你需要确认哪个class对应哪个位置，这里假设右上角是 btn-y */
+.btn-y {
+    background: #1a1a1a;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-y:active,
+.btn-y.active {
+    background: #0a0a0a;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* A键 (左下) - 绿色 */
+.btn-a {
+    background: #1a1a1a;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-a:active,
+.btn-a.active {
+    background: #0a0a0a;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* B键 (右下) - 红色 */
+.btn-b {
+    background: #1a1a1a;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-b:active,
+.btn-b.active {
+    background: #0a0a0a;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* ========== OK 按钮 (Start) ========== */
+.btn-ok {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border:none;
+    background: #1a1a1a;
+    margin-top: 40px;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+    color: white;
+
+}
+
+.btn-ok:active,
+.btn-ok.active {
+    background: radial-gradient(circle at 30% 30%, #777, #444);
+}
+
+/* ========== 回到頂端按鈕 ========== */
+.btn-top {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: none;
+    color: #fff;
+    font-size: 1.0rem;
+    font-family:'Segoe UI', sans-serif; 
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-top:hover {
+    transform: scale(1.05);
+    background: linear-gradient(145deg, #2a2a5a, #3a3a7a);
+    box-shadow: 0 6px 30px rgba(74, 74, 138, 0.4);
+}
+
+.btn-top:active {
+    transform: scale(0.92);
+}
+
+/* ============================================================
+   滾動觸發動畫 (Scroll Reveal)
+   ============================================================ */
+
+/* 初始狀態：隱藏 + 向上偏移 + 透明 */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 進入畫面時的狀態：顯示 + 回到原位 */
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 🔥 可以為不同元素設定不同延遲，讓動畫更有層次感 */
+
+.reveal:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.reveal:nth-child(2) {
+    transition-delay: 0.10s;
+}
+
+.reveal:nth-child(3) {
+    transition-delay: 0.15s;
+}
+
+.reveal:nth-child(4) {
+    transition-delay: 0.20s;
+}
+
+.reveal:nth-child(5) {
+    transition-delay: 0.25s;
+}
+
+.reveal:nth-child(6) {
+    transition-delay: 0.30s;
+}
+
+/* 🔥 不同方向的效果 */
+
+/* 從左邊滑入 */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 從右邊滑入 */
+.reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 縮放出現 */
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 旋轉出現 */
+.reveal-rotate {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-rotate.visible {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+/* ========== 手柄状态提示 ========== */
+/*.controller-status {
+    color: #555;
+    font-size: 0.7rem;
+    text-align: center;
+    margin-top: 6px;
+    padding: 6px 12px;
+    background: #1a1a1a;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 140px;
+    border: 1px solid #2a2a2a;
+    transition: all 0.3s;
+}
+.controller-status.active {
+    color: #6bcbff;
+    border-color: #6bcbff;
+    box-shadow: 0 0 20px rgba(107, 203, 255, 0.1);
+}*/
+
+
+/* ========== 确认对话框 (由 JS 动态生成) ========== */
+.confirm-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    padding: 35px 40px;
+    border-radius: 20px;
+    border: 2px solid #3a3a3a;
+    z-index: 1000;
+    text-align: center;
+    color: white;
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9);
+    min-width: 320px;
+    animation: dialogFadeIn 0.25s ease;
+}
+
+.confirm-dialog p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #eee;
+}
+
+.confirm-dialog .dialog-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.confirm-dialog .dialog-btn {
+    padding: 12px 35px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+}
+
+.confirm-dialog .dialog-btn.confirm {
+    background: linear-gradient(135deg, #4ad94a, #2db82d);
+    color: white;
+    box-shadow: 0 4px 15px rgba(74, 217, 74, 0.3);
+}
+
+.confirm-dialog .dialog-btn.confirm:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(74, 217, 74, 0.4);
+}
+
+.confirm-dialog .dialog-btn.cancel {
+    background: linear-gradient(135deg, #d94a4a, #b82d2d);
+    color: white;
+    box-shadow: 0 4px 15px rgba(217, 74, 74, 0.3);
+}
+
+.confirm-dialog .dialog-btn.cancel:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(217, 74, 74, 0.4);
+}
+
+/* 对话框背景遮罩 */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    animation: fadeIn 0.2s ease;
+}
+
+/* ========== 动画 ========== */
+@keyframes dialogFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========== 响应式适配 ========== */
+@media (max-width: 768px) {
+    body {
+        padding: 1vw;
+    }
+
+    .switch-container {
+        flex-direction: column;
+        aspect-ratio: auto;
+        padding: 12px;
+        border-radius: 20px;
+        gap: 12px;
+    }
+
+    .screen-area {
+        flex: none;
+        height: 60vh;
+        margin-left: -8px;
+    }
+
+    .controller-area {
+        flex: none;
+        flex-direction: row;
+        /* 变成横向排布 */
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        /* 🟢 关键：让左右两边的元素贴边 */
+        align-items: center;
+        padding: 10px 20px;
+        /* 左右留出一点空隙 */
+        gap: 8px;
+        min-height: 130px;
+        width: 100%;
+    }
+
+    /* 🟢 重点修改：半屏时十字按键的定位 */
+    .diamond-group {
+        margin: 0px;
+        /* ← 全部歸零 */
+        transform: scale(0.8);
+        flex: 0 0 auto;
+        justify-content: center;
+        /* ← 置中 */
+        grid-template-columns: 50px 50px 50px;
+        grid-template-rows: 50px 50px 50px;
+    }
+
+    .btn-ok {
+        width: 80px;
+        height: 80px;
+        max-width: 100px;
+        margin: 0px;
+        /* ← 全部歸零 */
+        font-size: 1rem;
+        flex: 0 0 auto;
+    }
+
+    .controller-label {
+        display: none;
+    }
+
+    .controller-status {
+        max-width: 100px;
+        font-size: 0.6rem;
+    }
+
+    .screen-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .screen-content {
+        padding: 20px 15px;
+    }
+
+    .btn-top {
+        width: 55px;
+        height: 55px;
+        max-width: 80px;
+        font-size: 1.0rem;
+        margin-top: 5px;
+        flex: 0 0 auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .screen-area {
+        height: 50vh;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+
+    .screen-content h1 {
+        font-size: 1.3rem;
+    }
+
+    .screen-content p {
+        font-size: 0.95rem;
+    }
+
+    .controller-area {
+        padding: 8px 12px;
+        gap: 5px;
+        min-height: 110px;
+    }
+
+    .diamond-group {
+        transform: scale(0.7);
+        grid-template-columns: 42px 42px 42px;
+        grid-template-rows: 42px 42px 42px;
+    }
+
+    .btn-ok {
+        width: 60px;
+        height: 60px;
+        font-size: 0.9rem;
+    }
+
+    .btn-top {
+        width: 45px;
+        height: 45px;
+        font-size: 1.0rem;
+    }
+}
+
