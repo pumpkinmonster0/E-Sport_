@@ -1648,4 +1648,618 @@ h2, h3,h4 {
         margin-bottom: 8px;
     }
 
+    /* testing */
+
+    
+}
+/*/* ===== 全域重置 =====
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d0d0d;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* ===== 導航欄 ===== */
+header {
+    background-color: #1a1a2e;
+    padding: 15px 40px;
+    border-bottom: 2px solid #e94560;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e94560;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #e94560;
+}
+
+/* ===== 頁面標題 ===== */
+.page-header {
+    text-align: center;
+    padding: 50px 20px 30px;
+}
+
+.page-header h1 {
+    font-size: 36px;
+    color: #e94560;
+}
+
+.page-header p {
+    color: #aaaaaa;
+    font-size: 18px;
+}
+
+/* ===== 分類標題 ===== */
+.section-title {
+    font-size: 28px;
+    color: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    border-left: 5px solid #e94560;
+    padding-left: 20px;
+}
+
+/* ===== 卡片容器（三列 Grid） ===== */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+}
+
+/* ===== 單張卡片 ===== */
+.event-card {
+    background-color: #1a1a2e;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(233, 69, 96, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(233, 69, 96, 0.25);
+    border-color: #e94560;
+}
+
+/* 已結束的卡片（灰色調） */
+.past-event {
+    opacity: 0.7;
+}
+
+.past-event:hover {
+    opacity: 1;
+    border-color: #888;
+}
+
+/* ===== 卡片頂部圖片區 ===== */
+.card-image {
+    height: 160px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 日期徽章 */
+.card-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 16px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 大圖標 */
+.card-icon {
+    font-size: 56px;
+    opacity: 0.6;
+}
+
+/* ===== 卡片內容區 ===== */
+.card-body {
+    padding: 18px 20px 22px;
+}
+
+.card-body h3 {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.card-body .card-time {
+    color: #e94560;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.card-body .card-desc {
+    color: #aaaaaa;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.card-btn {
+    color: #e94560;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.card-btn:hover {
+    color: #ff6b81;
+}
+
+/* 已結束標籤 */
+.badge-past {
+    display: inline-block;
+    background-color: #444;
+    color: #999;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* ===== 頁腳 ===== */
+footer {
+    background-color: #1a1a2e;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #e94560;
+    margin-top: 20px;
+}
+
+footer .social-links {
+    margin-top: 10px;
+}
+
+footer .social-links a {
+    color: #aaaaaa;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .social-links a:hover {
+    color: #e94560;
+}
+
+/* ===== 響應式：手機變一列 ===== */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+
+    .nav-links {
+        gap: 12px;
+        font-size: 14px;
+    }
+
+    .page-header h1 {
+        font-size: 28px;
+    }
+
+    .section-title {
+        font-size: 22px;
+        margin: 0 10px 15px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================================
+   About 頁面專屬樣式
+   ============================================================ */
+
+/* 社團簡介 */
+.about-intro {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 30px 40px;
+    background-color: #1a1a2e;
+    border-radius: 16px;
+    border-left: 5px solid #e94560;
+}
+
+.about-intro h2 {
+    color: #e94560;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.about-intro p {
+    color: #cccccc;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.about-intro p:last-child {
+    margin-bottom: 0;
+}
+
+/* 幹部區塊 */
+.team-members {
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+}
+
+.team-members h2 {
+    color: #e94560;
+    font-size: 28px;
+    margin-bottom: 25px;
+    border-left: 5px solid #e94560;
+    padding-left: 20px;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.member-card {
+    background-color: #1a1a2e;
+    padding: 25px 20px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid rgba(233, 69, 96, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.member-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 30px rgba(233, 69, 96, 0.2);
+    border-color: #e94560;
+}
+
+.member-avatar {
+    font-size: 64px;
+    margin-bottom: 10px;
+}
+
+.member-card h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.member-card .member-role {
+    color: #e94560;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.member-card .member-desc {
+    color: #aaaaaa;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* 聯絡表單 */
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    padding: 35px 40px;
+    background-color: #1a1a2e;
+    border-radius: 16px;
+    border: 1px solid rgba(233, 69, 96, 0.15);
+}
+
+.contact-form h2 {
+    color: #e94560;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    color: #cccccc;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #0d0d0d;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #e94560;
+    outline: none;
+}
+
+.contact-form button {
+    width: 100%;
+    background-color: #e94560;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.contact-form button:hover {
+    background-color: #c73652;
+    transform: scale(1.02);
+}
+
+/* 社群媒體 */
+.social-media {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.social-media h2 {
+    color: #e94560;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    background-color: #1a1a2e;
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid rgba(233, 69, 96, 0.15);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.social-icon:hover {
+    background-color: #e94560;
+    transform: translateY(-3px);
+}
+
+/* ===== 響應式：手機 ===== */
+@media (max-width: 768px) {
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .about-intro {
+        padding: 20px;
+        margin: 0 15px 30px;
+    }
+
+    .contact-form {
+        padding: 25px 20px;
+        margin: 0 15px 30px;
+    }
+
+    .social-icons {
+        gap: 12px;
+    }
+
+    .social-icon {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+/*schedulelanduo2/
+
+/* ===== 活动卡片专用样式 ===== */
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin: 16px 0 30px 0;
+}
+
+.event-card {
+    background: #1a1a2e;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #2a2a4a;
+    padding: 0 !important;
+}
+.event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(233, 69, 96, 0.25);
+}
+
+.card-image {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px;
+}
+.card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+.card-icon {
+    font-size: 3rem;
+    opacity: 0.6;
+    text-shadow: 0 0 20px rgba(255,255,255,0.15);
+}
+
+.card-body {
+    padding: 18px 20px 20px 20px;
+}
+.card-body h3 {
+    font-size: 1.1rem;
+    margin: 0 0 6px 0;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    line-height: 1.4;
+}
+.card-time {
+    color: #e94560;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 4px 0 8px 0;
+}
+.card-desc {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin: 0 0 14px 0;
+    line-height: 1.5;
+}
+
+.card-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #e94560;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+.card-btn:hover {
+    background: #ff6b81;
+    transform: scale(1.04);
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+    color: #fff;
+}
+
+.past-event .card-image {
+    opacity: 0.6;
+}
+.past-event .card-body h3 {
+    color: #888;
+}
+.badge-past {
+    display: inline-block;
+    background: #444;
+    color: #999;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+}
+
+.nav-links .active {
+    color: #e94560;
+    border-bottom: 2px solid #e94560;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+    .card-image {
+        height: 100px;
+    }
+    .card-icon {
+        font-size: 2.2rem;
+    }
+}
+@media (max-width: 480px) {
+    .card-body h3 {
+        font-size: 0.95rem;
+    }
+} 
+
 }
