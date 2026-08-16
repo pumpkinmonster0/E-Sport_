@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="關於我們 - 電競社">
+    <title>關於我們 | 電競社</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- 你的 CSS（包含 Switch 設計系統） -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- 🎮 Switch 主機殼                                              -->
+    <!-- ============================================================ -->
+    <div class="switch-container">
+
+        <!-- 🟢 螢幕區域 -->
+        <div class="screen-area">
+            <div class="screen-content" id="screenContent">
+
+                <!-- ========================================================== -->
+                <!-- 👋 關於我們 內容                                            -->
+                <!-- ========================================================== -->
+
+                <!-- 頁面標題 -->
+                <h1>👋 關於我們</h1>
+                <p class="text-muted text-center">認識電競社，一起加入我們的熱血旅程！</p>
+
+                <hr />
+
+                <!-- ===== 社團簡介 ===== -->
+                <h2>📖 社團簡介</h2>
+
+                <div class="card">
+                    <p>
+                        我們是 <strong>XX 大學電競社</strong>，成立於 2020 年，致力於推廣電子競技運動。
+                        社團目前有 50+ 位成員，涵蓋 <strong>《英雄聯盟》</strong>、<strong>《特戰英豪》</strong>、
+                        <strong>《傳說對決》</strong> 等熱門遊戲。
+                    </p>
+                    <p>
+                        我們定期舉辦校內賽、參加校外聯賽，並提供選手訓練、賽事轉播等活動。
+                        不論你是休閒玩家還是電競好手，都歡迎加入我們！
+                    </p>
+                </div>
+
+                <!-- ===== 社團幹部 ===== -->
+                <h2>👥 社團幹部</h2>
+
+                <div class="members-grid">
+
+                    <div class="card member-card">
+                        <div class="member-avatar">👤</div>
+                        <h3>王小明</h3>
+                        <p class="member-role">社長</p>
+                        <p class="member-desc">負責社團整體營運與賽事規劃</p>
+                    </div>
+
+                    <div class="card member-card">
+                        <div class="member-avatar">👤</div>
+                        <h3>陳大華</h3>
+                        <p class="member-role">副社長</p>
+                        <p class="member-desc">協助社長管理社團事務</p>
+                    </div>
+
+                    <div class="card member-card">
+                        <div class="member-avatar">👤</div>
+                        <h3>李教練</h3>
+                        <p class="member-role">戰術教練</p>
+                        <p class="member-desc">負責選手訓練與戰術分析</p>
+                    </div>
+
+                    <div class="card member-card">
+                        <div class="member-avatar">👤</div>
+                        <h3>張小美</h3>
+                        <p class="member-role">活動企劃</p>
+                        <p class="member-desc">負責活動策劃與執行</p>
+                    </div>
+
+                </div>
+
+                <!-- ===== 聯絡表單 ===== -->
+                <h2>📩 聯絡我們</h2>
+
+                <div class="card">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" placeholder="請輸入你的姓名" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">訊息</label>
+                            <textarea id="message" rows="4" placeholder="想跟我們說什麼？"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-generic primary">送出訊息 ✉️</button>
+                    </form>
+                </div>
+
+                <!-- ===== 社群媒體 ===== -->
+                <h2>📱 追蹤我們</h2>
+
+                <div class="card">
+                    <div class="social-icons">
+                        <a href="#" class="btn-generic">📷 Instagram</a>
+                        <a href="#" class="btn-generic primary">📘 Facebook</a>
+                        <a href="#" class="btn-generic success">🎮 Discord</a>
+                        <a href="#" class="btn-generic danger">▶️ YouTube</a>
+                    </div>
+                </div>
+
+                <!-- ===== 頁尾 ===== -->
+                <hr />
+
+                <div class="flex-center" style="margin: 20px 0;">
+                    <span class="badge blue">關於我們</span>
+                    <span class="badge green">v1.0</span>
+                    <span class="badge yellow">電競社</span>
+                </div>
+
+                <p class="text-muted text-small text-center">
+                    🎮 E-SPORT CLUB &bull; 一起為榮耀而戰！
+                </p>
+
+            </div>
+        </div>
+
+        <!-- 🔵 手柄區域 -->
+        <div class="controller-area">
+
+            <div class="diamond-group">
+                <button class="btn btn-y" data-scroll="up">Y</button>
+                <button class="btn btn-x" data-scroll="up">X</button>
+                <button class="btn btn-b" data-scroll="down">B</button>
+                <button class="btn btn-a" data-scroll="down">A</button>
+            </div>
+
+            <button class="btn-ok" id="scrollTopBtn"> OK</button>
+            <button class="btn-top" id="scrollTopBtn2"> Top</button>
+
+        </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- JavaScript                                                   -->
+    <!-- ============================================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const screen = document.getElementById('screenContent');
+
+            // 滾動按鈕
+            document.querySelectorAll('[data-scroll]').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const direction = this.dataset.scroll;
+                    const amount = 300;
+                    screen.scrollBy({ top: direction === 'down' ? amount : -amount, behavior: 'smooth' });
+                });
+            });
+
+            // 回到頂端
+            document.getElementById('scrollTopBtn').addEventListener('click', function() {
+                screen.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            document.getElementById('scrollTopBtn2').addEventListener('click', function() {
+                screen.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 鍵盤控制
+            document.addEventListener('keydown', function(e) {
+                const key = e.key;
+                const amount = 300;
+                if (key === 'a' || key === 'A' || key === 'ArrowDown') {
+                    e.preventDefault();
+                    screen.scrollBy({ top: amount, behavior: 'smooth' });
+                } else if (key === 'y' || key === 'Y' || key === 'ArrowUp') {
+                    e.preventDefault();
+                    screen.scrollBy({ top: -amount, behavior: 'smooth' });
+                }
+            });
+
+            // 表單提交
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('📨 感謝你的訊息！我們會盡快回覆你！');
+                this.reset();
+            });
+        });
+    </script>
+
+</body>
+</html>
