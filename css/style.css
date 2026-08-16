@@ -1,4 +1,4 @@
- @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
 
 /* ========== 全局重置 & 基础样式 ========== */
 * {
@@ -177,7 +177,7 @@ body {
     font-weight: 500;
     margin-top: 16px;
     margin-bottom: 10px;
-    color: #bebebe;
+    color: #f9f4f4;
 }
 
 h2, h3,h4 {
@@ -554,10 +554,196 @@ h2, h3,h4 {
     border-bottom-color: #ffd93d;
 }
 
+/* ============================================================
+   ★★★ 固定霓虹光柱層（覆蓋全部，不隨滾動移動） ★★★
+   ============================================================ */
+.dynamic-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* ---------- 掃描線（極淡） ---------- */
+.scanline {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(0, 255, 255, 0.04) 20%,
+            rgba(0, 255, 255, 0.12) 50%,
+            rgba(0, 255, 255, 0.04) 80%,
+            transparent 100%);
+    animation: scanMove 5s linear infinite;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.06);
+}
+
+.scanline-2 {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 100, 200, 0.03) 25%,
+            rgba(255, 100, 200, 0.10) 50%,
+            rgba(255, 100, 200, 0.03) 75%,
+            transparent 100%);
+    animation: scanMove 6s linear infinite 2.5s;
+    box-shadow: 0 0 6px rgba(255, 100, 200, 0.05);
+}
+
+.scanline-3 {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 215, 0, 0.02) 30%,
+            rgba(255, 215, 0, 0.08) 50%,
+            rgba(255, 215, 0, 0.02) 70%,
+            transparent 100%);
+    animation: scanMove 8s linear infinite 4s;
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.04);
+}
+
+@keyframes scanMove {
+    0% {
+        top: -2px;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+/* ---------- 霓虹光柱 A（藍色） ---------- */
+.neon-beam {
+    position: absolute;
+    top: -60%;
+    left: -40%;
+    width: 220%;
+    height: 180%;
+    background: linear-gradient(135deg,
+            transparent 38%,
+            rgba(0, 150, 255, 0.05) 44%,
+            rgba(0, 200, 255, 0.25) 48%,
+            rgba(0, 220, 255, 0.40) 50%,
+            rgba(0, 200, 255, 0.25) 52%,
+            rgba(0, 150, 255, 0.05) 56%,
+            transparent 62%);
+    transform: rotate(25deg);
+    animation: beamSweep 7s ease-in-out infinite;
+    filter: blur(1px);
+}
+
+@keyframes beamSweep {
+    0% {
+        transform: rotate(25deg) translateX(-120%) translateY(-40%);
+        opacity: 0.15;
+    }
+    40% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(25deg) translateX(120%) translateY(50%);
+        opacity: 0.15;
+    }
+}
+
+/* ---------- 霓虹光柱 B（粉紫色） ---------- */
+.neon-beam-2 {
+    position: absolute;
+    bottom: -60%;
+    right: -40%;
+    width: 180%;
+    height: 160%;
+    background: linear-gradient(225deg,
+            transparent 35%,
+            rgba(200, 50, 255, 0.04) 42%,
+            rgba(220, 80, 255, 0.20) 47%,
+            rgba(255, 100, 255, 0.35) 50%,
+            rgba(220, 80, 255, 0.20) 53%,
+            rgba(200, 50, 255, 0.04) 58%,
+            transparent 65%);
+    transform: rotate(-18deg);
+    animation: beamSweep2 9s ease-in-out infinite 1.5s;
+    filter: blur(1px);
+}
+
+@keyframes beamSweep2 {
+    0% {
+        transform: rotate(-18deg) translateX(120%) translateY(40%);
+        opacity: 0.1;
+    }
+    40% {
+        opacity: 0.9;
+    }
+    60% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: rotate(-18deg) translateX(-120%) translateY(-50%);
+        opacity: 0.1;
+    }
+}
+
+/* ---------- 霓虹光柱 C（青色） ---------- */
+.neon-beam-3 {
+    position: absolute;
+    top: 10%;
+    left: -30%;
+    width: 130%;
+    height: 80%;
+    background: linear-gradient(90deg,
+            transparent 30%,
+            rgba(0, 255, 200, 0.03) 42%,
+            rgba(0, 255, 200, 0.15) 48%,
+            rgba(0, 255, 200, 0.30) 50%,
+            rgba(0, 255, 200, 0.15) 52%,
+            rgba(0, 255, 200, 0.03) 58%,
+            transparent 70%);
+    transform: rotate(5deg);
+    animation: beamSweep3 12s ease-in-out infinite 3s;
+    filter: blur(2px);
+}
+
+@keyframes beamSweep3 {
+    0% {
+        transform: rotate(5deg) translateX(-80%) scaleX(0.6);
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.8;
+        transform: rotate(5deg) translateX(10%) scaleX(1);
+    }
+    70% {
+        opacity: 0.8;
+        transform: rotate(5deg) translateX(10%) scaleX(1);
+    }
+    100% {
+        transform: rotate(5deg) translateX(80%) scaleX(0.6);
+        opacity: 0;
+    }
+}
+
 /* ========== 手柄区域 ========== */
 .controller-area {
     flex: 1;
-    background: linear-gradient(145deg, #FF3B56);
+    background: linear-gradient(145deg, #ff5470, #d62a46);
     border-radius: 12px;
     padding: 20px 15px;
     display: flex;
@@ -948,18 +1134,6 @@ h2, h3,h4 {
   z-index: 999;
 }
 
-/* ========== 动画 ========== */
-@keyframes dialogFadeIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
 
 @keyframes fadeIn {
     from {
@@ -969,6 +1143,294 @@ h2, h3,h4 {
     to {
         opacity: 1;
     }
+}
+
+/* ============================================================
+   🆕 新增：四頁結構 & 霓虹燈效果 (E-Sports Club)
+   ============================================================ */
+
+#pageContent {
+    height: 100%;
+}
+
+/* ---------- 重置 screen-content 內邊距 ---------- */
+.screen-content {
+    height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 30px 25px;
+    color: #e8e8e8;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+    /* 🆕 新增：縮小整體內容 */
+    font-size: 0.85rem;  /* 整體字體縮小 */
+    line-height: 1.6;    /* 行距稍微縮小 */
+}
+
+/* ---------- 頁面容器 - 縮小間距 ---------- */
+.page-section {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px 30px;
+    scroll-snap-align: start;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- 第一頁：英雄區 (背景圖填滿整個 Switch) ---------- */
+.hero-section {
+    /* 1. 修正路徑斜線，並加單引號 */
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.60)),
+        url('../images/index/pexels-a-darmel-7862517.jpg') center/cover no-repeat;
+    
+    height: 100%;
+    box-sizing:border-box;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-end; 
+    align-items: flex-start; 
+    padding-bottom: 8vh;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0;
+    /*border-radius: 0;*/
+    position: relative;
+    z-index: 1;
+}
+
+/* 英雄區文字容器 - 靠左下 */
+.hero-content {
+    max-width: 700px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    
+}
+
+.hero-sub {
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 6px;
+    margin-bottom: 6px;
+    color: #b0d4ff;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    font-family: 'Orbitron', monospace;
+}
+
+.hero-desc {
+    font-size: 1.15rem;
+    max-width: 580px;
+    line-height: 1.8;
+    color: #ddd;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- 第二頁：遊戲列表 (三張同一行) ---------- */
+.games-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    margin-top: 16px;
+    /* 縮小上邊距 */
+    justify-content: center;
+    width: 100%;
+}
+
+.game-card {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 280px;
+    background: rgba(20, 20, 40, 0.7);
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid #2a2a4a;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.game-card:hover {
+    transform: translateY(-6px);
+    border-color: #6bcbff;
+    box-shadow: 0 8px 35px rgba(107, 203, 255, 0.15);
+}
+
+.game-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #2a2a4a;
+}
+
+.game-card h3 {
+    margin-top: 12px;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+/* ---------- 第三頁：比賽區 (背景圖填滿) ---------- */
+.match-section {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
+        url('../images/index/pexels-vladimirsrajber-19228385.jpg') center/cover no-repeat;
+    min-height: 100%;
+    border-radius: 0;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.match-cards {
+    display: flex;
+    gap: 40px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin: 16px 0 20px 0;
+    /* 縮小上下邊距 */
+    width: 100%;
+}
+
+.match-card {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 420px;
+    background: rgba(10, 10, 25, 0.75);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid #2a2a4a;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.match-card:hover {
+    border-color: #ff6b6b;
+    box-shadow: 0 8px 35px rgba(255, 107, 107, 0.15);
+    transform: translateY(-4px);
+}
+
+.match-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #2a2a4a;
+}
+
+.match-card h3 {
+    margin-top: 12px;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.match-card p {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.see-all-link {
+    display: inline-block;
+    padding: 12px 32px;
+    background: linear-gradient(145deg, #2a2a5a, #1a1a3a);
+    color: #6bcbff;
+    border: 1px solid #4a4a8a;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    /* 縮小上邊距 */;
+}
+
+.see-all-link:hover {
+    background: linear-gradient(145deg, #3a3a7a, #2a2a5a);
+    box-shadow: 0 0 30px rgba(107, 203, 255, 0.25);
+    transform: scale(1.05);
+    color: #ffd93d;
+    border-color: #ffd93d;
+}
+
+/* ---------- 第四頁：贊助商 ---------- */
+.sponsor-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    /* 縮小上邊距 */
+    width: 100%;
+}
+
+.sponsor-item {
+    flex: 0 0 140px;
+    height: 100px;
+    background: rgba(20, 20, 40, 0.5);
+    border-radius: 16px;
+    border: 1px solid #2a2a4a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.sponsor-item:hover {
+    border-color: #ffd93d;
+    box-shadow: 0 0 30px rgba(255, 217, 61, 0.15);
+    transform: scale(1.05);
+}
+
+.sponsor-item img {
+    max-width: 100%;
+    max-height: 60px;
+    filter: grayscale(0.3);
+    transition: filter 0.3s ease;
+}
+
+.sponsor-item:hover img {
+    filter: grayscale(0);
+}
+
+/* ---------- 頁面標題微調 - 縮小間距 ---------- */
+.section-title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    /* 從 20px 改為 12px */
+    font-family: 'Orbitron', monospace;
+    text-align: center;
+}
+
+.section-title.left {
+    text-align: left;
+}
+
+/* ---------- 確保 .screen-content 完全填滿 .screen-area ---------- */
+.screen-area {
+    padding: 0 !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+}
+
+.screen-content {
+    padding: 0 !important;
+    border-radius: 0 !important;
 }
 
 /* ========== 响应式适配 ========== */
@@ -1053,6 +1515,59 @@ h2, h3,h4 {
         margin-top: 5px;
         flex: 0 0 auto;
     }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    .hero-sub {
+        font-size: 1.0rem;
+        letter-spacing: 4px;
+    }
+    .hero-desc {
+        font-size: 1rem;
+    }
+    .hero-section {
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 6vh;
+    }
+    .page-section {
+        padding: 16px 20px;
+        /* 縮小響應式間距 */;
+    }
+
+    .games-grid {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .game-card {
+        flex: 1 1 140px;
+        max-width: 200px;
+    }
+    .game-card img {
+        height: 120px;
+    }
+
+    .match-cards {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .match-card {
+        flex: 1 1 200px;
+        max-width: 320px;
+    }
+    .match-card img {
+        height: 150px;
+    }
+
+    .sponsor-item {
+        flex: 0 0 100px;
+        height: 80px;
+    }
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
 }
 
 
@@ -1096,5 +1611,41 @@ h2, h3,h4 {
         height: 45px;
         font-size: 1.0rem;
     }
-}
 
+    .hero-title {
+        font-size: 2.0rem;
+    }
+    .hero-sub {
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+    }
+    .hero-desc {
+        font-size: 0.9rem;
+    }
+    .hero-section {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 4vh;
+    }
+    .page-section {
+        padding: 12px 14px;
+    }
+
+    .game-card {
+        flex: 1 1 100%;
+        max-width: 180px;
+    }
+    .match-card {
+        flex: 1 1 100%;
+        max-width: 280px;
+    }
+    .sponsor-item {
+        flex: 0 0 70px;
+        height: 60px;
+    }
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+    }
+
+}

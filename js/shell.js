@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Left Screen Area -->
             <div class="screen-area">
                 <div class="screen-content" id="screenContent">
-                    ${pageContent} //BODY CONTENT
+                    ${pageContent}
                 </div>
             </div>
 
