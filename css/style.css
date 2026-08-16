@@ -146,6 +146,7 @@ body {
     font-size: 0.95rem;
     transition: background 0.2s;
 }
+
 /*when mouse over, it will change background color*/
 .screen-content .content-row:hover {
     background: #1a1a1a;
@@ -180,13 +181,15 @@ body {
     color: #f9f4f4;
 }
 
-h2, h3,h4 {
+h2,
+h3,
+h4 {
     font-family: 'Orbitron', 'Courier New', monospace;
 }
 
 /* ========== 🆕 统一链接样式 ========== */
 /*normal*/
-.screen-content a { 
+.screen-content a {
     color: #6bcbff;
     text-decoration: none;
     transition: all 0.25s ease;
@@ -205,29 +208,36 @@ h2, h3,h4 {
 }
 
 /* ========== 🆕 统一列表样式 ========== */
-.screen-content ul, .screen-content ol {
-    padding-left: 28px; /* 左邊縮排，讓列表內縮 */
-    margin-bottom: 16px;  /* 下方留白 */
+.screen-content ul,
+.screen-content ol {
+    padding-left: 28px;
+    /* 左邊縮排，讓列表內縮 */
+    margin-bottom: 16px;
+    /* 下方留白 */
     color: #ccc;
     line-height: 1.8;
 }
 
 .screen-content li {
-    margin-bottom: 6px;  /* 每個項目之間留 6px 空隙 */
+    margin-bottom: 6px;
+    /* 每個項目之間留 6px 空隙 */
 }
 
 .screen-content ul {
-    list-style-type: none; /* 移除原本的 • 圓點 */
+    list-style-type: none;
+    /* 移除原本的 • 圓點 */
 }
 
 .screen-content ul li::before {
-    content: "▸ ";/* 在每個項目前面加上 ▸ */
+    content: "▸ ";
+    /* 在每個項目前面加上 ▸ */
     color: #6bcbff;
     font-weight: 700;
 }
 
 .screen-content ol {
-    list-style-type: decimal-leading-zero;/* 1 → 01, 2 → 02 */
+    list-style-type: decimal-leading-zero;
+    /* 1 → 01, 2 → 02 */
 }
 
 /* ========== 🆕 统一引用块样式 ========== */
@@ -622,6 +632,7 @@ h2, h3,h4 {
     0% {
         top: -2px;
     }
+
     100% {
         top: 100%;
     }
@@ -652,12 +663,15 @@ h2, h3,h4 {
         transform: rotate(25deg) translateX(-120%) translateY(-40%);
         opacity: 0.15;
     }
+
     40% {
         opacity: 1;
     }
+
     60% {
         opacity: 1;
     }
+
     100% {
         transform: rotate(25deg) translateX(120%) translateY(50%);
         opacity: 0.15;
@@ -689,12 +703,15 @@ h2, h3,h4 {
         transform: rotate(-18deg) translateX(120%) translateY(40%);
         opacity: 0.1;
     }
+
     40% {
         opacity: 0.9;
     }
+
     60% {
         opacity: 0.9;
     }
+
     100% {
         transform: rotate(-18deg) translateX(-120%) translateY(-50%);
         opacity: 0.1;
@@ -726,14 +743,17 @@ h2, h3,h4 {
         transform: rotate(5deg) translateX(-80%) scaleX(0.6);
         opacity: 0;
     }
+
     30% {
         opacity: 0.8;
         transform: rotate(5deg) translateX(10%) scaleX(1);
     }
+
     70% {
         opacity: 0.8;
         transform: rotate(5deg) translateX(10%) scaleX(1);
     }
+
     100% {
         transform: rotate(5deg) translateX(80%) scaleX(0.6);
         opacity: 0;
@@ -895,7 +915,7 @@ h2, h3,h4 {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border:none;
+    border: none;
     background: #1a1a1a;
     margin-top: 40px;
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
@@ -918,7 +938,7 @@ h2, h3,h4 {
     border: none;
     color: #fff;
     font-size: 1.0rem;
-    font-family:'Segoe UI', sans-serif; 
+    font-family: 'Segoe UI', sans-serif;
     cursor: pointer;
     transition: all 0.25s ease;
     display: flex;
@@ -1031,27 +1051,6 @@ h2, h3,h4 {
     transform: rotate(0deg) scale(1);
 }
 
-/* ========== 手柄状态提示 ========== */
-/*.controller-status {
-    color: #555;
-    font-size: 0.7rem;
-    text-align: center;
-    margin-top: 6px;
-    padding: 6px 12px;
-    background: #1a1a1a;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 140px;
-    border: 1px solid #2a2a2a;
-    transition: all 0.3s;
-}
-.controller-status.active {
-    color: #6bcbff;
-    border-color: #6bcbff;
-    box-shadow: 0 0 20px rgba(107, 203, 255, 0.1);
-}*/
-
-
 /* ========== 确认对话框 (由 JS 动态生成) ========== */
 .confirm-dialog {
     position: fixed;
@@ -1129,9 +1128,9 @@ h2, h3,h4 {
 }
 
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 999;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
 
@@ -1145,9 +1144,6 @@ h2, h3,h4 {
     }
 }
 
-/* ============================================================
-   🆕 新增：四頁結構 & 霓虹燈效果 (E-Sports Club)
-   ============================================================ */
 
 #pageContent {
     height: 100%;
@@ -1162,10 +1158,12 @@ h2, h3,h4 {
     color: #e8e8e8;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    
+
     /* 🆕 新增：縮小整體內容 */
-    font-size: 0.85rem;  /* 整體字體縮小 */
-    line-height: 1.6;    /* 行距稍微縮小 */
+    font-size: 0.85rem;
+    /* 整體字體縮小 */
+    line-height: 1.6;
+    /* 行距稍微縮小 */
 }
 
 /* ---------- 頁面容器 - 縮小間距 ---------- */
@@ -1188,13 +1186,13 @@ h2, h3,h4 {
     background:
         linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.60)),
         url('../images/index/pexels-a-darmel-7862517.jpg') center/cover no-repeat;
-    
+
     height: 100%;
-    box-sizing:border-box;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-end; 
-    align-items: flex-start; 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
     padding-bottom: 8vh;
     padding-left: 50px;
     padding-right: 50px;
@@ -1210,7 +1208,7 @@ h2, h3,h4 {
     text-align: left;
     position: relative;
     z-index: 1;
-    
+
 }
 
 .hero-sub {
@@ -1294,13 +1292,12 @@ h2, h3,h4 {
 }
 
 .match-cards {
-    display: flex;
-    gap: 40px;
-    flex-wrap: nowrap;
-    justify-content: center;
-    margin: 16px 0 20px 0;
-    /* 縮小上下邊距 */
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .match-card {
@@ -1353,7 +1350,8 @@ h2, h3,h4 {
     font-size: 1rem;
     letter-spacing: 1px;
     margin-top: 6px;
-    /* 縮小上邊距 */;
+    /* 縮小上邊距 */
+    ;
 }
 
 .see-all-link:hover {
@@ -1519,31 +1517,38 @@ h2, h3,h4 {
     .hero-title {
         font-size: 2.8rem;
     }
+
     .hero-sub {
         font-size: 1.0rem;
         letter-spacing: 4px;
     }
+
     .hero-desc {
         font-size: 1rem;
     }
+
     .hero-section {
         padding-left: 25px;
         padding-right: 25px;
         padding-bottom: 6vh;
     }
+
     .page-section {
         padding: 16px 20px;
-        /* 縮小響應式間距 */;
+        /* 縮小響應式間距 */
+        ;
     }
 
     .games-grid {
         flex-wrap: wrap;
         gap: 16px;
     }
+
     .game-card {
         flex: 1 1 140px;
         max-width: 200px;
     }
+
     .game-card img {
         height: 120px;
     }
@@ -1552,10 +1557,12 @@ h2, h3,h4 {
         flex-wrap: wrap;
         gap: 20px;
     }
+
     .match-card {
         flex: 1 1 200px;
         max-width: 320px;
     }
+
     .match-card img {
         height: 150px;
     }
@@ -1564,6 +1571,7 @@ h2, h3,h4 {
         flex: 0 0 100px;
         height: 80px;
     }
+
     .section-title {
         font-size: 1.8rem;
         margin-bottom: 10px;
@@ -1615,18 +1623,22 @@ h2, h3,h4 {
     .hero-title {
         font-size: 2.0rem;
     }
+
     .hero-sub {
         font-size: 0.85rem;
         letter-spacing: 2px;
     }
+
     .hero-desc {
         font-size: 0.9rem;
     }
+
     .hero-section {
         padding-left: 16px;
         padding-right: 16px;
         padding-bottom: 4vh;
     }
+
     .page-section {
         padding: 12px 14px;
     }
@@ -1635,14 +1647,17 @@ h2, h3,h4 {
         flex: 1 1 100%;
         max-width: 180px;
     }
+
     .match-card {
         flex: 1 1 100%;
         max-width: 280px;
     }
+
     .sponsor-item {
         flex: 0 0 70px;
         height: 60px;
     }
+
     .section-title {
         font-size: 1.4rem;
         margin-bottom: 8px;
