@@ -133,6 +133,7 @@ body {
     line-height: 1.8;
     margin-bottom: 12px;
     color: #ccc;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif
 }
 
 /*<div class="content-row">HOW TO USE</div>*/
@@ -1178,6 +1179,7 @@ h4 {
     box-sizing: border-box;
     position: relative;
     z-index: 1;
+    margin-top:25px;
 }
 
 /* ---------- 第一頁：英雄區 (背景圖填滿整個 Switch) ---------- */
@@ -1193,8 +1195,8 @@ h4 {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    padding-bottom: 8vh;
-    padding-left: 50px;
+    padding-bottom: 1vh;
+    padding-left: 20px;
     padding-right: 50px;
     margin: 0;
     /*border-radius: 0;*/
@@ -1240,10 +1242,11 @@ h4 {
     display: flex;
     gap: 30px;
     flex-wrap: nowrap;
-    margin-top: 16px;
+    margin-top: 1px;
     /* 縮小上邊距 */
     justify-content: center;
     width: 100%;
+    margin-bottom:20px;
 }
 
 .game-card {
@@ -1280,21 +1283,30 @@ h4 {
 }
 
 /* ---------- 第三頁：比賽區 (背景圖填滿) ---------- */
+
 .match-section {
+    /* 1. 修正路徑斜線，並加單引號 */
     background:
         linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
         url('../images/index/pexels-vladimirsrajber-19228385.jpg') center/cover no-repeat;
+
     min-height: 100%;
-    border-radius: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 30px;
     margin: 0;
     position: relative;
     z-index: 1;
+    margin-bottom:-30px;
 }
 
 .match-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 15px;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -1306,7 +1318,7 @@ h4 {
     max-width: 420px;
     background: rgba(10, 10, 25, 0.75);
     border-radius: 16px;
-    padding: 16px;
+    padding: 10px;
     border: 1px solid #2a2a4a;
     backdrop-filter: blur(4px);
     transition: all 0.3s ease;
@@ -1320,14 +1332,14 @@ h4 {
 
 .match-card img {
     width: 100%;
-    height: 200px;
+    height: 150px;
     object-fit: cover;
     border-radius: 10px;
     border: 1px solid #2a2a4a;
 }
 
 .match-card h3 {
-    margin-top: 12px;
+    margin: 5px 6px 10px 0;
     color: #fff;
     font-size: 1.1rem;
 }
@@ -1335,6 +1347,8 @@ h4 {
 .match-card p {
     color: #aaa;
     font-size: 0.9rem;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 .see-all-link {
@@ -1415,9 +1429,7 @@ h4 {
     text-align: center;
 }
 
-.section-title.left {
-    text-align: left;
-}
+
 
 /* ---------- 確保 .screen-content 完全填滿 .screen-area ---------- */
 .screen-area {
@@ -1734,17 +1746,6 @@ nav {
 .page-header p {
     color: #aaaaaa;
     font-size: 18px;
-}
-
-/* ===== 分類標題 ===== */
-.section-title {
-    font-size: 28px;
-    color: #ffffff;
-    max-width: 1200px;
-    margin: 0 auto 20px;
-    padding: 0 20px;
-    border-left: 5px solid #e94560;
-    padding-left: 20px;
 }
 
 /* ===== 卡片容器（三列 Grid） ===== */
@@ -2277,4 +2278,4 @@ footer .social-links a:hover {
     }
 } 
 
-}
+
