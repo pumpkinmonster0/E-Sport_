@@ -1,4 +1,3 @@
-// ===== 导航栏 HTML =====
 function loadNavbar() {
     const navbarHTML = `
         <header class="navbar">

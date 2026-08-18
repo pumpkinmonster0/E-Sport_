@@ -163,7 +163,7 @@ document.addEventListener(
 
 
         console.log(
-            "✅ Shared footer loaded"
+            "Shared footer loaded"
         );
 
     }
