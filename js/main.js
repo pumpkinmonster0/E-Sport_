@@ -1,7 +1,7 @@
 //  Ensure DOM has fully load --> Ensure document.getElementById can find all element
 document.addEventListener('DOMContentLoaded', () => {
 
-///////////////////A AND Y BUTTON///////////////////////////////////
+    ///////////////////A AND Y BUTTON///////////////////////////////////
     //Get screen content element --> Find element in shell.js (ensure all button element can use)
     const screenContent = document.getElementById('screenContent');
 
@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
             button = document.querySelector('.btn-a');
         }
 
-
         if (button) {
             button.classList.add('active');
             setTimeout(() => button.classList.remove('active'), 150);
@@ -59,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     //  Keyboard event listener --> Monitor keyboard action and pass to key handle
     document.addEventListener('keydown', (e) => {
         const keyMap = {
@@ -76,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             handleKeyPress(key);
         }
     });
-
 
     //   Button click listener
     const btnY = document.querySelector('.btn-y');
@@ -100,8 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('E-SPORT CLUB FULLY LOADED');
     console.log('ALL BUTTON AND KEYBOARD LISTENER FOR SCROLL READY');
 
-
- ///////////////////////TOP BUTTON/////////////////////////
+    ///////////////////////TOP BUTTON/////////////////////////
     //  Return Top
     function scrollToTop() {
         const screenContent = document.getElementById('screenContent');
@@ -111,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Top button has pressed');//once press, it will show in console
     }
 
-    
+
     //  Prepare  the button
     const btnTop = document.getElementById('btnTop');
     if (btnTop) {
@@ -127,3 +123,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
