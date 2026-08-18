@@ -29,18 +29,6 @@
 
     <style>
 
-      
-
-       
-
-
-       
-
-
-      
-
-       
-
         /* =====================================================
            CALENDAR
         ===================================================== */
@@ -961,10 +949,7 @@
 
 
 <body>
-
-
-
-
+<div id="pageContent">
 
     <!-- =====================================================
          SCREEN
@@ -1258,17 +1243,6 @@
             ></div>
 
 
-        </div>
-
-    </div>
-
-
-    
-
-
-       
-
-</div>
 
 
 <!-- =====================================================
@@ -1306,10 +1280,7 @@ document.addEventListener(
                 "nextMonth"
             );
 
-        const screen =
-            document.getElementById(
-                "screenContent"
-            );
+       
 
         const upcomingContainer =
             document.getElementById(
@@ -1646,6 +1617,37 @@ document.addEventListener(
             "esportsEventFilters";
 
 
+function saveFilters() {
+
+    const filters = {
+        month: monthFilter.value,
+        year: yearFilter.value,
+        game: gameFilter.value
+    };
+
+    try {
+
+        localStorage.setItem(
+            FILTER_STORAGE_KEY,
+            JSON.stringify(filters)
+        );
+
+        console.log(
+            "✅ Filters saved:",
+            filters
+        );
+
+    } catch (error) {
+                 console.error(
+            "❌ Cannot save filters:",
+            error
+        );
+
+    }
+
+}
+
+
         /* =====================================================
            FORMAT DATE
         ===================================================== */
@@ -1721,22 +1723,19 @@ document.addEventListener(
            GET FILTERS
         ===================================================== */
 
-        function getFilters() {
+       function getFilters() {
 
-            return {
+    return {
 
-                month:
-                    monthFilter.value,
+        month: monthFilter.value || "all",
 
-                year:
-                    yearFilter.value,
+        year: yearFilter.value || "all",
 
-                game:
-                    gameFilter.value
+        game: gameFilter.value || "all"
 
-            };
+    };
 
-        }
+}
 
 
         /* =====================================================
@@ -1758,199 +1757,225 @@ document.addEventListener(
         }
 
 
-        /* =====================================================
-           LOAD FILTERS
-        ===================================================== */
+       /* =====================================================
+   LOAD FILTERS
+===================================================== */
 
-        function loadFilters() {
+function loadFilters() {
 
-            const saved =
-                localStorage.getItem(
-                    FILTER_STORAGE_KEY
-                );
+    try {
 
-            if (!saved) {
-                return;
-            }
+        const saved =
+            localStorage.getItem(
+                FILTER_STORAGE_KEY
+            );
 
-            try {
+        if (!saved) {
 
-                const filters =
-                    JSON.parse(saved);
+            console.log(
+                "ℹ️ No saved filters"
+            );
 
-
-                if (
-                    filters.month !== undefined
-                    &&
-                    monthFilter.querySelector(
-                        `option[value="${filters.month}"]`
-                    )
-                ) {
-
-                    monthFilter.value =
-                        filters.month;
-
-                }
-
-
-                if (
-                    filters.year !== undefined
-                    &&
-                    yearFilter.querySelector(
-                        `option[value="${filters.year}"]`
-                    )
-                ) {
-
-                    yearFilter.value =
-                        filters.year;
-
-                }
-
-
-                if (
-                    filters.game !== undefined
-                    &&
-                    gameFilter.querySelector(
-                        `option[value="${filters.game}"]`
-                    )
-                ) {
-
-                    gameFilter.value =
-                        filters.game;
-
-                }
-
-            }
-            catch (error) {
-
-                console.log(
-                    "Invalid saved filter"
-                );
-
-            }
+            return;
 
         }
 
+        const filters =
+            JSON.parse(saved);
 
-        /* =====================================================
-           EVENT MATCH FILTER
-        ===================================================== */
+        console.log(
+            "✅ Loaded filters:",
+            filters
+        );
 
-        function eventMatchesFilter(
-            dateKey,
-            event
+
+        /* MONTH */
+
+        if (
+            filters.month !== undefined &&
+            monthFilter.querySelector(
+                `option[value="${filters.month}"]`
+            )
         ) {
 
-            const filters =
-                getFilters();
-
-
-            if (
-                filters.month !== "all"
-            ) {
-
-                const eventMonth =
-                    parseInt(
-                        dateKey.substring(5, 7),
-                        10
-                    ) - 1;
-
-                if (
-                    eventMonth !==
-                    parseInt(
-                        filters.month,
-                        10
-                    )
-                ) {
-
-                    return false;
-
-                }
-
-            }
-
-
-            if (
-                filters.year !== "all"
-            ) {
-
-                const eventYear =
-                    dateKey.substring(
-                        0,
-                        4
-                    );
-
-                if (
-                    eventYear !==
-                    filters.year
-                ) {
-
-                    return false;
-
-                }
-
-            }
-
-
-            if (
-                filters.game !== "all"
-                &&
-                event.game !==
-                filters.game
-            ) {
-
-                return false;
-
-            }
-
-
-            return true;
+            monthFilter.value =
+                filters.month;
 
         }
 
+
+        /* YEAR */
+
+        if (
+            filters.year !== undefined &&
+            yearFilter.querySelector(
+                `option[value="${filters.year}"]`
+            )
+        ) {
+
+            yearFilter.value =
+                filters.year;
+
+        }
+
+
+        /* GAME */
+
+        if (
+            filters.game !== undefined &&
+            gameFilter.querySelector(
+                `option[value="${filters.game}"]`
+            )
+        ) {
+
+            gameFilter.value =
+                filters.game;
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "❌ Cannot load saved filters:",
+            error
+        );
+
+    }
+
+}
+
+     /* =====================================================
+   EVENT MATCH FILTER
+===================================================== */
+
+function eventMatchesFilter(
+    dateKey,
+    event
+) {
+
+    const filters =
+        getFilters();
+
+
+    /* =========================
+       MONTH
+    ========================= */
+
+    if (
+        filters.month !== "all"
+    ) {
+
+        const eventMonth =
+            parseInt(
+                dateKey.substring(5, 7),
+                10
+            ) - 1;
+
+        if (
+            eventMonth !==
+            parseInt(
+                filters.month,
+                10
+            )
+        ) {
+
+            return false;
+
+        }
+
+    }
+
+
+    /* =========================
+       YEAR
+    ========================= */
+
+    if (
+        filters.year !== "all"
+    ) {
+
+        const eventYear =
+            dateKey.substring(
+                0,
+                4
+            );
+
+        if (
+            eventYear !==
+            filters.year
+        ) {
+
+            return false;
+
+        }
+
+    }
+
+
+    /* =========================
+       GAME
+    ========================= */
+
+    if (
+        filters.game !== "all" &&
+        event.game !== filters.game
+    ) {
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+     
 
         /* =====================================================
-           GET FILTERED EVENTS
-        ===================================================== */
+   GET FILTERED EVENTS
+===================================================== */
 
-        function getFilteredEvents() {
+function getFilteredEvents() {
 
-            const filtered = {};
+    const filtered = {};
 
-            Object.keys(events)
-                .sort()
-                .forEach(
-                    function (dateKey) {
+    Object.keys(events)
+        .sort()
+        .forEach(
+            function (dateKey) {
 
-                        const matched =
-                            events[dateKey]
-                                .filter(
-                                    function (event) {
+                const matched =
+                    events[dateKey].filter(
+                        function (event) {
 
-                                        return eventMatchesFilter(
-                                            dateKey,
-                                            event
-                                        );
-
-                                    }
-                                );
-
-                        if (
-                            matched.length > 0
-                        ) {
-
-                            filtered[dateKey] =
-                                matched;
+                            return eventMatchesFilter(
+                                dateKey,
+                                event
+                            );
 
                         }
+                    );
 
-                    }
-                );
 
-            return filtered;
+                if (
+                    matched.length > 0
+                ) {
 
-        }
+                    filtered[dateKey] =
+                        matched;
 
+                }
+
+            }
+        );
+
+
+    return filtered;
+
+}
 
         /* =====================================================
            CREATE CALENDAR EVENT
@@ -2792,20 +2817,33 @@ document.addEventListener(
         }
 
 
-        /* =====================================================
-           APPLY FILTER
-        ===================================================== */
+       /* =====================================================
+   APPLY FILTER
+===================================================== */
 
-        function applyFilter() {
+function applyFilter() {
 
-            saveFilters();
+    console.log(
+        "🔎 Filter changed:",
+        getFilters()
+    );
 
-            renderCalendar();
 
-            renderSchedule();
+    /* Save */
 
-        }
+    saveFilters();
 
+
+    /* Render calendar */
+
+    renderCalendar();
+
+
+    /* Render schedule */
+
+    renderSchedule();
+
+}
 
         /* =====================================================
            FILTER LISTENERS
@@ -2829,32 +2867,35 @@ document.addEventListener(
         );
 
 
-        /* =====================================================
-           CLEAR FILTER
-        ===================================================== */
+       /* =====================================================
+   CLEAR FILTER
+===================================================== */
 
-        clearFilter.addEventListener(
-            "click",
-            function () {
+clearFilter.addEventListener(
+    "click",
+    function () {
 
-                monthFilter.value =
-                    "all";
+        monthFilter.value = "all";
 
-                yearFilter.value =
-                    "all";
+        yearFilter.value = "all";
 
-                gameFilter.value =
-                    "all";
+        gameFilter.value = "all";
 
-                saveFilters();
 
-                renderCalendar();
+        saveFilters();
 
-                renderSchedule();
 
-            }
+        renderCalendar();
+
+        renderSchedule();
+
+
+        console.log(
+            "🧹 Filters cleared"
         );
 
+    }
+);
 
         /* =====================================================
            PREVIOUS MONTH
@@ -2946,87 +2987,6 @@ document.addEventListener(
         );
 
 
-        
-
-         
-          
-
-
-        /* =====================================================
-           KEYBOARD
-        ===================================================== */
-
-        document.addEventListener(
-            "keydown",
-            function (e) {
-
-                const amount =
-                    300;
-
-
-                if (
-
-                    e.key === "a"
-
-                    ||
-
-                    e.key === "A"
-
-                    ||
-
-                    e.key === "ArrowDown"
-
-                ) {
-
-                    e.preventDefault();
-
-
-                    screen.scrollBy({
-
-                        top:
-                            amount,
-
-                        behavior:
-                            "smooth"
-
-                    });
-
-                }
-
-
-                else if (
-
-                    e.key === "y"
-
-                    ||
-
-                    e.key === "Y"
-
-                    ||
-
-                    e.key === "ArrowUp"
-
-                ) {
-
-                    e.preventDefault();
-
-
-                    screen.scrollBy({
-
-                        top:
-                            -amount,
-
-                        behavior:
-                            "smooth"
-
-                    });
-
-                }
-
-            }
-        );
-
-
         /* =====================================================
            START
         ===================================================== */
@@ -3058,7 +3018,7 @@ document.addEventListener(
 <script src="js/main.js"></script>
 <script src="js/footer.js"></script>
 
-
+    </div>
 </body>
 
 </html>
