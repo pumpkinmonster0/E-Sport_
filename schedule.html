@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
 
@@ -1045,7 +1045,7 @@
 <body>
 
 
-<div class="switch-container">
+
 
 
     <!-- =====================================================
@@ -1345,69 +1345,10 @@
     </div>
 
 
-    <!-- =====================================================
-         CONTROLLER
-    ===================================================== -->
-
-    <div class="controller-area">
+    
 
 
-        <div class="diamond-group">
-
-            <button
-                class="btn btn-y"
-                data-scroll="up"
-                type="button"
-            >
-                Y
-            </button>
-
-            <button
-                class="btn btn-x"
-                data-scroll="up"
-                type="button"
-            >
-                X
-            </button>
-
-            <button
-                class="btn btn-b"
-                data-scroll="down"
-                type="button"
-            >
-                B
-            </button>
-
-            <button
-                class="btn btn-a"
-                data-scroll="down"
-                type="button"
-            >
-                A
-            </button>
-
-        </div>
-
-
-        <button
-            class="btn-ok"
-            id="scrollTopBtn"
-            type="button"
-        >
-            OK
-        </button>
-
-
-        <button
-            class="btn-top"
-            id="scrollTopBtn2"
-            type="button"
-        >
-            Top
-        </button>
-
-
-    </div>
+       
 
 </div>
 
@@ -3087,114 +3028,10 @@ document.addEventListener(
         );
 
 
-        /* =====================================================
-           OK
-        ===================================================== */
+        
 
-        const okBtn =
-            document.getElementById(
-                "scrollTopBtn"
-            );
-
-
-        if (okBtn) {
-
-            okBtn.addEventListener(
-                "click",
-                function () {
-
-                    screen.scrollTo({
-
-                        top: 0,
-
-                        behavior:
-                            "smooth"
-
-                    });
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
-           TOP
-        ===================================================== */
-
-        const topBtn =
-            document.getElementById(
-                "scrollTopBtn2"
-            );
-
-
-        if (topBtn) {
-
-            topBtn.addEventListener(
-                "click",
-                function () {
-
-                    screen.scrollTo({
-
-                        top: 0,
-
-                        behavior:
-                            "smooth"
-
-                    });
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
-           A / B / X / Y
-        ===================================================== */
-
-        document
-            .querySelectorAll(
-                "[data-scroll]"
-            )
-            .forEach(
-                function (btn) {
-
-                    btn.addEventListener(
-                        "click",
-                        function (e) {
-
-                            e.preventDefault();
-
-
-                            const direction =
-                                this.dataset.scroll;
-
-
-                            const amount =
-                                300;
-
-
-                            screen.scrollBy({
-
-                                top:
-                                    direction ===
-                                    "down"
-
-                                        ? amount
-
-                                        : -amount,
-
-                                behavior:
-                                    "smooth"
-
-                            });
-
-                        }
-                    );
-
-                }
-            );
+         
+          
 
 
         /* =====================================================
@@ -3296,10 +3133,11 @@ document.addEventListener(
 </script>
 
 
-<!-- =====================================================
-     EXTERNAL FOOTER
-===================================================== -->
 
+<script src="js/shell.js"></script>
+ <script src="js/neon.js"></script>
+ <script src="js/scroll-reveal.js"></script>
+<script src="js/main.js"></script>
 <script src="js/footer.js"></script>
 
 
