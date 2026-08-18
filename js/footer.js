@@ -1,170 +1,61 @@
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+document.addEventListener('DOMContentLoaded', function () {
 
-        /* =====================================================
-           FIND SCREEN
-        ===================================================== */
+    // wait for the package of pagecontent
+    const waitForPage = setInterval(function () {
+        const pageContent = document.getElementById('pageContent');
 
-        const screenContent =
-            document.getElementById(
-                "screenContent"
-            );
-
-        if (!screenContent) {
-            return;
+        if (pageContent) {
+            clearInterval(waitForPage);
+            createFooter(pageContent);
+            console.log('Shared footer loaded in pageContent');
         }
+    }, 50);
 
+    // wait for 5 second to ensure the pagecontent
+    setTimeout(function () {
+        const pageContent = document.getElementById('pageContent');
+        if (!pageContent) {
+            console.warn('Footer: pageContent not found after 5s');
+        }
+    }, 5000);
+});
 
-        /* =====================================================
-           CREATE FOOTER
-        ===================================================== */
+function createFooter(container) {
+    const footer = document.createElement('footer');
+    footer.className = 'page-footer';
 
-        const footer =
-            document.createElement(
-                "footer"
-            );
+    const hr = document.createElement('hr');
+    hr.className = 'footer-line';
 
-        footer.className =
-            "page-footer";
+    const badges = document.createElement('div');
+    badges.className = 'footer-badges';
 
+    const clubBadge = document.createElement('span');
+    clubBadge.className = 'badge blue';
+    clubBadge.textContent = 'UTAR E-SPORTS';
 
-        /* =====================================================
-           LINE
-        ===================================================== */
+    const versionBadge = document.createElement('span');
+    versionBadge.className = 'badge green';
+    versionBadge.textContent = 'v2.0';
 
-        const hr =
-            document.createElement(
-                "hr"
-            );
+    const pageBadge = document.createElement('span');
+    pageBadge.className = 'badge yellow';
+    pageBadge.textContent = 'E-sports Club';
 
-        hr.className =
-            "footer-line";
+    badges.appendChild(clubBadge);
+    badges.appendChild(versionBadge);
+    badges.appendChild(pageBadge);
 
+    const description = document.createElement('p');
+    description.className = 'text-muted text-small footer-text';
+    description.textContent = 'UTAR E-SPORTS CLUB • Fight for Glory!';
 
-        /* =====================================================
-           BADGES
-        ===================================================== */
+    footer.appendChild(hr);
+    footer.appendChild(badges);
+    footer.appendChild(description);
 
-        const badges =
-            document.createElement(
-                "div"
-            );
+    //last session in pagecontent
+    container.appendChild(footer);
 
-        badges.className =
-            "footer-badges";
-
-
-        /* =====================================================
-           CLUB BADGE
-        ===================================================== */
-
-        const clubBadge =
-            document.createElement(
-                "span"
-            );
-
-        clubBadge.className =
-            "badge blue";
-
-        clubBadge.textContent =
-            "UTAR E-SPORTS";
-
-
-        /* =====================================================
-           VERSION BADGE
-        ===================================================== */
-
-        const versionBadge =
-            document.createElement(
-                "span"
-            );
-
-        versionBadge.className =
-            "badge green";
-
-        versionBadge.textContent =
-            "v2.0";
-
-
-        /* =====================================================
-           PAGE BADGE
-        ===================================================== */
-
-        const pageBadge =
-            document.createElement(
-                "span"
-            );
-
-        pageBadge.className =
-            "badge yellow";
-
-        pageBadge.textContent =
-            "E-sports Club";
-
-
-        /* =====================================================
-           ADD BADGES
-        ===================================================== */
-
-        badges.appendChild(
-            clubBadge
-        );
-
-        badges.appendChild(
-            versionBadge
-        );
-
-        badges.appendChild(
-            pageBadge
-        );
-
-
-        /* =====================================================
-           DESCRIPTION
-        ===================================================== */
-
-        const description =
-            document.createElement(
-                "p"
-            );
-
-        description.className =
-            "text-muted text-small footer-text";
-
-        description.textContent =
-            "🎮 UTAR E-SPORTS CLUB • Fight for Glory!";
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer.appendChild(
-            hr
-        );
-
-        footer.appendChild(
-            badges
-        );
-
-        footer.appendChild(
-            description
-        );
-
-
-        /* =====================================================
-           ADD FOOTER TO PAGE
-        ===================================================== */
-
-        screenContent.appendChild(
-            footer
-        );
-
-
-        console.log(
-            "Shared footer loaded"
-        );
-
-    }
-);
+    console.log('Footer added to pageContent');
+}
