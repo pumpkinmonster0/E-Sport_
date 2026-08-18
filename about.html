@@ -1,223 +1,681 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About Us - UTAR E-Sports Club">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="About Us - UTAR E-Sports Club"
+    >
+
     <title>About Us | UTAR E-Sports Club</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
 
-    <!-- Your CSS (including Switch design system) -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
+
+
 <body>
 
-    <!-- ============================================================ -->
-    <!-- 🎮 Switch Console                                             -->
-    <!-- ============================================================ -->
-    <div class="switch-container">
+<div class="switch-container">
 
-        <!-- 🟢 Screen Area -->
-        <div class="screen-area">
-            <div class="screen-content" id="screenContent">
 
-                <!-- ========================================================== -->
-                <!-- 👋 About Us Content                                        -->
-                <!-- ========================================================== -->
+    <!-- =========================================================
+         SCREEN
+    ========================================================== -->
 
-                <!-- Page Title -->
-                <h1>👋 About Us</h1>
-                <p class="text-muted text-center">Meet UTAR E-Sports Club – join our journey!</p>
+    <div class="screen-area">
 
-                <hr />
+        <div
+            class="screen-content"
+            id="screenContent"
+        >
 
-                <!-- ===== Club Introduction ===== -->
-                <h2>📖 Club Introduction</h2>
 
-                <div class="card">
-                    <p>
-                        We are the <strong>UTAR E-Sports Club</strong>, established in 2020 at 
-                        <strong>Universiti Tunku Abdul Rahman (UTAR)</strong>. We are dedicated to 
-                        promoting competitive gaming and building a vibrant e-sports community on campus.
-                    </p>
-                    <p>
-                        Our club currently has <strong>50+ active members</strong> across multiple game titles 
-                        including <strong>PUBG</strong>, <strong>CS:GO</strong>, <strong>Dota 2</strong>, 
-                        <strong>League of Legends</strong>, and <strong>Valorant</strong>.
-                    </p>
-                    <p>
-                        We organize regular intra-university tournaments, participate in external collegiate 
-                        leagues, and provide training sessions, live streaming, and community events. 
-                        Whether you're a casual gamer or a competitive player, everyone is welcome!
-                    </p>
-                </div>
+            <!-- =================================================
+                 PAGE TITLE
+            ================================================== -->
 
-                <!-- ===== Club Committee ===== -->
-                <h2>👥 Club Committee</h2>
+            <h1>
+                👋 About Us
+            </h1>
 
-                <div class="members-grid">
+            <p class="text-muted text-center">
+                Meet UTAR E-Sports Club – join our journey!
+            </p>
 
-                    <div class="card member-card">
-                        <div class="member-avatar">👤</div>
-                        <h3>Marcus Tan</h3>
-                        <p class="member-role">President</p>
-                        <p class="member-desc">Oversees club operations and tournament planning</p>
-                    </div>
+            <hr>
 
-                    <div class="card member-card">
-                        <div class="member-avatar">👤</div>
-                        <h3>Sarah Lim</h3>
-                        <p class="member-role">Vice President</p>
-                        <p class="member-desc">Assists the President in club management</p>
-                    </div>
 
-                    <div class="card member-card">
-                        <div class="member-avatar">👤</div>
-                        <h3>Coach Lee</h3>
-                        <p class="member-role">Head Coach</p>
-                        <p class="member-desc">Responsible for player training and game strategy</p>
-                    </div>
+            <!-- =================================================
+                 CLUB INTRODUCTION
+            ================================================== -->
 
-                    <div class="card member-card">
-                        <div class="member-avatar">👤</div>
-                        <h3>Emily Wong</h3>
-                        <p class="member-role">Event Coordinator</p>
-                        <p class="member-desc">Plans and executes club activities and tournaments</p>
-                    </div>
+            <h2>
+                📖 Club Introduction
+            </h2>
 
-                    <div class="card member-card">
-                        <div class="member-avatar">👤</div>
-                        <h3>Jason Yap</h3>
-                        <p class="member-role">PR & Marketing</p>
-                        <p class="member-desc">Manages social media and club outreach</p>
-                    </div>
+            <div class="card">
 
-                    <div class="card member-card">
-                        <div class="member-avatar">👤</div>
-                        <h3>Amanda Koh</h3>
-                        <p class="member-role">Secretary</p>
-                        <p class="member-desc">Handles club administration and documentation</p>
-                    </div>
+                <p>
+                    We are the
+                    <strong>UTAR E-Sports Club</strong>,
+                    established in 2020 at
+                    <strong>
+                        Universiti Tunku Abdul Rahman (UTAR)
+                    </strong>.
+                    We are dedicated to promoting competitive gaming
+                    and building a vibrant e-sports community on campus.
+                </p>
 
-                </div>
+                <p>
+                    Our club currently has
+                    <strong>50+ active members</strong>
+                    across multiple game titles including
+                    <strong>PUBG</strong>,
+                    <strong>CS:GO</strong>,
+                    <strong>Dota 2</strong>,
+                    <strong>League of Legends</strong>,
+                    and
+                    <strong>Valorant</strong>.
+                </p>
 
-                <!-- ===== Contact Form ===== -->
-                <h2>📩 Contact Us</h2>
-
-                <div class="card">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" placeholder="Enter your name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="your@email.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" rows="4" placeholder="What would you like to tell us?"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-generic primary">Send Message ✉️</button>
-                    </form>
-                </div>
-
-                <!-- ===== Social Media ===== -->
-                <h2>📱 Follow Us</h2>
-
-                <div class="card">
-                    <div class="social-icons">
-                        <a href="#" class="btn-generic">📷 Instagram</a>
-                        <a href="#" class="btn-generic primary">📘 Facebook</a>
-                        <a href="#" class="btn-generic success">🎮 Discord</a>
-                        <a href="#" class="btn-generic danger">▶️ YouTube</a>
-                    </div>
-                </div>
-
-                <!-- ===== Footer ===== -->
-                <hr />
-
-                <div class="flex-center" style="margin: 20px 0;">
-                    <span class="badge blue">About Us</span>
-                    <span class="badge green">v1.0</span>
-                    <span class="badge yellow">UTAR E-Sports</span>
-                </div>
-
-                <p class="text-muted text-small text-center">
-                    🎮 UTAR E-SPORTS CLUB &bull; Fight for Glory!
+                <p>
+                    We organize regular intra-university tournaments,
+                    participate in external collegiate leagues,
+                    and provide training sessions, live streaming,
+                    and community events.
+                    Whether you're a casual gamer or a competitive player,
+                    everyone is welcome!
                 </p>
 
             </div>
-        </div>
 
-        <!-- 🔵 Controller Area -->
-        <div class="controller-area">
 
-            <div class="diamond-group">
-                <button class="btn btn-y" data-scroll="up">Y</button>
-                <button class="btn btn-x" data-scroll="up">X</button>
-                <button class="btn btn-b" data-scroll="down">B</button>
-                <button class="btn btn-a" data-scroll="down">A</button>
+            <!-- =================================================
+                 CLUB COMMITTEE
+            ================================================== -->
+
+            <h2>
+                👥 Club Committee
+            </h2>
+
+            <div class="members-grid">
+
+
+                <!-- PRESIDENT -->
+
+                <div class="card member-card">
+
+                    <div class="member-avatar">
+                        👤
+                    </div>
+
+                    <h3>
+                        Marcus Tan
+                    </h3>
+
+                    <p class="member-role">
+                        President
+                    </p>
+
+                    <p class="member-desc">
+                        Oversees club operations and tournament planning
+                    </p>
+
+                </div>
+
+
+                <!-- VICE PRESIDENT -->
+
+                <div class="card member-card">
+
+                    <div class="member-avatar">
+                        👤
+                    </div>
+
+                    <h3>
+                        Sarah Lim
+                    </h3>
+
+                    <p class="member-role">
+                        Vice President
+                    </p>
+
+                    <p class="member-desc">
+                        Assists the President in club management
+                    </p>
+
+                </div>
+
+
+                <!-- HEAD COACH -->
+
+                <div class="card member-card">
+
+                    <div class="member-avatar">
+                        👤
+                    </div>
+
+                    <h3>
+                        Coach Lee
+                    </h3>
+
+                    <p class="member-role">
+                        Head Coach
+                    </p>
+
+                    <p class="member-desc">
+                        Responsible for player training and game strategy
+                    </p>
+
+                </div>
+
+
+                <!-- EVENT COORDINATOR -->
+
+                <div class="card member-card">
+
+                    <div class="member-avatar">
+                        👤
+                    </div>
+
+                    <h3>
+                        Emily Wong
+                    </h3>
+
+                    <p class="member-role">
+                        Event Coordinator
+                    </p>
+
+                    <p class="member-desc">
+                        Plans and executes club activities and tournaments
+                    </p>
+
+                </div>
+
+
+                <!-- PR & MARKETING -->
+
+                <div class="card member-card">
+
+                    <div class="member-avatar">
+                        👤
+                    </div>
+
+                    <h3>
+                        Jason Yap
+                    </h3>
+
+                    <p class="member-role">
+                        PR &amp; Marketing
+                    </p>
+
+                    <p class="member-desc">
+                        Manages social media and club outreach
+                    </p>
+
+                </div>
+
+
+                <!-- SECRETARY -->
+
+                <div class="card member-card">
+
+                    <div class="member-avatar">
+                        👤
+                    </div>
+
+                    <h3>
+                        Amanda Koh
+                    </h3>
+
+                    <p class="member-role">
+                        Secretary
+                    </p>
+
+                    <p class="member-desc">
+                        Handles club administration and documentation
+                    </p>
+
+                </div>
+
+
             </div>
 
-            <button class="btn-ok" id="scrollTopBtn"> OK</button>
-            <button class="btn-top" id="scrollTopBtn2"> Top</button>
+
+            <!-- =================================================
+                 CONTACT FORM
+            ================================================== -->
+
+            <h2>
+                📩 Contact Us
+            </h2>
+
+            <div class="card">
+
+                <form id="contactForm">
+
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="your@email.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            rows="4"
+                            placeholder="What would you like to tell us?"
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn-generic primary"
+                    >
+                        Send Message ✉️
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+            <!-- =================================================
+                 SOCIAL MEDIA
+            ================================================== -->
+
+            <h2>
+                📱 Follow Us
+            </h2>
+
+            <div class="card">
+
+                <div class="social-icons">
+
+                    <a
+                        href="#"
+                        class="btn-generic"
+                    >
+                        📷 Instagram
+                    </a>
+
+                    <a
+                        href="#"
+                        class="btn-generic primary"
+                    >
+                        📘 Facebook
+                    </a>
+
+                    <a
+                        href="#"
+                        class="btn-generic success"
+                    >
+                        🎮 Discord
+                    </a>
+
+                    <a
+                        href="#"
+                        class="btn-generic danger"
+                    >
+                        ▶️ YouTube
+                    </a>
+
+                </div>
+
+            </div>
+
+
+           
 
         </div>
 
     </div>
 
-    <!-- ============================================================ -->
-    <!-- JavaScript                                                   -->
-    <!-- ============================================================ -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const screen = document.getElementById('screenContent');
 
-            // Scroll buttons
-            document.querySelectorAll('[data-scroll]').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const direction = this.dataset.scroll;
-                    const amount = 300;
-                    screen.scrollBy({ top: direction === 'down' ? amount : -amount, behavior: 'smooth' });
-                });
-            });
+    <!-- =========================================================
+         CONTROLLER
+    ========================================================== -->
 
-            // Scroll to top
-            document.getElementById('scrollTopBtn').addEventListener('click', function() {
-                screen.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            document.getElementById('scrollTopBtn2').addEventListener('click', function() {
-                screen.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+    <div class="controller-area">
 
-            // Keyboard control
-            document.addEventListener('keydown', function(e) {
-                const key = e.key;
-                const amount = 300;
-                if (key === 'a' || key === 'A' || key === 'ArrowDown') {
-                    e.preventDefault();
-                    screen.scrollBy({ top: amount, behavior: 'smooth' });
-                } else if (key === 'y' || key === 'Y' || key === 'ArrowUp') {
-                    e.preventDefault();
-                    screen.scrollBy({ top: -amount, behavior: 'smooth' });
+
+        <div class="diamond-group">
+
+            <button
+                class="btn btn-y"
+                data-scroll="up"
+                type="button"
+            >
+                Y
+            </button>
+
+            <button
+                class="btn btn-x"
+                data-scroll="up"
+                type="button"
+            >
+                X
+            </button>
+
+            <button
+                class="btn btn-b"
+                data-scroll="down"
+                type="button"
+            >
+                B
+            </button>
+
+            <button
+                class="btn btn-a"
+                data-scroll="down"
+                type="button"
+            >
+                A
+            </button>
+
+        </div>
+
+
+        <button
+            class="btn-ok"
+            id="scrollTopBtn"
+            type="button"
+        >
+            OK
+        </button>
+
+
+        <button
+            class="btn-top"
+            id="scrollTopBtn2"
+            type="button"
+        >
+            Top
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ABOUT US JAVASCRIPT
+========================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =====================================================
+           SCREEN
+        ===================================================== */
+
+        const screen =
+            document.getElementById(
+                "screenContent"
+            );
+
+        if (!screen) {
+            return;
+        }
+
+
+        /* =====================================================
+           A / B / X / Y SCROLL
+        ===================================================== */
+
+        document
+            .querySelectorAll(
+                "[data-scroll]"
+            )
+            .forEach(
+                function (btn) {
+
+                    btn.addEventListener(
+                        "click",
+                        function (e) {
+
+                            e.preventDefault();
+
+                            const direction =
+                                this.dataset.scroll;
+
+                            const amount = 300;
+
+                            screen.scrollBy({
+
+                                top:
+                                    direction === "down"
+                                        ? amount
+                                        : -amount,
+
+                                behavior: "smooth"
+
+                            });
+
+                        }
+                    );
+
                 }
-            });
+            );
 
-            // Form submission
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('📨 Thank you for your message! We will get back to you soon!');
-                this.reset();
-            });
-        });
-    </script>
+
+        /* =====================================================
+           OK BUTTON
+        ===================================================== */
+
+        const okButton =
+            document.getElementById(
+                "scrollTopBtn"
+            );
+
+        if (okButton) {
+
+            okButton.addEventListener(
+                "click",
+                function () {
+
+                    screen.scrollTo({
+
+                        top: 0,
+
+                        behavior: "smooth"
+
+                    });
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           TOP BUTTON
+        ===================================================== */
+
+        const topButton =
+            document.getElementById(
+                "scrollTopBtn2"
+            );
+
+        if (topButton) {
+
+            topButton.addEventListener(
+                "click",
+                function () {
+
+                    screen.scrollTo({
+
+                        top: 0,
+
+                        behavior: "smooth"
+
+                    });
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           KEYBOARD CONTROL
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (e) {
+
+                const key = e.key;
+
+                const amount = 300;
+
+
+                if (
+
+                    key === "a" ||
+                    key === "A" ||
+                    key === "ArrowDown"
+
+                ) {
+
+                    e.preventDefault();
+
+                    screen.scrollBy({
+
+                        top: amount,
+
+                        behavior: "smooth"
+
+                    });
+
+                }
+
+
+                else if (
+
+                    key === "y" ||
+                    key === "Y" ||
+                    key === "ArrowUp"
+
+                ) {
+
+                    e.preventDefault();
+
+                    screen.scrollBy({
+
+                        top: -amount,
+
+                        behavior: "smooth"
+
+                    });
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           CONTACT FORM
+        ===================================================== */
+
+        const contactForm =
+            document.getElementById(
+                "contactForm"
+            );
+
+        if (contactForm) {
+
+            contactForm.addEventListener(
+                "submit",
+                function (e) {
+
+                    e.preventDefault();
+
+                    alert(
+                        "📨 Thank you for your message! " +
+                        "We will get back to you soon!"
+                    );
+
+                    contactForm.reset();
+
+                }
+            );
+
+        }
+
+    }
+
+);
+
+</script>
+
+
+<!-- =========================================================
+     SAME FOOTER JS AS SCHEDULE
+========================================================== -->
+
+<script src="js/footer.js"></script>
+
 
 </body>
 </html>
