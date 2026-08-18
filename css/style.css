@@ -10,7 +10,6 @@
 body {
     /*background for switch*/
     background:
-        /* 手把圖示層（用 SVG 或 Unicode） */
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ctext y='50' font-size='40' opacity='0.60'%3E🎮%3C/text%3E%3C/svg%3E") repeat,
         linear-gradient(135deg, #0b0b1a, #1a0b2e, #0b1a2e, #0b0b1a);
     background-size: 120px 120px, 400% 400%;
@@ -45,7 +44,7 @@ body {
     }
 }
 
-/* ========== Switch 主机容器 ========== */
+/* ========== Switch Container(include the shell) =============== */
 .switch-container {
     max-width: 950px;
     width: 100%;
@@ -65,7 +64,7 @@ body {
 }
 
 
-/* ========== Switch区域 (7/8) ========== */
+/* ========== Switch (inside) ========== */
 .screen-area {
     flex: 7;
     background: #080606;
@@ -80,7 +79,6 @@ body {
     animation: screenBg 20s ease-in-out infinite alternate;
 }
 
-/*Switch裏面的背景*/
 @keyframes screenBg {
     0% {
         background: radial-gradient(ellipse at 20% 30%, #3c1a78, #1a0b2e);
@@ -95,18 +93,16 @@ body {
     }
 }
 
-/* 屏幕内容滚动容器 */
+/* Content roll */
 .screen-content {
     height: 100%;
     overflow-y: scroll;
     scroll-behavior: smooth;
     padding: 30px 25px;
     color: #e8e8e8;
-    /* 隐藏默认滚动条 */
+    /*hide scrollbar*/
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE/Edge */
 }
 
 .screen-content::-webkit-scrollbar {
@@ -114,7 +110,7 @@ body {
     /* Chrome/Safari/Opera */
 }
 
-/* ========== 屏幕内容样式 For h1 ========== */
+/* ========== h1 ========== */
 .screen-content h1 {
     font-size: 2.2rem;
     font-weight: 700;
@@ -127,7 +123,7 @@ body {
     font-family: 'Orbitron', 'Courier New', monospace;
 }
 
-/*For p*/
+/*p*/
 .screen-content p {
     font-size: 1.1rem;
     line-height: 1.8;
@@ -136,7 +132,6 @@ body {
     font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif
 }
 
-/*<div class="content-row">HOW TO USE</div>*/
 .screen-content .content-row {
     height: 60px;
     border-bottom: 1px solid #2a2a2a;
@@ -153,7 +148,7 @@ body {
     background: #1a1a1a;
 }
 
-/* ========== 🆕 统一标题样式 ========== */
+/* h2 */
 .screen-content h2 {
     font-size: 1.8rem;
     font-weight: 600;
@@ -165,6 +160,7 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* h3 */
 .screen-content h3 {
     font-size: 1.3rem;
     font-weight: 600;
@@ -174,6 +170,7 @@ body {
     letter-spacing: 0.3px;
 }
 
+/* h4 */
 .screen-content h4 {
     font-size: 1.1rem;
     font-weight: 500;
@@ -182,13 +179,11 @@ body {
     color: #f9f4f4;
 }
 
-h2,
-h3,
-h4 {
+h2,h3,h4 {
     font-family: 'Orbitron', 'Courier New', monospace;
 }
 
-/* ========== 🆕 统一链接样式 ========== */
+/* Link */
 /*normal*/
 .screen-content a {
     color: #6bcbff;
@@ -208,40 +203,37 @@ h4 {
     color: #ff6b6b;
 }
 
-/* ========== 🆕 统一列表样式 ========== */
+/* ul ol */
 .screen-content ul,
 .screen-content ol {
     padding-left: 28px;
-    /* 左邊縮排，讓列表內縮 */
     margin-bottom: 16px;
-    /* 下方留白 */
     color: #ccc;
     line-height: 1.8;
 }
 
 .screen-content li {
     margin-bottom: 6px;
-    /* 每個項目之間留 6px 空隙 */
 }
 
 .screen-content ul {
+    /* remove default • */
     list-style-type: none;
-    /* 移除原本的 • 圓點 */
 }
 
 .screen-content ul li::before {
+    /* ▸ */
     content: "▸ ";
-    /* 在每個項目前面加上 ▸ */
     color: #6bcbff;
     font-weight: 700;
 }
 
 .screen-content ol {
-    list-style-type: decimal-leading-zero;
     /* 1 → 01, 2 → 02 */
+    list-style-type: decimal-leading-zero;
 }
 
-/* ========== 🆕 统一引用块样式 ========== */
+/* blockquote */
 .screen-content blockquote {
     background: linear-gradient(135deg, #1a1a2e, #16213e);
     border-left: 4px solid #6bcbff;
@@ -260,7 +252,7 @@ h4 {
     font-style: normal;
 }
 
-/* ========== 🆕 统一通用卡片样式 ========== */
+/* Card */
 .screen-content .card {
     background: linear-gradient(145deg, #1a1a2e, #14142a);
     border-radius: 12px;
@@ -277,7 +269,7 @@ h4 {
     transform: translateY(-2px);
 }
 
-/* ========== 🆕 统一通用按钮样式（非手柄按钮） ========== */
+/* Button(not in shell) */
 .screen-content .btn-generic {
     display: inline-block;
     padding: 10px 28px;
@@ -306,7 +298,7 @@ h4 {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* 不同颜色的按钮变体 */
+/*booksctrap button*/
 .screen-content .btn-generic.primary {
     background: linear-gradient(145deg, #4a6acf, #3a5abf);
     border-color: #5a7adf;
@@ -344,7 +336,7 @@ h4 {
     font-size: 1.1rem;
 }
 
-/* ========== 🆕 统一表格样式 ========== */
+/* table */
 .screen-content table {
     width: 100%;
     border-collapse: collapse;
@@ -373,7 +365,7 @@ h4 {
     background: #1a1a2e;
 }
 
-/* ========== 🆕 统一代码块样式 ========== */
+/* Code */
 .screen-content code {
     background: #1a1a2e;
     padding: 2px 10px;
@@ -404,7 +396,7 @@ h4 {
     color: inherit;
 }
 
-/* ========== 🆕 统一标签/徽章样式 ========== */
+/* Badge */
 .screen-content .badge {
     display: inline-block;
     padding: 2px 14px;
@@ -442,7 +434,7 @@ h4 {
     color: #ffd93d;
 }
 
-/* ========== 🆕 统一分隔线样式 ========== */
+/* hr */
 .screen-content hr {
     border: none;
     height: 1px;
@@ -450,7 +442,7 @@ h4 {
     margin: 24px 0;
 }
 
-/* ========== 🆕 统一图片样式 ========== */
+/* images */
 .screen-content img {
     max-width: 100%;
     height: auto;
@@ -459,7 +451,7 @@ h4 {
     margin: 12px 0;
 }
 
-/* ========== 🆕 统一工具类 ========== */
+/* text */
 .screen-content .text-center {
     text-align: center;
 }
@@ -515,7 +507,7 @@ h4 {
     flex-wrap: wrap;
 }
 
-/* ========== Footer 样式 (鼠标交互区) ========== */
+/* 
 .screen-content .footer {
     margin-top: 40px;
     padding: 25px 20px;
@@ -565,11 +557,9 @@ h4 {
 .screen-content .footer .mouse-link:hover {
     color: #ffd93d;
     border-bottom-color: #ffd93d;
-}
+}*/
 
-/* ============================================================
-   ★★★ 固定霓虹光柱層（覆蓋全部，不隨滾動移動） ★★★
-   ============================================================ */
+/* Dynamic and scanlines*/
 .dynamic-lines {
     position: absolute;
     top: 0;
@@ -582,7 +572,6 @@ h4 {
     border-radius: 12px;
 }
 
-/* ---------- 掃描線（極淡） ---------- */
 .scanline {
     position: absolute;
     top: -2px;
@@ -641,7 +630,7 @@ h4 {
     }
 }
 
-/* ---------- 霓虹光柱 A（藍色） ---------- */
+/* Dynamic A（Blue）*/
 .neon-beam {
     position: absolute;
     top: -60%;
@@ -681,7 +670,7 @@ h4 {
     }
 }
 
-/* ---------- 霓虹光柱 B（粉紫色） ---------- */
+/* Dynamic B（Pink Purple） */
 .neon-beam-2 {
     position: absolute;
     bottom: -60%;
@@ -721,7 +710,7 @@ h4 {
     }
 }
 
-/* ---------- 霓虹光柱 C（青色） ---------- */
+/* Dynamic C (green) */
 .neon-beam-3 {
     position: absolute;
     top: 10%;
@@ -763,7 +752,7 @@ h4 {
     }
 }
 
-/* ========== 手柄区域 ========== */
+/* Switch controller */
 .controller-area {
     flex: 1;
     background: linear-gradient(145deg, #ff5470, #d62a46);
@@ -775,9 +764,7 @@ h4 {
     align-items: center;
     gap: 12px;
     border: 1px solid #d62a46;
-    /* 边框也稍微调整颜色 */
     box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2);
-    /* 增加一点透亮感 */
 }
 
 .controller-label {
@@ -789,51 +776,41 @@ h4 {
     margin-bottom: 4px;
 }
 
-/* ========== 手柄按键网格 ========== */
-/* ========== 十字按键布局 (完美正十字) ========== */
+/* controller button grid */
 
-/* 把整体变成 3列3行 的隐形网格 */
 .diamond-group {
     display: grid;
-    /* 3列：左侧空位 | 中心按键 | 右侧空位 */
     grid-template-columns: 58px 58px 58px;
-    /* 3行：上方空位 | 中心按键 | 下方空位 */
     grid-template-rows: 58px 58px 58px;
     gap: 0px;
-    /* 因为中心点对齐，我们不需要空白格子 */
     justify-content: center;
     align-items: center;
     margin-top: -10px;
     margin-bottom: 12px;
 }
 
-/* 精准指定每个按钮在 3x3 网格里的确切位置 */
 .btn-y {
     grid-column: 2;
     grid-row: 1;
 }
 
-/* 第1行，第2列 -> 顶部居中 */
 .btn-x {
     grid-column: 1;
     grid-row: 2;
 }
 
-/* 第2行，第1列 -> 左侧居中 */
 .btn-b {
     grid-column: 3;
     grid-row: 2;
 }
 
-/* 第2行，第3列 -> 右侧居中 */
 .btn-a {
     grid-column: 2;
     grid-row: 3;
 }
 
-/* 第3行，第2列 -> 底部居中 */
 
-/* ========== 通用按钮样式 ========== */
+/*Button */
 .btn {
     aspect-ratio: 1;
     border-radius: 50%;
@@ -862,8 +839,7 @@ h4 {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* ========== 各按键颜色 ========== */
-/* X键 (左上) - 蓝色 */
+/* Button color */
 .btn-x {
     background: #1a1a1a;
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
@@ -872,12 +848,10 @@ h4 {
 .btn-x:active,
 .btn-x.active {
     background: #0a0a0a;
-    /* 按下时更深一点点 */
+    /* click become more dark */
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* Y键 (右上) - 黄色 (原代码里B是红色，我们改成Y是黄色) */
-/* 注意：根据你的代码顺序，你需要确认哪个class对应哪个位置，这里假设右上角是 btn-y */
 .btn-y {
     background: #1a1a1a;
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
@@ -889,7 +863,6 @@ h4 {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* A键 (左下) - 绿色 */
 .btn-a {
     background: #1a1a1a;
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
@@ -901,7 +874,6 @@ h4 {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* B键 (右下) - 红色 */
 .btn-b {
     background: #1a1a1a;
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
@@ -913,7 +885,7 @@ h4 {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* ========== OK 按钮 (Start) ========== */
+/* OK Button */
 .btn-ok {
     width: 90px;
     height: 90px;
@@ -932,7 +904,7 @@ h4 {
     background: radial-gradient(circle at 30% 30%, #777, #444);
 }
 
-/* ========== 回到頂端按鈕 ========== */
+/*Top Button*/
 .btn-top {
     width: 60px;
     height: 60px;
@@ -961,24 +933,18 @@ h4 {
     transform: scale(0.92);
 }
 
-/* ============================================================
-   滾動觸發動畫 (Scroll Reveal)
-   ============================================================ */
-
-/* 初始狀態：隱藏 + 向上偏移 + 透明 */
+/* (Scroll Reveal)*/
 .reveal {
     opacity: 0;
     transform: translateY(40px);
     transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 進入畫面時的狀態：顯示 + 回到原位 */
 .reveal.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* 🔥 可以為不同元素設定不同延遲，讓動畫更有層次感 */
 
 .reveal:nth-child(1) {
     transition-delay: 0.05s;
@@ -1004,9 +970,6 @@ h4 {
     transition-delay: 0.30s;
 }
 
-/* 🔥 不同方向的效果 */
-
-/* 從左邊滑入 */
 .reveal-left {
     opacity: 0;
     transform: translateX(-60px);
@@ -1018,7 +981,6 @@ h4 {
     transform: translateX(0);
 }
 
-/* 從右邊滑入 */
 .reveal-right {
     opacity: 0;
     transform: translateX(60px);
@@ -1030,7 +992,6 @@ h4 {
     transform: translateX(0);
 }
 
-/* 縮放出現 */
 .reveal-scale {
     opacity: 0;
     transform: scale(0.8);
@@ -1042,7 +1003,6 @@ h4 {
     transform: scale(1);
 }
 
-/* 旋轉出現 */
 .reveal-rotate {
     opacity: 0;
     transform: rotate(-10deg) scale(0.9);
@@ -1054,7 +1014,7 @@ h4 {
     transform: rotate(0deg) scale(1);
 }
 
-/* ========== 确认对话框 (由 JS 动态生成) ========== */
+/* ========== Confirm dialog (JS)*/
 .confirm-dialog {
     position: fixed;
     top: 50%;
@@ -1117,7 +1077,6 @@ h4 {
     box-shadow: 0 6px 25px rgba(217, 74, 74, 0.4);
 }
 
-/* 对话框背景遮罩 */
 .dialog-overlay {
     position: fixed;
     top: 0;
@@ -1152,7 +1111,7 @@ h4 {
     height: 100%;
 }
 
-/* ---------- 重置 screen-content 內邊距 ---------- */
+/* reset screen-content margin */
 .screen-content {
     height: 100%;
     overflow-y: scroll;
@@ -1161,15 +1120,10 @@ h4 {
     color: #e8e8e8;
     scrollbar-width: none;
     -ms-overflow-style: none;
-
-    /* 🆕 新增：縮小整體內容 */
     font-size: 0.85rem;
-    /* 整體字體縮小 */
     line-height: 1.6;
-    /* 行距稍微縮小 */
 }
 
-/* ---------- 頁面容器 - 縮小間距 ---------- */
 .page-section {
     min-height: 100%;
     width: 100%;
@@ -1184,9 +1138,8 @@ h4 {
     margin-top:70px;
 }
 
-/* ---------- 第一頁：英雄區 (背景圖填滿整個 Switch) ---------- */
+/* Hero session*/
 .hero-section {
-    /* 1. 修正路徑斜線，並加單引號 */
     background:
         linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.60)),
         url('../images/index/pexels-a-darmel-7862517.jpg') center/cover no-repeat;
@@ -1201,18 +1154,15 @@ h4 {
     padding-left: 20px;
     padding-right: 50px;
     margin: 0;
-    /*border-radius: 0;*/
     position: relative;
     z-index: 1;
 }
 
-/* 英雄區文字容器 - 靠左下 */
 .hero-content {
     max-width: 700px;
     text-align: left;
     position: relative;
     z-index: 1;
-
 }
 
 .hero-sub {
@@ -1239,7 +1189,7 @@ h4 {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
-/* ---------- 第二頁：遊戲列表 (三張同一行) ---------- */
+/* Hero Game gird */
 .games-grid {
     display: flex;
     gap: 30px;
@@ -1285,10 +1235,8 @@ h4 {
     color: #fff;
 }
 
-/* ---------- 第三頁：比賽區 (背景圖填滿) ---------- */
-
+/*Match */
 .match-section {
-    /* 1. 修正路徑斜線，並加單引號 */
     background:
         linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
         url('../images/index/istockphoto-2201247639-1024x1024.jpg') center/cover no-repeat;
@@ -1383,7 +1331,7 @@ h4 {
     border-color: #ffd93d;
 }
 
-/* ---------- 第四頁：贊助商 ---------- */
+/* Sponser */
 .sponsor-grid {
     display: flex;
     gap: 30px;
@@ -1426,7 +1374,6 @@ h4 {
     filter: grayscale(0);
 }
 
-/* ---------- 頁面標題微調 - 縮小間距 ---------- */
 .section-title {
     font-size: 2.6rem;
     font-weight: 700;
@@ -1438,7 +1385,7 @@ h4 {
 
 
 
-/* ---------- 確保 .screen-content 完全填滿 .screen-area ---------- */
+/* ensure screen-content fully fill in .screen-area */
 .screen-area {
     padding: 0 !important;
     border-radius: 0 !important;
@@ -1450,7 +1397,7 @@ h4 {
     border-radius: 0 !important;
 }
 
-/* ========== 响应式适配 ========== */
+/* ========== 768px ========== */
 @media (max-width: 768px) {
     body {
         padding: 1vw;
@@ -1473,26 +1420,20 @@ h4 {
     .controller-area {
         flex: none;
         flex-direction: row;
-        /* 变成横向排布 */
         flex-wrap: nowrap;
         justify-content: space-around;
-        /* 🟢 关键：让左右两边的元素贴边 */
         align-items: center;
         padding: 10px 20px;
-        /* 左右留出一点空隙 */
         gap: 8px;
         min-height: 130px;
         width: 100%;
     }
 
-    /* 🟢 重点修改：半屏时十字按键的定位 */
     .diamond-group {
         margin: 0px;
-        /* ← 全部歸零 */
         transform: scale(0.8);
         flex: 0 0 auto;
         justify-content: center;
-        /* ← 置中 */
         grid-template-columns: 50px 50px 50px;
         grid-template-rows: 50px 50px 50px;
     }
@@ -1502,7 +1443,6 @@ h4 {
         height: 80px;
         max-width: 100px;
         margin: 0px;
-        /* ← 全部歸零 */
         font-size: 1rem;
         flex: 0 0 auto;
     }
@@ -1554,8 +1494,6 @@ h4 {
 
     .page-section {
         padding: 16px 20px;
-        /* 縮小響應式間距 */
-        ;
     }
 
     .games-grid {
@@ -1595,9 +1533,10 @@ h4 {
         font-size: 1.8rem;
         margin-bottom: 10px;
     }
+
 }
 
-
+/*480pc*/
 @media (max-width: 480px) {
     .screen-area {
         height: 50vh;
@@ -2111,6 +2050,175 @@ footer .social-links a:hover {
 .social-icon:hover {
     background-color: #e94560;
     transform: translateY(-3px);
+}
+
+/*ACCOUNT PAGE*/
+/*Ensure button size and place */
+#auth-buttons {
+    flex-wrap: wrap;
+}
+
+#auth-buttons .btn-generic,
+#login-card .btn-generic,
+#signin-card .btn-generic {
+    min-width: 150px;
+}
+
+.screen-content .btn-generic.full {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+
+#login-card,
+#signin-card {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#login-card .form-label,
+#signin-card .form-label {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+#login-card .form-control,
+#signin-card .form-control,
+#createTeamModal .form-control,
+#createTeamModal .form-select {
+    background: #0d0d0d;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+#login-card .form-control:focus,
+#signin-card .form-control:focus,
+#createTeamModal .form-control:focus,
+#createTeamModal .form-select:focus {
+    background: #0d0d0d;
+    border-color: #6a6a8a;
+    color: #fff;
+    box-shadow: none;
+}
+
+/*Team Card*/
+#team-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    margin-top: 4px;
+}
+
+.team-card {
+    background: linear-gradient(145deg, #1a1a2e, #14142a);
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: all 0.25s ease;
+}
+
+.team-card:hover {
+    border-color: #4a4a6a;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.team-card .team-badge {
+    display: inline-block;
+    background: linear-gradient(145deg, #d94a4a, #b82d2d);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+}
+
+.team-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    color: #fff;
+}
+
+.team-card .team-desc {
+    font-size: 0.82rem;
+    color: #aaa;
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+}
+
+.team-card .team-meta {
+    font-size: 0.8rem;
+    color: #ccc;
+    line-height: 1.6;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 8px;
+}
+
+.team-card .team-meta strong {
+    color: #e8e8e8;
+}
+
+
+#auth-section {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    padding: 30px 25px;
+    color: #fff;
+}
+
+#createTeamModal .modal-content {
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#auth-section::after,
+#createTeamModal .modal-content::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5, 5, 15, 0.35) 0%, rgba(5, 5, 15, 0.88) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+#auth-section .auth-section-inner,
+#createTeamModal .modal-inner {
+    position: relative;
+    z-index: 2;
+}
+
+#login-card,
+#signin-card {
+    background: rgba(10, 10, 20, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+}
+
+#team-section {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    padding: 30px 25px;
+    color: #fff;
+    background:url("../images/index/pexels-yankrukov-9072205.jpg")
 }
 
 /* ===== 響應式：手機 ===== */
