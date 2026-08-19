@@ -4,23 +4,14 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="E-Sports Tournament Rankings"
-    >
+    <meta name="description" content="E-Sports Tournament Rankings">
 
     <title>Rankings | E-Sports</title>
 
     <!-- Existing External CSS -->
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 
@@ -35,86 +26,61 @@
         <div class="screen-area">
 
             <div class="screen-content">
+                <section class="page-section">
+                    <div id="team-section">
 
-
-                <!-- =================================================
+                        <!-- =================================================
                      PAGE HEADER
                 ================================================== -->
 
-                <h1>
-                    🏆 E-Sports Rankings
-                </h1>
+                        <h1 style="text-align:center">E-Sports Rankings</h1>
 
-                <p class="text-muted">
-                    View the current rankings for each competitive game.
-                </p>
-
-
-                <hr>
+                        <p class="text-muted" style="text-align:center">
+                            View the current rankings for each competitive game.
+                        </p>
+                </section>
+            </div>
 
 
-                <!-- =================================================
+            <!-- =================================================
                      GAME SELECTOR
                 ================================================== -->
 
-                <h2 class="schedule-title">
-                    Select a Game
-                </h2>
+            <section class="page-section_2">
+
+
+                <h2 class="schedule-title" style="text-align:center">Select a Game</h2>
 
 
                 <div class="cards-container">
 
 
-                    <button
-                        class="card-btn"
-                        type="button"
-                        onclick="showRanking('LOL')"
-                    >
+                    <button class="card-btn" type="button" onclick="showRanking('LOL')">
                         League of Legends
                     </button>
 
 
-                    <button
-                        class="card-btn"
-                        type="button"
-                        onclick="showRanking('Rocket League')"
-                    >
+                    <button class="card-btn" type="button" onclick="showRanking('Rocket League')">
                         Rocket League
                     </button>
 
 
-                    <button
-                        class="card-btn"
-                        type="button"
-                        onclick="showRanking('Dota 2')"
-                    >
+                    <button class="card-btn" type="button" onclick="showRanking('Dota 2')">
                         Dota 2
                     </button>
 
 
-                    <button
-                        class="card-btn"
-                        type="button"
-                        onclick="showRanking('PUBG')"
-                    >
+                    <button class="card-btn" type="button" onclick="showRanking('PUBG')">
                         PUBG
                     </button>
 
 
-                    <button
-                        class="card-btn"
-                        type="button"
-                        onclick="showRanking('CS-GO')"
-                    >
+                    <button class="card-btn" type="button" onclick="showRanking('CS-GO')">
                         CS-GO
                     </button>
 
 
-                    <button
-                        class="card-btn"
-                        type="button"
-                        onclick="showRanking('Valorant')"
-                    >
+                    <button class="card-btn" type="button" onclick="showRanking('Valorant')">
                         Valorant
                     </button>
 
@@ -125,18 +91,13 @@
                      CURRENT GAME
                 ================================================== -->
 
-                <h2
-                    class="schedule-title"
-                    id="rankingTitle"
-                >
+                            <div id="team-section_2">
+                <h2 class="schedule-title" id="rankingTitle" style="text-align:center">
                     League of Legends Rankings
                 </h2>
 
 
-                <p
-                    class="text-muted"
-                    id="rankingDescription"
-                >
+                <p class="text-muted" id="rankingDescription" style="text-align:center">
                     Current League of Legends tournament rankings.
                 </p>
 
@@ -191,14 +152,16 @@
                     </table>
 
                 </div>
+                </div>
+            </section>
 
-
-                <!-- =================================================
+            <!-- =================================================
                      RANKING INFORMATION
                 ================================================== -->
 
-                <h2 class="schedule-title">
-                    📊 Ranking Information
+
+                <h2 class="schedule-title" style="text-align:center">
+                    Ranking Information
                 </h2>
 
 
@@ -283,31 +246,59 @@
 
                         </div>
 
+
+
+                    </div>
+                    <div class="event-card">
+
+                        <div class="card-image">
+
+                            <span class="card-icon">
+                                🏅
+                            </span>
+
+                        </div>
+
+
+                        <div class="card-body">
+
+                            <h3>
+                                4th Place
+                            </h3>
+
+                            <p class="card-desc">
+                                Fourth highest ranked team
+                                based on tournament points.
+                            </p>
+
+                        </div>
+
+
+
                     </div>
 
 
                 </div>
 
 
-                <!-- =================================================
+
+
+            <!-- =================================================
                      BACK TO SCHEDULE
                 ================================================== -->
-
+            <div class="page-section_2">
                 <p>
 
-                    <a
-                        href="schedule.html"
-                        class="card-btn"
-                    >
-                        ← Back to Schedule
+                    <a href="schedule.html" class="card-btn_2">
+                        Back to Schedule
                     </a>
 
                 </p>
 
-
             </div>
-
         </div>
+
+    </div>
 
     </div>
 
