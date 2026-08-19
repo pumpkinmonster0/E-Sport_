@@ -34,18 +34,18 @@ $(document).ready(function () {
     // display card 
     $('#show-login-btn').click(function () {
         $('#login-card').slideDown();
-        $('#signin-card').hide();
+        $('#signup-card').hide();
     });
 
-    $('#show-signin-btn').click(function () {
-        $('#signin-card').slideDown();
+    $('#show-signup-btn').click(function () {
+        $('#signup-card').slideDown();
         $('#login-card').hide();
     });
 
     // Sign In
-    $('#btn-do-signin').click(function () {
-        const username = $('#signin-username').val().trim();
-        const password = $('#signin-password').val().trim();
+    $('#btn-do-signup').click(function () {
+        const username = $('#signup-username').val().trim();
+        const password = $('#signup-password').val().trim();
 
         if (!username || !password) {
             alert("Please enter your username and password correctly.");
@@ -57,7 +57,7 @@ $(document).ready(function () {
 
         if (existingUser) {
             alert("⚠️ This acc have been sign in. Pls log in.");
-            $('#signin-card').hide();
+            $('#signup-card').hide();
             $('#login-card').slideDown();
             $('#login-username').val(username);
             $('#login-password').val('');
@@ -68,7 +68,7 @@ $(document).ready(function () {
         localStorage.setItem('registered_users', JSON.stringify(users));
 
         alert("Sign In successfully! Pls Log In now. ");
-        $('#signin-card').hide();
+        $('#signup-card').hide();
         $('#login-card').slideDown();
         $('#login-username').val(username);
         $('#login-password').val('');
@@ -157,7 +157,7 @@ $(document).ready(function () {
             
             $('#auth-buttons').hide();
             $('#login-card').hide();
-            $('#signin-card').hide();
+            $('#signup-card').hide();
         } else {
             $('#status-bar')
                 .removeClass('alert-success')
