@@ -1,447 +1,2496 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
 
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Tournament Details | Curtin Games & Esports Club</title>
-
-    <!-- Your existing CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-sports Event Schedule">
+    <title>Schedule | E-sports</title>
+    <!-- Existing CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+         .calendar-wrapper {
+            width: 100%;
+            margin-top: 0;
+        }
+        /* month header */
+        .month-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 8px;
+         }
+        .month-button {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+        border: 2px solid #555;
+        border-radius: 8px;
+        background: #1a1a2e;
+        color: #fff;
+        font-size: .95rem;
+        cursor: pointer;
+        transition: .15s;
+        }
+        .month-button:hover {
+        background: #e94560 !important;
+        border-color: #e94560 !important;
+         }
+        .month-button:active {
+        transform: scale(.90);
+        }
+        .month-title {
+        flex: 1;
+        text-align: center;
+        padding: 0 8px;
+        margin: 0 !important;
+        font-size: 1.45rem !important;
+        line-height: 1.2;
+        color: #e8e8e8 !important;
+        }
+     /* WEEK HEADER */
+        .week-header {
+        display: grid;
+        grid-template-columns:
+        repeat(7, minmax(0, 1fr));
+        gap: 6px;
+        width: 100%;
+        margin-bottom: 6px;
+        }
+        .week-day {
+            text-align: center;
+            padding: 6px 1px;
+            background: #171725;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: #888;
+            font-size: .7rem;
+            font-weight: bold;
+        }
+           /* CALENDAR GRID */
+        #calendar {
+            display: grid;
+            grid-template-columns:
+                repeat(7, minmax(0, 1fr));
+            gap: 6px;
+            width: 100%;
+            overflow: visible;
+        }
 
-    <!-- Google Font -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+
+           /* EMPTY DAY */
+        .empty-day {
+            aspect-ratio: 1 / 1;
+            min-width: 0;
+            background:
+                rgba(20, 20, 35, .18);
+            border:
+                1px solid rgba(60, 60, 60, .25);
+            border-radius: 7px;
+            box-sizing: border-box;
+        }
+           /* NORMAL DAY */
+        .calendar-day {
+            aspect-ratio: 1 / 1;
+            min-width: 0;
+            background:
+                rgba(26, 26, 46, .94);
+            border:
+                1px solid #383838;
+            border-radius: 7px;
+            padding: 9px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                border .25s ease,
+                box-shadow .25s ease;
+            transform-origin: center center;
+        }
+        .calendar-day:hover {
+           transform: scale(1.04);
+            z-index: 5;
+            background:
+                rgba(42, 42, 68, .98);
+        }
+           /* SELECTED DAY */
+        .calendar-day.selected {
+            transform: scale(1.22);
+            z-index: 100;
+            background:
+                rgba(30, 30, 52, .99);
+            border:
+                2px solid #e94560;
+            box-shadow:
+                0 0 0 2px rgba(233, 69, 96, .20),
+                0 0 22px rgba(233, 69, 96, .55);
+            overflow: visible;
+        }
+           /* DATE NUMBER */
+        .day-number {
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1;
+            color: #fff;
+            margin-bottom: 7px;
+        }
+        .calendar-day.selected .day-number {
+            font-size: 1.05rem;
+            color: #e94560;
+        }
+
+           /* EVENT */
+        .calendar-event {
+            margin-top: 3px;
+        }
+        .calendar-event-title {
+            font-size: .72rem;
+            font-weight: bold;
+            line-height: 1.25;
+            color: #fff;
+            margin-bottom: 5px;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
+        .calendar-event-time {
+            font-size: .63rem;
+          font-weight: bold;
+            line-height: 1.2;
+            color: #4ecdc4;
+            margin-bottom: 4px;
+            word-break: break-word;
+        }
+        .calendar-event-status {
+            display: inline-block;
+            font-size: .55rem;
+            font-weight: bold;
+            padding: 2px 5px;
+            margin-bottom: 4px;
+            border-radius: 4px;
+            background: #e94560;
+            color: #fff;
+        }
+        .calendar-event-description {
+            font-size: .59rem;
+            line-height: 1.3;
+            color: #cfcfcf;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
+        .calendar-day.selected .calendar-event-title {
+            font-size: .82rem;
+        }
+        .calendar-day.selected .calendar-event-time {
+            font-size: .68rem;
+        }
+        .calendar-day.selected .calendar-event-status {
+            font-size: .6rem;
+        }
+        .calendar-day.selected .calendar-event-description {
+            font-size: .64rem;
+        }
+           /* NO EVENT */
+        .no-event {
+            font-size: .62rem;
+            color: #666;
+            margin-top: 8px;
+        }
+        .calendar-day.selected .no-event {
+            color: #888;
+        }
+           /* TODAY */
+        .calendar-day.today {
+            border:
+                2px solid #4ecdc4;
+        }
+        .today-label {
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            font-size: .45rem;
+            font-weight: bold;
+            color: #4ecdc4;
+        }
+           /* FILTER */
+        .filter-wrapper {
+            width: 100%;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            padding: 12px;
+            box-sizing: border-box;
+            background:
+                rgba(26, 26, 46, .75);
+            border:
+                1px solid #333;
+            border-radius: 10px;
+        }
+        .filter-title {
+            font-size: .85rem;
+            font-weight: bold;
+            color: #e8e8e8;
+            margin-bottom: 10px;
+        }
+        .filter-row {
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .filter-group label {
+            font-size: .65rem;
+            color: #888;
+            font-weight: bold;
+        }
+        .filter-select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px 9px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #171725;
+            color: #fff;
+            outline: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: .75rem;
+        }
+
+        .filter-select:hover {
+            border-color: #e94560;
+        }
+
+        .filter-select:focus {
+            border-color: #4ecdc4;
+            box-shadow:
+                0 0 0 2px rgba(78, 205, 196, .15);
+        }
+        .filter-result {
+            margin-top: 8px;
+            font-size: .65rem;
+            color: #888;
+        }
+
+        .filter-clear {
+            margin-top: 8px;
+            padding: 6px 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #1a1a2e;
+            color: #aaa;
+            font-size: .65rem;
+            cursor: pointer;
+        }
+
+        .filter-clear:hover {
+            background: #e94560;
+            border-color: #e94560;
+            color: #fff;
+        }
+
+           /* NO RESULT */
+
+        .no-result {
+           grid-column: 1 / -1;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 25px 15px;
+            text-align: center;
+            color: #777;
+            font-size: .85rem;
+            border:
+                1px dashed #444;
+            border-radius: 8px;
+            background:
+                rgba(20, 20, 35, .35);
+        }
+
+           /* SCHEDULE */
+
+        .schedule-title {
+            margin-top: 22px !important;
+            margin-bottom: 12px !important;
+        }
+
+        .schedule-section-title {
+            font-size: 1.25rem;
+            margin-top: 14px;
+            margin-bottom: 10px;
+            color: #e8e8e8;
+        }
+
+       
+           /* MATCH INFO */
+         .match-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 7px;
+        }
+
+        .match-badge {
+            display: inline-block;
+            padding: 3px 7px;
+            border-radius: 5px;
+            font-size: .62rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .round-badge {
+            background: #e94560;
+        }
+
+        .ongoing-badge {
+            background: #2eaa72;
+        }
+
+        .future-badge {
+            background: #d6a329;
+        }
+
+        .ended-badge {
+            background: #555;
+        }
+           /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 
 </head>
 
 
 <body>
-
-
-    <!-- ========================================
-         NAVBAR
-    ========================================= -->
-
-    <div id="navbar-container"></div>
-
-
-    <!-- ========================================
-         PAGE CONTENT
-    ========================================= -->
-
     <div id="pageContent">
-
-        <div class="screen-content">
-
-            <section class="page-section">
-
-
-                <!-- PAGE HEADER -->
-
-                <div class="page-header">
-
-                    <h1>
-                        Tournament Details
-                    </h1>
-
-                    <p>
-                        Find out more about this tournament,
-                        participating teams and event rules.
-                    </p>
-
-                </div>
-
-
-                <!-- ========================================
-                     TOURNAMENT CARD
-                ========================================= -->
-
-                <div class="cards-container">
-
-
-                    <div class="event-card">
-
-
-                        <div class="card-image">
-
-                            <span class="card-icon">
-                                🎯
-                            </span>
-
-                            <span class="card-badge">
-                                Registration Open
-                            </span>
-
-                        </div>
-
-
-                        <div class="card-body">
-
-                            <h3>
-                                Valorant Campus Cup 2026
-                            </h3>
-
-
-                            <p class="card-time">
-                                📅 29 August 2026
-                            </p>
-
-
-                            <p class="card-desc">
-
-                                A competitive Valorant
-                                tournament organised by
-                                Curtin Games & Esports Club.
-
-                            </p>
-
-                        </div>
-
+        <!-- =====================================================
+         SCREEN
+    ===================================================== -->
+        <div class="screen-area">
+            <div class="screen-content" id="screenContent">
+                <!-- =================================================
+                 TITLE
+            ================================================== -->
+                <h1>
+                    📅 Event Schedule
+                </h1>
+                <p class="text-muted">
+                    — Check out our upcoming events and join the community! —
+                </p>
+                <hr>
+          <!-- =================================================
+                 CALENDAR
+            ================================================== -->
+                <div class="calendar-wrapper">
+                    <!-- MONTH -->
+                    <div class="month-header">
+                        <button id="prevMonth" class="month-button" type="button">
+                            ◀
+                        </button>
+                       <h2 id="monthYear" class="month-title"></h2>
+                        <button id="nextMonth" class="month-button" type="button">
+                            ▶
+                        </button>
                     </div>
+                    <!-- WEEK -->
+                    <div class="week-header">
+                        <div class="week-day">Sun</div>
+                        <div class="week-day">Mon</div>
+                        <div class="week-day">Tue</div>
+                        <div class="week-day">Wed</div>
+                        <div class="week-day">Thu</div>
+                        <div class="week-day">Fri</div>
+                        <div class="week-day">Sat</div>
+                    </div>
+                    <!-- DAYS -->
+                    <div id="calendar"></div>
+                   
+                    <!-- FILTER -->
+                    <div class="filter-wrapper">
+                        <div class="filter-title">
+                            🔎 Filter Events
+                        </div>
+                        <div class="filter-row">
+                            <!-- MONTH -->
+                            <div class="filter-group">
+                                <label for="monthFilter">
+                                    Month
+                                </label>
 
+                                <select id="monthFilter" class="filter-select">
 
-                </div>
+                                    <option value="all">
+                                        All Months
+                                    </option>
 
+                                    <option value="0">
+                                        January
+                                    </option>
 
-                <!-- ========================================
-                     TOURNAMENT INFORMATION
-                ========================================= -->
+                                    <option value="1">
+                                        February
+                                    </option>
 
-                <div class="about-intro">
+                                    <option value="2">
+                                        March
+                                    </option>
 
-                    <h2>
-                        Tournament Information
-                    </h2>
+                                    <option value="3">
+                                        April
+                                    </option>
 
+                                    <option value="4">
+                                        May
+                                    </option>
 
-                    <p>
-                        <strong>Game:</strong>
-                        Valorant
-                    </p>
+                                    <option value="5">
+                                        June
+                                    </option>
 
+                                    <option value="6">
+                                        July
+                                    </option>
 
-                    <p>
-                        <strong>Date:</strong>
-                        29 August 2026
-                    </p>
+                                    <option value="7">
+                                        August
+                                    </option>
 
+                                    <option value="8">
+                                        September
+                                    </option>
 
-                    <p>
-                        <strong>Time:</strong>
-                        10:00 AM - 6:00 PM
-                    </p>
+                                    <option value="9">
+                                        October
+                                    </option>
 
+                                    <option value="10">
+                                        November
+                                    </option>
 
-                    <p>
-                        <strong>Venue:</strong>
-                        Curtin Gaming Lab
-                    </p>
+                                    <option value="11">
+                                        December
+                                    </option>
 
+                                </select>
 
-                    <p>
-                        <strong>Prize Pool:</strong>
-                        RM500
-                    </p>
-
-
-                    <p>
-                        <strong>Team Size:</strong>
-                        5 Players
-                    </p>
-
-                </div>
-
-
-                <!-- ========================================
-                     ABOUT TOURNAMENT
-                ========================================= -->
-
-                <div class="about-intro">
-
-                    <h2>
-                        About the Tournament
-                    </h2>
-
-
-                    <p>
-
-                        The Valorant Campus Cup 2026 is
-                        a competitive gaming event organised
-                        by Curtin Games & Esports Club.
-
-                    </p>
-
-
-                    <p>
-
-                        The tournament provides students
-                        with an opportunity to compete,
-                        develop teamwork skills and
-                        connect with other gamers in the
-                        Curtin gaming community.
-
-                    </p>
-
-                </div>
-
-
-                <!-- ========================================
-                     PARTICIPATING TEAMS
-                ========================================= -->
-
-                <div class="team-members">
-
-                    <h2>
-                        Participating Teams
-                    </h2>
-
-
-                    <div class="members-grid">
-
-
-                        <!-- TEAM 1 -->
-
-                        <div class="member-card">
-
-                            <div class="member-avatar">
-                                🔥
                             </div>
 
-                            <h3>
-                                Phoenix Gaming
-                            </h3>
+                            <!-- YEAR -->
 
-                            <p class="member-role">
-                                Valorant
-                            </p>
+                            <div class="filter-group">
 
-                            <p>
-                                5 Players
-                            </p>
+                                <label for="yearFilter">
+                                    Year
+                                </label>
+
+                                <select id="yearFilter" class="filter-select">
+
+                                    <option value="all">
+                                        All Years
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <!-- GAME -->
+
+                            <div class="filter-group">
+
+                                <label for="gameFilter">
+                                    Game
+                                </label>
+
+                                <select id="gameFilter" class="filter-select">
+
+                                    <option value="all">
+                                        All Games
+                                    </option>
+
+                                    <option value="PUBG">
+                                        PUBG
+                                    </option>
+
+                                    <option value="CS-GO">
+                                        CS-GO
+                                    </option>
+
+                                    <option value="Dota 2">
+                                        Dota 2
+                                    </option>
+                                    <option value="Valorant">
+                                        Valorant
+                                    </option>
+                                    <option value=" MOBILE LEGENDS">
+                                        MOBILE LEGENDS
+                                    </option>
+                                    <option value="LOL">
+                                        LOL
+                                    </option>
+
+                                </select>
+
+                            </div>
 
                         </div>
 
 
-                        <!-- TEAM 2 -->
+                        <button type="button" id="clearFilter" class="filter-clear">
+                            Clear Filter
+                        </button>
 
-                        <div class="member-card">
-
-                            <div class="member-avatar">
-                                ⚡
-                            </div>
-
-                            <h3>
-                                Eclipse
-                            </h3>
-
-                            <p class="member-role">
-                                Valorant
-                            </p>
-
-                            <p>
-                                5 Players
-                            </p>
-
+                        <div id="filterResult" class="filter-result">
+                            Showing all events
                         </div>
-
-
-                        <!-- TEAM 3 -->
-
-                        <div class="member-card">
-
-                            <div class="member-avatar">
-                                🐺
-                            </div>
-
-                            <h3>
-                                Titans
-                            </h3>
-
-                            <p class="member-role">
-                                Valorant
-                            </p>
-
-                            <p>
-                                5 Players
-                            </p>
-
-                        </div>
-
-
-                        <!-- TEAM 4 -->
-
-                        <div class="member-card">
-
-                            <div class="member-avatar">
-                                ⭐
-                            </div>
-
-                            <h3>
-                                Nova Esports
-                            </h3>
-
-                            <p class="member-role">
-                                Valorant
-                            </p>
-
-                            <p>
-                                5 Players
-                            </p>
-
-                        </div>
-
 
                     </div>
 
                 </div>
 
 
-                <!-- ========================================
-                     TOURNAMENT RULES
-                ========================================= -->
+                 <!-- SCHEDULE -->
 
-                <div class="about-intro">
+                <hr style="
+                    margin-top:24px;
+                    margin-bottom:10px;
+                ">
 
-                    <h2>
-                        Tournament Rules
-                    </h2>
+                <h2 class="schedule-title">
+                    📋 Schedule
+                </h2>
 
+                <!-- UPCOMING -->
 
-                    <p>
-                        • Each team must consist of five players.
-                    </p>
+                <h3 class="schedule-section-title">
+                    🔼 Upcoming Events
+                </h3>
 
+                <div class="cards-container" id="upcomingEvents"></div>
 
-                    <p>
-                        • All players must complete registration
-                        before the deadline.
-                    </p>
+                <!-- PAST -->
 
+                <h3 class="schedule-section-title">
+                    🔽 Past Events
+                </h3>
 
-                    <p>
-                        • Teams should arrive at least 30 minutes
-                        before their scheduled match.
-                    </p>
+                <div class="cards-container" id="pastEvents"></div>
 
-
-                    <p>
-                        • Players must follow fair-play rules.
-                    </p>
-
-
-                    <p>
-                        • Any form of cheating or unsportsmanlike
-                        behaviour is not allowed.
-                    </p>
-
-                </div>
-
-
-                <!-- ========================================
-                     IMPORTANT DATES
-                ========================================= -->
-
-                <div class="about-intro">
-
-                    <h2>
-                        Important Dates
-                    </h2>
-
-
-                    <p>
-                        <strong>
-                            Registration Opens:
-                        </strong>
-
-                        15 August 2026
-                    </p>
-
-
-                    <p>
-                        <strong>
-                            Registration Closes:
-                        </strong>
-
-                        27 August 2026
-                    </p>
-
-
-                    <p>
-                        <strong>
-                            Tournament Day:
-                        </strong>
-
-                        29 August 2026
-                    </p>
-
-                </div>
-
-
-                <!-- ========================================
-                     REGISTER BUTTON
-                ========================================= -->
-
-                <div style="text-align: center; margin: 30px 0;">
-
-                    <a href="#"
-                       class="card-btn">
-
-                        Register Now
-
-                    </a>
-
-                </div>
-
-
-            </section>
-
+            </div>
         </div>
-
     </div>
 
+    <script src="js/navbar.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/neon.js"></script>
+    <script src="js/scroll-reveal.js"></script>
+    <script src="js/main.js"></script>
 
-    <!-- ========================================
-         FOOTER
-    ========================================= -->
+    <!-- =====================================================
+     SCHEDULE JAVASCRIPT
+===================================================== -->
 
-    <footer>
+    <script>
 
-        <p>
-            © 2026 Curtin Games & Esports Club.
-            All Rights Reserved.
-        </p>
-
-
-        <div class="social-links">
-
-            <a href="#">
-                Facebook
-            </a>
-
-            <a href="#">
-                Instagram
-            </a>
-
-            <a href="#">
-                Discord
-            </a>
-
-        </div>
-
-    </footer>
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
 
-    <!-- ========================================
-         JAVASCRIPT
-    ========================================= -->
+                /* =====================================================
+                   ELEMENTS
+                ===================================================== */
 
-    <script src="js/script.js"></script>
+                const calendar =
+                    document.getElementById(
+                        "calendar"
+                    );
+
+                const monthYear =
+                    document.getElementById(
+                        "monthYear"
+                    );
+
+                const prevMonth =
+                    document.getElementById(
+                        "prevMonth"
+                    );
+
+                const nextMonth =
+                    document.getElementById(
+                        "nextMonth"
+                    );
+
+
+
+                const upcomingContainer =
+                    document.getElementById(
+                        "upcomingEvents"
+                    );
+
+                const pastContainer =
+                    document.getElementById(
+                        "pastEvents"
+                    );
+
+                const monthFilter =
+                    document.getElementById(
+                        "monthFilter"
+                    );
+
+                const yearFilter =
+                    document.getElementById(
+                        "yearFilter"
+                    );
+
+                const gameFilter =
+                    document.getElementById(
+                        "gameFilter"
+                    );
+
+                const clearFilter =
+                    document.getElementById(
+                        "clearFilter"
+                    );
+
+                const filterResult =
+                    document.getElementById(
+                        "filterResult"
+                    );
+
+
+                /* =====================================================
+                   CURRENT DATE
+                ===================================================== */
+
+                const now = new Date();
+
+                let currentMonth =
+                    now.getMonth();
+
+                let currentYear =
+                    now.getFullYear();
+
+
+                /* =====================================================
+                   EVENT DATA
+                ===================================================== */
+
+                const events = {
+
+                    "2026-08-04": [
+                        {   
+                            id: "1",
+                            game: "PUBG",
+                            round: "FINAL",
+                            status: "ENDED",
+                            time: "19:30",
+                            description:
+                                "PUBG championship final match."
+                        }
+                    ],
+
+                    "2026-08-05": [
+                        {
+                            id: "2",
+                            game: "Dota 2",
+                            round: "FINAL",
+                            status: "ENDED",
+                            time: "17:00",
+                            description:
+                                "Dota 2 final tournament match."
+                        }
+                    ],
+
+                    "2026-08-06": [
+                        {
+                            id: "3",
+                            game: "CS-GO",
+                            round: "QUARTER-FINAL",
+                            status: "ENDED",
+                            time: "15:00",
+                            description:
+                                "CS-GO quarter-final competition."
+                        }
+                    ],
+
+                    "2026-08-07": [
+                        {
+                            id: "4",
+                            game: "PUBG",
+                            round: "QUARTER-FINAL",
+                            status: "ENDED",
+                            time: "19:00",
+                            description:
+                                "PUBG quarter-final match."
+                        }
+                    ],
+
+                    "2026-08-08": [
+                        {
+                            id: "5",
+                            game: "Dota 2",
+                            round: "SEMI-FINAL",
+                            status: "ENDED",
+                            time: "16:00",
+                            description:
+                                "Dota 2 semi-final tournament."
+                        }
+                    ],
+
+                    "2026-08-09": [
+                        {
+                            id: "6",
+                            game: "CS-GO",
+                            round: "FINAL",
+                            status: "ENDED",
+                            time: "20:00",
+                            description:
+                                "CS-GO championship final."
+                        }
+                    ],
+
+                    "2026-08-10": [
+                        {
+                            id: "7",
+                            game: "PUBG",
+                            round: "SEMI-FINAL",
+                            status: "ENDED",
+                            time: "18:30",
+                            description:
+                                "PUBG semi-final match."
+                        }
+                    ],
+
+                    "2026-08-11": [
+                        {
+                            id: "8",
+                            game: "Dota 2",
+                            round: "QUARTER-FINAL",
+                            status: "ENDED",
+                            time: "17:00",
+                            description:
+                                "Dota 2 quarter-final match."
+                        }
+                    ],
+
+                    "2026-08-12": [
+                        {
+                            id: "9",
+                            game: "CS-GO",
+                            round: "SEMI-FINAL",
+                            status: "ENDED",
+                            time: "15:00",
+                            description:
+                                "CS-GO semi-final competition."
+                        }
+                    ],
+
+                    "2026-08-13": [
+                        {
+                            id: "10",
+                            game: "PUBG",
+                            round: "FINAL",
+                            status: "ENDED",
+                            time: "19:00",
+                            description:
+                                "PUBG final tournament match."
+                        }
+                    ],
+                    "2026-08-14": [
+                        {
+                            id: "11",
+                            game: "LOL",
+                            round: "QUARTER-FINAL",
+                            status: "ENDED",
+                            time: "18:00",
+                            description: "League of Legends quarter-final match."
+                        }
+                    ], "2026-08-15": [
+                        {
+                            id: "12",
+                            game: "Valorant",
+                            round: "SEMI-FINAL",
+                            status: "ENDED",
+                            time: "19:30",
+                            description: "Valorant semi-final tournament."
+                        }
+                    ],
+
+                    "2026-08-16": [
+                        {
+                            id: "13",
+                            game: "Mobile Legends",
+                            round: "FINAL",
+                            status: "ENDED",
+                            time: "20:00",
+                            description: "Mobile Legends championship final."
+                        }
+                    ],
+
+
+                    /* =================================================
+                       UPCOMING
+                    ================================================= */
+
+                    "2026-08-20": [
+                        {
+                            id: "14",
+                            game: "PUBG",
+                            round: "FINAL",
+                            status: "ON-GOING",
+                            time: "19:00",
+                            description:
+                                "PUBG championship final."
+                        }
+                    ],
+
+                    "2026-08-22": [
+                        {
+                            id: "15",
+                            game: "CS-GO",
+                            round: "SEMI-FINAL",
+                            status: "FUTURE",
+                            time: "15:00",
+                            description:
+                                "CS-GO semi-final tournament."
+                        }
+                    ],
+
+                    "2026-08-23": [
+                        {
+                            id: "16",
+                            game: "Dota 2",
+                            round: "FINAL",
+                            status: "ON-GOING",
+                            time: "17:00",
+                            description:
+                                "Dota 2 championship final."
+                        }
+                    ],
+                    "2026-08-24": [
+                        {
+                            id: "17",
+                            game: "Valorant",
+                            round: "QUARTER-FINAL",
+                            status: "FUTURE",
+                            time: "16:00",
+                            description: "Valorant quarter-final tournament."
+                        }
+                    ],
+
+                    "2026-08-25": [
+                        {
+                            id: "18",
+                            game: "PUBG",
+                            round: "QUARTER-FINAL",
+                            status: "FUTURE",
+                            time: "14:00",
+                            description:
+                                "PUBG quarter-final tournament."
+                        }
+                    ],
+
+                    "2026-08-26": [
+                        {
+                            id: "19",
+                            game: "Mobile Legends",
+                            round: "SEMI-FINAL",
+                            status: "FUTURE",
+                            time: "18:00",
+                            description: "Mobile Legends semi-final match."
+                        }
+                    ],
+
+                    "2026-08-27": [
+                        {
+                            id: "20",
+                            game: "CS-GO",
+                            round: "FINAL",
+                            status: "ON-GOING",
+                            time: "19:30",
+                            description:
+                                "CS-GO championship final."
+                        }
+                    ],
+
+
+                    "2026-08-28": [
+                        {
+                             id: "21",
+                            game: "LOL",
+                            round: "FINAL",
+                            status: "FUTURE",
+                            time: "20:00",
+                            description: "League of Legends championship final."
+                        }
+                    ],
+                    "2026-08-29": [
+                        {
+                             id: "22",
+                            game: "Dota 2",
+                            round: "SEMI-FINAL",
+                            status: "FUTURE",
+                            time: "16:00",
+                            description:
+                                "Dota 2 semi-final tournament."
+                        }
+                    ],
+                    "2026-08-30": [
+                        {
+                             id: "23",
+                            game: "Valorant",
+                            round: "FINAL",
+                            status: "FUTURE",
+                            time: "19:00",
+                            description: "Valorant championship final."
+                        }
+                    ],
+
+
+                    "2026-09-01": [
+                        {
+                             id: "24",
+                            game: "PUBG",
+                            round: "SEMI-FINAL",
+                            status: "ON-GOING",
+                            time: "18:00",
+                            description:
+                                "PUBG semi-final match."
+                        }
+                    ],
+
+                    "2026-09-03": [
+                        {
+                             id: "25",
+                            game: "CS-GO",
+                            round: "QUARTER-FINAL",
+                            status: "FUTURE",
+                            time: "20:00",
+                            description:
+                                "CS-GO quarter-final tournament."
+                        }
+                    ],
+
+                    "2026-09-05": [
+                        {
+                             id: "26",
+                            game: "Dota 2",
+                            round: "FINAL",
+                            status: "ON-GOING",
+                            time: "15:30",
+                            description:
+                                "Dota 2 championship final."
+                        }
+                    ],
+
+                    "2026-09-07": [
+                        {
+
+                             id: "27",
+                            game: "PUBG",
+                            round: "FINAL",
+                            status: "FUTURE",
+                            time: "17:00",
+                            description:
+                                "PUBG final tournament."
+                        }
+                    ],
+                    "2026-09-08": [
+                        {
+                             id: "28",
+                            game: "LOL",
+                            round: "SEMI-FINAL",
+                            status: "FUTURE",
+                            time: "19:00",
+                            description: "League of Legends semi-final match."
+                        }
+                    ],
+
+                    "2026-09-09": [
+                        {
+                             id: "29",
+                            game: "CS-GO",
+                            round: "SEMI-FINAL",
+                            status: "ON-GOING",
+                            time: "19:00",
+                            description:
+                                "CS-GO semi-final match."
+                        }
+                    ], "2026-09-10": [
+                        {
+                             id: "30",
+                            game: "Mobile Legends",
+                            round: "SEMI-FINAL",
+                            status: "FUTURE",
+                            time: "18:00",
+                            description: "Mobile Legends semi-final tournament."
+                        }
+                    ],
+
+                    "2026-09-11": [
+                        {
+                            id: "31",
+                            game: "Dota 2",
+                            round: "QUARTER-FINAL",
+                            status: "FUTURE",
+                            time: "21:00",
+                            description:
+                                "Dota 2 quarter-final match."
+                        }
+                    ],
+                    "2026-09-15": [
+                        {
+                            id: "32",
+                            game: "Mobile Legends",
+                            round: "FINAL",
+                            status: "FUTURE",
+                            time: "19:00",
+                            description: "Mobile Legends championship final."
+                        }
+                    ]
+
+
+                };
+
+
+
+                /* =====================================================
+                   MONTH NAMES
+                ===================================================== */
+
+                const monthNames = [
+
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+
+                ];
+
+
+                /* =====================================================
+                   STORAGE
+                ===================================================== */
+
+                const FILTER_STORAGE_KEY =
+                    "esportsEventFilters";
+
+
+                function saveFilters() {
+
+                    const filters = {
+                        month: monthFilter.value,
+                        year: yearFilter.value,
+                        game: gameFilter.value
+                    };
+
+                    try {
+
+                        localStorage.setItem(
+                            FILTER_STORAGE_KEY,
+                            JSON.stringify(filters)
+                        );
+
+                        console.log(
+                            "✅ Filters saved:",
+                            filters
+                        );
+
+                    } catch (error) {
+                        console.error(
+                            "❌ Cannot save filters:",
+                            error
+                        );
+
+                    }
+
+                }
+
+
+                /* =====================================================
+                   FORMAT DATE
+                ===================================================== */
+
+                function formatDate(
+                    year,
+                    month,
+                    day
+                ) {
+
+                    return (
+
+                        year +
+                        "-" +
+                        String(
+                            month + 1
+                        ).padStart(2, "0") +
+                        "-" +
+                        String(day).padStart(
+                            2,
+                            "0"
+                        )
+
+                    );
+
+                }
+
+
+                /* =====================================================
+                   CREATE YEAR FILTER
+                ===================================================== */
+
+                function createYearFilter() {
+
+                    const years =
+                        Object.keys(events)
+                            .map(
+                                date =>
+                                    date.substring(0, 4)
+                            )
+                            .filter(
+                                (year, index, array) =>
+                                    array.indexOf(year)
+                                    === index
+                            )
+                            .sort();
+
+                    years.forEach(
+                        function (year) {
+
+                            const option =
+                                document.createElement(
+                                    "option"
+                                );
+
+                            option.value =
+                                year;
+
+                            option.textContent =
+                                year;
+
+                            yearFilter.appendChild(
+                                option
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =====================================================
+                   GET FILTERS
+                ===================================================== */
+
+                function getFilters() {
+
+                    return {
+
+                        month: monthFilter.value || "all",
+
+                        year: yearFilter.value || "all",
+
+                        game: gameFilter.value || "all"
+
+                    };
+
+                }
+
+
+                /* =====================================================
+                   SAVE FILTERS
+                ===================================================== */
+
+                function saveFilters() {
+
+                    localStorage.setItem(
+
+                        FILTER_STORAGE_KEY,
+
+                        JSON.stringify(
+                            getFilters()
+                        )
+
+                    );
+
+                }
+
+
+                /* =====================================================
+            LOAD FILTERS
+         ===================================================== */
+
+                function loadFilters() {
+
+                    try {
+
+                        const saved =
+                            localStorage.getItem(
+                                FILTER_STORAGE_KEY
+                            );
+
+                        if (!saved) {
+
+                            console.log(
+                                "ℹ️ No saved filters"
+                            );
+
+                            return;
+
+                        }
+
+                        const filters =
+                            JSON.parse(saved);
+
+                        console.log(
+                            "✅ Loaded filters:",
+                            filters
+                        );
+
+
+                        /* MONTH */
+
+                        if (
+                            filters.month !== undefined &&
+                            monthFilter.querySelector(
+                                `option[value="${filters.month}"]`
+                            )
+                        ) {
+
+                            monthFilter.value =
+                                filters.month;
+
+                        }
+
+
+                        /* YEAR */
+
+                        if (
+                            filters.year !== undefined &&
+                            yearFilter.querySelector(
+                                `option[value="${filters.year}"]`
+                            )
+                        ) {
+
+                            yearFilter.value =
+                                filters.year;
+
+                        }
+
+
+                        /* GAME */
+
+                        if (
+                            filters.game !== undefined &&
+                            gameFilter.querySelector(
+                                `option[value="${filters.game}"]`
+                            )
+                        ) {
+
+                            gameFilter.value =
+                                filters.game;
+
+                        }
+
+                    }
+
+                    catch (error) {
+
+                        console.error(
+                            "❌ Cannot load saved filters:",
+                            error
+                        );
+
+                    }
+
+                }
+
+                /* =====================================================
+              EVENT MATCH FILTER
+           ===================================================== */
+
+                function eventMatchesFilter(
+                    dateKey,
+                    event
+                ) {
+
+                    const filters =
+                        getFilters();
+
+
+                    /* =========================
+                       MONTH
+                    ========================= */
+
+                    if (
+                        filters.month !== "all"
+                    ) {
+
+                        const eventMonth =
+                            parseInt(
+                                dateKey.substring(5, 7),
+                                10
+                            ) - 1;
+
+                        if (
+                            eventMonth !==
+                            parseInt(
+                                filters.month,
+                                10
+                            )
+                        ) {
+
+                            return false;
+
+                        }
+
+                    }
+
+
+                    /* =========================
+                       YEAR
+                    ========================= */
+
+                    if (
+                        filters.year !== "all"
+                    ) {
+
+                        const eventYear =
+                            dateKey.substring(
+                                0,
+                                4
+                            );
+
+                        if (
+                            eventYear !==
+                            filters.year
+                        ) {
+
+                            return false;
+
+                        }
+
+                    }
+
+
+                    /* =========================
+                       GAME
+                    ========================= */
+
+                    if (
+                        filters.game !== "all" &&
+                        event.game !== filters.game
+                    ) {
+
+                        return false;
+
+                    }
+
+
+                    return true;
+
+                }
+
+
+
+                /* =====================================================
+           GET FILTERED EVENTS
+        ===================================================== */
+
+                function getFilteredEvents() {
+
+                    const filtered = {};
+
+                    Object.keys(events)
+                        .sort()
+                        .forEach(
+                            function (dateKey) {
+
+                                const matched =
+                                    events[dateKey].filter(
+                                        function (event) {
+
+                                            return eventMatchesFilter(
+                                                dateKey,
+                                                event
+                                            );
+
+                                        }
+                                    );
+
+
+                                if (
+                                    matched.length > 0
+                                ) {
+
+                                    filtered[dateKey] =
+                                        matched;
+
+                                }
+
+                            }
+                        );
+
+
+                    return filtered;
+
+                }
+
+                /* =====================================================
+                   CREATE CALENDAR EVENT
+                ===================================================== */
+
+                function createCalendarEvent(
+                    event
+                ) {
+
+                    const eventBox =
+                        document.createElement(
+                            "div"
+                        );
+
+                    eventBox.className =
+                        "calendar-event";
+
+
+                    const title =
+                        document.createElement(
+                            "div"
+                        );
+
+                    title.className =
+                        "calendar-event-title";
+
+                    title.textContent =
+                        "🎮 " +
+                        event.game;
+
+
+                    const time =
+                        document.createElement(
+                            "div"
+                        );
+
+                    time.className =
+                        "calendar-event-time";
+
+                    time.textContent =
+                        "🕒 " +
+                        event.time;
+
+
+                    const status =
+                        document.createElement(
+                            "span"
+                        );
+
+                    status.className =
+                        "calendar-event-status";
+
+                    status.textContent =
+                        event.round +
+                        " • " +
+                        event.status;
+
+
+                    const description =
+                        document.createElement(
+                            "div"
+                        );
+
+                    description.className =
+                        "calendar-event-description";
+
+                    description.textContent =
+                        event.description;
+
+
+                    eventBox.appendChild(
+                        title
+                    );
+
+                    eventBox.appendChild(
+                        time
+                    );
+
+                    eventBox.appendChild(
+                        status
+                    );
+
+                    eventBox.appendChild(
+                        description
+                    );
+
+
+                    return eventBox;
+
+                }
+
+
+                /* =====================================================
+                   RENDER CALENDAR
+                ===================================================== */
+
+                function renderCalendar() {
+
+                    calendar.innerHTML = "";
+
+                    monthYear.textContent =
+                        monthNames[currentMonth]
+                        + " "
+                        + currentYear;
+
+
+                    const firstDay =
+                        new Date(
+                            currentYear,
+                            currentMonth,
+                            1
+                        ).getDay();
+
+
+                    const daysInMonth =
+                        new Date(
+                            currentYear,
+                            currentMonth + 1,
+                            0
+                        ).getDate();
+
+
+                    const filteredEvents =
+                        getFilteredEvents();
+
+
+                    let visibleEventCount = 0;
+
+
+                    /* EMPTY */
+
+                    for (
+                        let i = 0;
+                        i < firstDay;
+                        i++
+                    ) {
+
+                        const emptyDay =
+                            document.createElement(
+                                "div"
+                            );
+
+                        emptyDay.className =
+                            "empty-day";
+
+                        calendar.appendChild(
+                            emptyDay
+                        );
+
+                    }
+
+
+                    /* DAYS */
+
+                    for (
+                        let day = 1;
+                        day <= daysInMonth;
+                        day++
+                    ) {
+
+                        const dateKey =
+                            formatDate(
+                                currentYear,
+                                currentMonth,
+                                day
+                            );
+
+
+                        const dayElement =
+                            document.createElement(
+                                "div"
+                            );
+
+                        dayElement.className =
+                            "calendar-day";
+
+
+                        /* NUMBER */
+
+                        const number =
+                            document.createElement(
+                                "div"
+                            );
+
+                        number.className =
+                            "day-number";
+
+                        number.textContent =
+                            day;
+
+                        dayElement.appendChild(
+                            number
+                        );
+
+
+                        /* EVENT */
+
+                        if (
+                            filteredEvents[dateKey]
+                        ) {
+
+                            dayElement.style.border =
+                                "2px solid #e94560";
+
+
+                            filteredEvents[dateKey]
+                                .forEach(
+                                    function (event) {
+
+                                        visibleEventCount++;
+
+                                        dayElement.appendChild(
+                                            createCalendarEvent(
+                                                event
+                                            )
+                                        );
+
+                                    }
+                                );
+
+                        }
+                        else {
+
+                            const noEvent =
+                                document.createElement(
+                                    "div"
+                                );
+
+                            noEvent.className =
+                                "no-event";
+
+                            noEvent.textContent =
+                                "No Event";
+
+                            dayElement.appendChild(
+                                noEvent
+                            );
+
+                        }
+
+
+                        /* TODAY */
+
+                        const today =
+                            new Date();
+
+                        if (
+
+                            day ===
+                            today.getDate()
+
+                            &&
+
+                            currentMonth ===
+                            today.getMonth()
+
+                            &&
+
+                            currentYear ===
+                            today.getFullYear()
+
+                        ) {
+
+                            dayElement.classList.add(
+                                "today"
+                            );
+
+
+                            const todayLabel =
+                                document.createElement(
+                                    "div"
+                                );
+
+                            todayLabel.className =
+                                "today-label";
+
+                            todayLabel.textContent =
+                                "TODAY";
+
+                            dayElement.appendChild(
+                                todayLabel
+                            );
+
+                        }
+
+
+                        /* CLICK */
+
+                        dayElement.addEventListener(
+                            "click",
+                            function (e) {
+
+                                e.stopPropagation();
+
+
+                                document
+                                    .querySelectorAll(
+                                        ".calendar-day.selected"
+                                    )
+                                    .forEach(
+                                        function (item) {
+
+                                            item.classList.remove(
+                                                "selected"
+                                            );
+
+                                        }
+                                    );
+
+
+                                dayElement.classList.add(
+                                    "selected"
+                                );
+
+                            }
+                        );
+
+
+                        calendar.appendChild(
+                            dayElement
+                        );
+
+                    }
+
+
+                    /* NO RESULT */
+
+                    if (
+
+                        visibleEventCount === 0
+
+                        &&
+
+                        (
+                            getFilters().month !== "all"
+                            ||
+                            getFilters().year !== "all"
+                            ||
+                            getFilters().game !== "all"
+                        )
+
+                    ) {
+
+                        const noResult =
+                            document.createElement(
+                                "div"
+                            );
+
+                        noResult.className =
+                            "no-result";
+
+                        noResult.textContent =
+                            "🔍 No Result";
+
+                        calendar.appendChild(
+                            noResult
+                        );
+
+                    }
+
+
+                    updateFilterResult();
+
+                }
+
+
+                /* =====================================================
+                   CREATE EVENT CARD
+                ===================================================== */
+
+                function createEventCard(
+                    dateKey,
+                    event,
+                    isPast
+                ) {
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+                    card.className =
+                        "event-card";
+
+
+                    if (isPast) {
+
+                        card.classList.add(
+                            "past-event"
+                        );
+
+                    }
+
+
+                    const date =
+                        new Date(
+                            dateKey +
+                            "T00:00:00"
+                        );
+
+
+                    const month =
+                        monthNames[
+                            date.getMonth()
+                        ]
+                            .substring(0, 3)
+                            .toUpperCase();
+
+
+                    const day =
+                        String(
+                            date.getDate()
+                        ).padStart(2, "0");
+
+
+                    /* IMAGE */
+
+                    const image =
+                        document.createElement(
+                            "div"
+                        );
+
+                    image.className =
+                        "card-image";
+
+
+                    image.style.background =
+                        isPast
+
+                            ? "linear-gradient(135deg,#555,#1a1a2e)"
+
+                            : "linear-gradient(135deg,#e94560,#1a1a2e)";
+
+
+                    const badge =
+                        document.createElement(
+                            "span"
+                        );
+
+                    badge.className =
+                        "card-badge";
+
+                    badge.textContent =
+                        month +
+                        " " +
+                        day;
+
+
+                    const icon =
+                        document.createElement(
+                            "span"
+                        );
+
+                    icon.className =
+                        "card-icon";
+
+                    icon.textContent =
+                        "🎮";
+
+
+                    image.appendChild(
+                        badge
+                    );
+
+                    image.appendChild(
+                        icon
+                    );
+
+
+                    /* BODY */
+
+                    const body =
+                        document.createElement(
+                            "div"
+                        );
+
+                    body.className =
+                        "card-body";
+
+
+                    /* TITLE */
+
+                    const title =
+                        document.createElement(
+                            "h3"
+                        );
+
+                    title.textContent =
+                        event.game;
+
+
+                    /* TIME */
+
+                    const time =
+                        document.createElement(
+                            "p"
+                        );
+
+                    time.className =
+                        "card-time";
+
+                    time.textContent =
+                        "🕒 "
+                        +
+                        dateKey
+                        +
+                        " "
+                        +
+                        event.time;
+
+
+                    /* DESCRIPTION */
+
+                    const desc =
+                        document.createElement(
+                            "p"
+                        );
+
+                    desc.className =
+                        "card-desc";
+
+                    desc.textContent =
+                        event.description;
+
+
+                    /* INFO */
+
+                    const info =
+                        document.createElement(
+                            "div"
+                        );
+
+                    info.className =
+                        "match-info";
+
+
+                    /* ROUND */
+
+                    const round =
+                        document.createElement(
+                            "span"
+                        );
+
+                    round.className =
+                        "match-badge round-badge";
+
+                    round.textContent =
+                        event.round;
+
+
+                    /* STATUS */
+
+                    const status =
+                        document.createElement(
+                            "span"
+                        );
+
+                    status.className =
+                        "match-badge";
+
+
+                    if (
+                        event.status ===
+                        "ENDED"
+                    ) {
+
+                        status.classList.add(
+                            "ended-badge"
+                        );
+
+                    }
+
+                    else if (
+                        event.status ===
+                        "ON-GOING"
+                    ) {
+
+                        status.classList.add(
+                            "ongoing-badge"
+                        );
+
+                    }
+
+                    else {
+
+                        status.classList.add(
+                            "future-badge"
+                        );
+
+                    }
+
+
+                    status.textContent =
+                        event.status;
+
+
+                    info.appendChild(
+                        round
+                    );
+
+                    info.appendChild(
+                        status
+                    );
+
+
+                    body.appendChild(
+                        title
+                    );
+
+                    body.appendChild(
+                        time
+                    );
+
+                    body.appendChild(
+                        desc
+                    );
+
+                    body.appendChild(
+                        info
+                    );
+
+
+                    card.appendChild(
+                        image
+                    );
+
+                    card.appendChild(
+                        body
+                    );
+
+
+                    return card;
+
+                }
+
+
+                /* =====================================================
+                   RENDER SCHEDULE
+                ===================================================== */
+
+                function renderSchedule() {
+
+                    upcomingContainer.innerHTML =
+                        "";
+
+                    pastContainer.innerHTML =
+                        "";
+
+
+                    const today =
+                        new Date();
+
+                    today.setHours(
+                        0,
+                        0,
+                        0,
+                        0
+                    );
+
+
+                    const filteredEvents =
+                        getFilteredEvents();
+
+
+                    let upcomingCount = 0;
+                    let pastCount = 0;
+
+
+                    Object.keys(filteredEvents)
+                        .sort()
+                        .forEach(
+                            function (dateKey) {
+
+                                const eventDate =
+                                    new Date(
+                                        dateKey +
+                                        "T00:00:00"
+                                    );
+
+
+                                const isPast =
+                                    eventDate <
+                                    today;
+
+
+                                filteredEvents[dateKey]
+                                    .forEach(
+                                        function (event) {
+
+                                            const card =
+                                                createEventCard(
+                                                    dateKey,
+                                                    event,
+                                                    isPast
+                                                );
+
+
+                                            if (isPast) {
+
+                                                pastContainer.appendChild(
+                                                    card
+                                                );
+
+                                                pastCount++;
+
+                                            }
+                                            else {
+
+                                                upcomingContainer.appendChild(
+                                                    card
+                                                );
+
+                                                upcomingCount++;
+
+                                            }
+
+                                        }
+                                    );
+
+                            }
+                        );
+
+
+                    /* NO UPCOMING */
+
+                    if (
+                        upcomingCount === 0
+                    ) {
+
+                        const noResult =
+                            document.createElement(
+                                "div"
+                            );
+
+                        noResult.className =
+                            "no-result";
+
+                        noResult.textContent =
+                            "🔍 No Result";
+
+                        upcomingContainer.appendChild(
+                            noResult
+                        );
+
+                    }
+
+
+                    /* NO PAST */
+
+                    if (
+                        pastCount === 0
+                    ) {
+
+                        const noResult =
+                            document.createElement(
+                                "div"
+                            );
+
+                        noResult.className =
+                            "no-result";
+
+                        noResult.textContent =
+                            "🔍 No Result";
+
+                        pastContainer.appendChild(
+                            noResult
+                        );
+
+                    }
+
+                }
+
+
+                /* =====================================================
+                   FILTER RESULT
+                ===================================================== */
+
+                function updateFilterResult() {
+
+                    const filteredEvents =
+                        getFilteredEvents();
+
+
+                    let count = 0;
+
+
+                    Object.keys(filteredEvents)
+                        .forEach(
+                            function (dateKey) {
+
+                                count +=
+                                    filteredEvents[
+                                        dateKey
+                                    ].length;
+
+                            }
+                        );
+
+
+                    const filters =
+                        getFilters();
+
+
+                    if (
+
+                        filters.month === "all"
+                        &&
+                        filters.year === "all"
+                        &&
+                        filters.game === "all"
+
+                    ) {
+
+                        filterResult.textContent =
+                            "Showing all "
+                            +
+                            count
+                            +
+                            " events";
+
+                        return;
+
+                    }
+
+
+                    filterResult.textContent =
+                        "Showing "
+                        +
+                        count
+                        +
+                        " event"
+                        +
+                        (
+                            count !== 1
+                                ? "s"
+                                : ""
+                        );
+
+                }
+
+
+                /* =====================================================
+            APPLY FILTER
+         ===================================================== */
+
+                function applyFilter() {
+
+                    console.log(
+                        "🔎 Filter changed:",
+                        getFilters()
+                    );
+
+
+                    /* Save */
+
+                    saveFilters();
+
+
+                    /* Render calendar */
+
+                    renderCalendar();
+
+
+                    /* Render schedule */
+
+                    renderSchedule();
+
+                }
+
+                /* =====================================================
+                   FILTER LISTENERS
+                ===================================================== */
+
+                monthFilter.addEventListener(
+                    "change",
+                    applyFilter
+                );
+
+
+                yearFilter.addEventListener(
+                    "change",
+                    applyFilter
+                );
+
+
+                gameFilter.addEventListener(
+                    "change",
+                    applyFilter
+                );
+
+
+                /* =====================================================
+            CLEAR FILTER
+         ===================================================== */
+
+                clearFilter.addEventListener(
+                    "click",
+                    function () {
+
+                        monthFilter.value = "all";
+
+                        yearFilter.value = "all";
+
+                        gameFilter.value = "all";
+
+
+                        saveFilters();
+
+
+                        renderCalendar();
+
+                        renderSchedule();
+
+
+                        console.log(
+                            "🧹 Filters cleared"
+                        );
+
+                    }
+                );
+
+                /* =====================================================
+                   PREVIOUS MONTH
+                ===================================================== */
+
+                prevMonth.addEventListener(
+                    "click",
+                    function () {
+
+                        currentMonth--;
+
+
+                        if (
+                            currentMonth < 0
+                        ) {
+
+                            currentMonth = 11;
+
+                            currentYear--;
+
+                        }
+
+
+                        renderCalendar();
+
+                    }
+                );
+
+
+                /* =====================================================
+                   NEXT MONTH
+                ===================================================== */
+
+                nextMonth.addEventListener(
+                    "click",
+                    function () {
+
+                        currentMonth++;
+
+
+                        if (
+                            currentMonth > 11
+                        ) {
+
+                            currentMonth = 0;
+
+                            currentYear++;
+
+                        }
+
+
+                        renderCalendar();
+
+                    }
+                );
+
+
+                /* =====================================================
+                   CLICK OUTSIDE
+                ===================================================== */
+
+                document.addEventListener(
+                    "click",
+                    function (e) {
+
+                        if (
+                            !e.target.closest(
+                                ".calendar-day"
+                            )
+                        ) {
+
+                            document
+                                .querySelectorAll(
+                                    ".calendar-day.selected"
+                                )
+                                .forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "selected"
+                                        );
+
+                                    }
+                                );
+
+                        }
+
+                    }
+                );
+
+
+                /* =====================================================
+                   START
+                ===================================================== */
+
+                createYearFilter();
+
+                loadFilters();
+
+                renderCalendar();
+
+                renderSchedule();
+
+
+                console.log(
+                    "✅ Schedule ready"
+                );
+
+            }
+
+        );
+
+
+    </script>
+
+
 
 </body>
 
