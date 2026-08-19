@@ -4,34 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kai "Nightlash" Jensen — E-Sport</title>
+  <title id="page-title">Player Detail — E-Sport</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    body.bg-bracket {
-      color: #e2e8f0;
-    }
-    .hero-card, .card, .stat-strip {
-      background: rgba(20, 24, 33, 0.88) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      border-radius: 12px;
-      color: #e2e8f0;
-    }
-    h1, h2, h3, h4, .num {
-      color: #ffffff !important;
-    }
-    p, .lead, .storage-note, .label {
-      color: #cbd5e1 !important;
-    }
-    a {
-      color: #38bdf8 !important;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style3.css">
 </head>
 
-<body class="bg-bracket" data-log-player="Kai &quot;Nightlash&quot; Jensen">
+<body class="bg-bracket">
 
   <!-- Hero Section -->
   <section class="py-4">
@@ -39,16 +20,15 @@
       <div class="hero-card p-4">
         <a href="player.html" class="d-inline-block mb-3 text-decoration-none">← Back to roster</a>
         <div class="d-flex align-items-center gap-4 flex-wrap">
-          <div class="avatar-ring d-flex align-items-center justify-content-center" style="width:90px;height:90px;border-radius:50%;background:#1e293b;">
-            <div class="inner fw-bold" style="font-size:2rem;color:#38bdf8;">KJ</div>
+          <div class="avatar-ring d-flex align-items-center justify-content-center" style="width:90px;height:90px;">
+            <img id="player-img" src="images/playerimage/s1mple.jpg" alt="Player Avatar" onerror="this.src='images/playerimage/s1mple.jpg';">
           </div>
           <div>
-            <span class="badge bg-primary mb-2 d-inline-block">Valorant · Duelist</span>
-            <h1 class="m-0">Kai "Nightlash" Jensen</h1>
-            <p class="lead m-0 mt-1">Team captain, Nova Five. Rank #1 seed this season.</p>
+            <span id="player-badge" class="badge mb-2 d-inline-block">Game · Role</span>
+            <h1 id="player-name" class="m-0">Player Name</h1>
+            <p id="player-headline" class="lead m-0 mt-1">Player headline brief...</p>
           </div>
         </div>
-        <p class="storage-note mt-3 mb-0">Cookie demo — this visit was just logged to your "recently viewed players" cookie.</p>
       </div>
     </div>
   </section>
@@ -57,50 +37,197 @@
   <section class="py-3">
     <div class="container">
       <div class="stat-strip p-3 mb-4 d-flex justify-content-around text-center flex-wrap gap-3">
-        <div><div class="num h3 m-0">14–2</div><div class="label small">Season Record</div></div>
-        <div><div class="num h3 m-0">1.34</div><div class="label small">K/D Ratio</div></div>
-        <div><div class="num h3 m-0">241</div><div class="label small">Avg. Combat Score</div></div>
-        <div><div class="num h3 m-0">3</div><div class="label small">MVP Awards</div></div>
+        <div><div id="stat-record" class="num h3 m-0">0–0</div><div class="label small">Season Record</div></div>
+        <div><div id="stat-kd" class="num h3 m-0">0.00</div><div class="label small">K/D Ratio</div></div>
+        <div><div id="stat-score" class="num h3 m-0">0</div><div class="label small">Avg. Score</div></div>
+        <div><div id="stat-mvp" class="num h3 m-0">0</div><div class="label small">MVP Awards</div></div>
       </div>
 
-      <div class="row g-4">
-        <div class="col-md-6">
+      <div class="row g-4 mb-4">
+        <div class="col-md-12">
           <div class="card p-4 h-100">
             <h3>About</h3>
-            <p>Kai joined Arclight in his first year and has captained Nova Five since sophomore year. Known for aggressive entries and calling flexible rotations mid-round.</p>
-            <p class="mb-0"><strong>Main agents:</strong> Jett, Raze, Neon<br><strong>Joined:</strong> 2023<br><strong>Hometown:</strong> Petaling Jaya</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card p-4 h-100">
-            <h3>Recent results</h3>
-            <table class="table table-dark table-borderless m-0">
-              <tbody>
-                <tr><td>vs Static Six</td><td class="text-success text-end fw-bold">Win 13–7</td></tr>
-                <tr><td>vs Zero Cooldown</td><td class="text-success text-end fw-bold">Win 13–9</td></tr>
-                <tr><td>vs Echo Squad (scrim)</td><td class="text-danger text-end fw-bold">Loss 8–13</td></tr>
-                <tr><td>vs Hollow Point</td><td class="text-success text-end fw-bold">Win 13–4</td></tr>
-              </tbody>
-            </table>
+            <p id="player-about">Player biography description...</p>
           </div>
         </div>
       </div>
 
-      <div class="card p-4 mt-4">
-        <h3>Share this profile</h3>
-        <p>Follow the club or share Kai's profile with your own network.</p>
-        <div class="social-row d-flex gap-3 mt-2">
-          <a href="https://twitter.com/intent/tweet?text=Check%20out%20Kai%20%22Nightlash%22%20Jensen" target="_blank" rel="noopener">𝕏</a>
-          <a href="https://www.facebook.com/sharer/sharer.php" target="_blank" rel="noopener">f</a>
-          <a href="https://wa.me/" target="_blank" rel="noopener">◐</a>
+      <!-- Share Profile Section -->
+      <div class="share-section p-4">
+        <h2>Share this profile</h2>
+        <p id="share-subtext" class="mb-3">Follow the club or share this profile with your own network.</p>
+        <div class="social-links d-flex gap-3 align-items-center">
+          <a id="share-x" href="#" target="_blank" aria-label="X / Twitter">𝕏</a>
+          <a id="share-fb" href="#" target="_blank" aria-label="Facebook">f</a>
+          <a id="share-insta" href="#" target="_blank" aria-label="Instagram">IG</a>
         </div>
       </div>
+
     </div>
   </section>
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="acc.js"></script>
+  <script>
+    const playersData = {
+      "s1mple": {
+        shortName: "s1mple's",
+        name: 'Oleksandr "s1mple" Kostyliev',
+        badge: 'CS2 · AWPer',
+        badgeClass: 'badge-cs2',
+        img: 'images/playerimage/s1mple.jpg',
+        headline: 'Playmaker, Aggressive yet Unpredictable, Most MVP medals received.',
+        record: '18–3', kd: '1.35', score: '265', mvp: '12',
+        about: 'Widely regarded as one of the greatest Counter-Strike players of all time. Known for clutch AWPer plays and game-winning decision making under high pressure. Throughout his storied career, s1mple has consistently delivered highlight-reel noscopes, 1vX clutch moments, and unparalleled individual stats, solidifying his legacy across every era of competitive CS.',
+        x: 'https://x.com/s1mpleO',
+        facebook: '',
+        instagram: 'https://www.instagram.com/s1mpleo/'
+      },
+      "noticed": {
+        shortName: "Noticed's",
+        name: 'Denis "Noticed" Kozyrev',
+        badge: 'DOTA 2 · Offlaner',
+        badgeClass: 'badge-dota2',
+        img: 'images/playerimage/Noticed.jpg',
+        headline: 'Aura Carrier, Team Fight Controller, Tier 1 Winner',
+        record: '12–5', kd: '1.10', score: '190', mvp: '4',
+        about: 'Master of team fights and controlling key objective zones in high-stakes Dota matches. Noticed excels at playing frontline aura initiators, creating crucial space for his hard carries while systematically locking down enemy cores. His deep understanding of lane dynamics and hero matchups allows him to remain impactful even in difficult early laning phases.',
+        x: '',
+        facebook: '',
+        instagram: 'https://www.instagram.com/noticed_dota'
+      },
+      "faker": {
+        shortName: "Faker's",
+        name: 'Lee "Faker" Sang-hyeok',
+        badge: 'LoL · Mid Laner',
+        badgeClass: 'badge-lol',
+        img: 'images/playerimage/Faker.jpg',
+        headline: 'Flexible Player, Greatest LoL Player, 6 Time World Champion',
+        record: '22–1', kd: '1.45', score: '310', mvp: '15',
+        about: 'The undisputed Unkillable Demon King of League of Legends, dominating international competitions for over a decade. Faker is celebrated worldwide for his legendary mechanical reflexes, deep champion pool, and shot-calling mastery. Having secured multiple World Championships, he continues to set the benchmark for competitive excellence and longevity in esports.',
+        x: 'https://x.com/faker',
+        facebook: '',
+        instagram: 'https://www.instagram.com/faker'
+      },
+      "zen": {
+        shortName: "zen's",
+        name: 'Alexis "zen" Bernier',
+        badge: 'Rocket League · Playmaker',
+        badgeClass: 'badge-rl',
+        img: 'images/playerimage/zen.jpg',
+        headline: 'The Team Anchor, Pace Setter, 3rd Best RL Player',
+        record: '15–4', kd: '1.25', score: '280', mvp: '7',
+        about: 'Incredible mechanical speed and defensive recovery capabilities in top-flight Rocket League. Zen burst onto the professional scene with instant international success, stunning fans with unprecedented flip resets, air dribble controls, and zero-second clutch saves. His ability to elevate his teammates\' gameplay makes him an indispensable roster asset.',
+        x: 'https://x.com/zenrll',
+        facebook: 'https://www.facebook.com/profile.php?id=100095608329204',
+        instagram: 'https://www.instagram.com/zenrl_official/'
+      },
+      "t3xture": {
+        shortName: "t3xture's",
+        name: 'Kim "t3xture" Na-ra',
+        badge: 'Valorant · Duelist',
+        badgeClass: 'badge-valorant',
+        img: 'images/playerimage/t3xture.jpg',
+        headline: 'Aggressive player, Adapter',
+        record: '13–6', kd: '1.20', score: '240', mvp: '5',
+        about: 'Aggressive duelist capable of opening up site executions with explosive entry fragging and relentless movement. t3xture is renowned for his high-velocity Operator plays and lightning-fast reaction times. He adapts quickly to shifting meta compositions, keeping defensive lines constantly guessing and forced onto their back foot.',
+        x: 'https://x.com/t3xture_kr',
+        facebook: '',
+        instagram: 'https://www.instagram.com/t3xture_e/'
+      },
+      "donk": {
+        shortName: "donk's",
+        name: 'Danil "donk" Kryshkovets',
+        badge: 'CS2 · Entry Fragger',
+        badgeClass: 'badge-cs2',
+        img: 'images/playerimage/donk.jpg',
+        headline: 'Zero Cooldown site anchor, defensive MVP twice this year.',
+        record: '16–2', kd: '1.38', score: '290', mvp: '8',
+        about: 'Sensational rookie talent known for extraordinary rifle accuracy and high-impact entry frags. donk took the competitive scene by storm with unheard-of headshot ratings and aggressive crosshair placement. His fearless playstyle and vocal passion on stage make him one of the most exciting young prodigies in modern Counter-Strike.',
+        x: '',
+        facebook: '',
+        instagram: 'https://www.instagram.com/donk1221/'
+      },
+      "ace": {
+        shortName: "Ace's",
+        name: 'Marcus "Ace" Hoelgaard',
+        badge: 'DOTA 2 · Offlaner',
+        badgeClass: 'badge-dota2',
+        img: 'images/playerimage/Ace.jpg',
+        headline: 'Stable Laner, Utility Master, High IQ Rotations',
+        record: '14–4', kd: '1.15', score: '205', mvp: '5',
+        about: 'Veteran offlaner renowned for incredible hero flexibility, item timing, and mid-game decision making. Ace transitioned seamlessly from carry to offlane over his career, bringing unmatched wave-management expertise and micro-control. His methodical approach to map control provides his squad with incredible stability during late-game team fights.',
+        x: 'https://x.com/acedota',
+        facebook: '',
+        instagram: 'https://www.instagram.com/acedota2/'
+      },
+      "caps": {
+        shortName: "Caps's",
+        name: 'Rasmus "Caps" Winther',
+        badge: 'LoL · Mid Laner',
+        badgeClass: 'badge-lol',
+        img: 'images/playerimage/Caps.jpg',
+        headline: 'Claps or Craps, Creative Playmaker, Multi-LEC Champion',
+        record: '19–3', kd: '1.32', score: '285', mvp: '11',
+        about: 'European superstar mid laner famous for unpredictable champion picks and explosive team fight execution. Often nicknamed "Baby Faker" early in his career, Caps earned his own legendary status by leading Western teams to international finals. His inventive roaming patterns and limit-testing playstyle make every match an unpredictable show.',
+        x: 'https://x.com/G2Caps',
+        facebook: '',
+        instagram: 'https://www.instagram.com/g2.caps_/'
+      },
+      "daniel": {
+        shortName: "Daniel's",
+        name: 'Daniel "Daniel" Piecenski',
+        badge: 'Rocket League · Striker',
+        badgeClass: 'badge-rl',
+        img: 'images/playerimage/Daniel.jpg',
+        headline: 'Aerial Ace, Defensive Wall, Clutch Finisher',
+        record: '16–3', kd: '1.28', score: '295', mvp: '9',
+        about: 'Mechanical prodigy capable of dictating the pace of play with unmatched aerial accuracy and tight defense. Daniel transition from 1v1 ladder dominant force to 3v3 championship contender was seamless. Whether hitting double taps from impossible angles or making goal-line saves, he consistently turns equal games into comfortable victories.',
+        x: '',
+        facebook: '',
+        instagram: ''
+      },
+      "f0rsaken": {
+        shortName: "f0rsakeN's",
+        name: 'Jason "f0rsakeN" Susanto',
+        badge: 'Valorant · Flex / Duelist',
+        badgeClass: 'badge-valorant',
+        img: 'images/playerimage/f0rsakeN.jpg',
+        headline: 'Agent Master, Infinite Agent Pool, Round Saver',
+        record: '15–5', kd: '1.22', score: '255', mvp: '7',
+        about: 'Versatile flex star capable of switching roles instantly to counter opponent strategies across every map. f0rsakeN is world-famous for mastering dynamic agents ranging from aggressive duelists like Yoru to core initiators like Fade. His aim, unpredictable utility usage, and high-IQ clutch plays make him the backbone of his roster.',
+        x: 'https://x.com/jasonsusantoo',
+        facebook: '',
+        instagram: 'https://www.instagram.com/jasonsusantoo/'
+      }
+    };
+
+    // Parse URL parameter to target the correct player profile
+    const urlParams = new URLSearchParams(window.location.search);
+    const playerId = (urlParams.get('id') || 's1mple').toLowerCase();
+    const p = playersData[playerId] || playersData['s1mple'];
+
+    // Dynamic UI population
+    document.getElementById('page-title').innerText = `${p.name} — E-Sport`;
+    document.getElementById('player-name').innerText = p.name;
+    document.getElementById('player-img').src = p.img;
+    document.getElementById('player-img').alt = p.name;
+
+    const badgeElem = document.getElementById('player-badge');
+    badgeElem.innerText = p.badge;
+    badgeElem.className = `badge ${p.badgeClass} mb-2 d-inline-block`;
+
+    document.getElementById('player-headline').innerText = p.headline;
+    document.getElementById('stat-record').innerText = p.record;
+    document.getElementById('stat-kd').innerText = p.kd;
+    document.getElementById('stat-score').innerText = p.score;
+    document.getElementById('stat-mvp').innerText = p.mvp;
+    document.getElementById('player-about').innerText = p.about;
+
+    // Direct dynamic links to each player's social profiles
+    document.getElementById('share-subtext').innerText = `Follow the club or share ${p.shortName} profile with your own network.`;
+    document.getElementById('share-x').href = p.x;
+    document.getElementById('share-fb').href = p.facebook;
+    document.getElementById('share-insta').href = p.instagram;
+  </script>
 </body>
 
 </html>
