@@ -1,0 +1,60 @@
+/* Container Box & Text Styling */
+body.bg-bracket {
+  color: #e2e8f0;
+}
+
+/* Add clear dark backdrop panels to content sections */
+.site-header,
+.hero .container,
+.card,
+.stat-strip,
+.site-footer .container,
+#cookie-banner {
+  background: rgba(20, 24, 33, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.hero .container {
+  padding: 32px !important;
+  margin-bottom: 24px;
+}
+
+.site-header {
+  margin: 16px auto;
+  max-width: 1200px;
+  padding: 8px 24px;
+}
+
+.site-footer {
+  margin-top: 48px;
+  padding: 32px 0;
+}
+
+/* Text Visibility & Contrast Fixes */
+h1, h2, h3, h4, h5, h6, .brand, .num {
+  color: #ffffff !important;
+}
+
+p, .lead, .label, .storage-note, td, th {
+  color: #cbd5e1 !important;
+}
+
+/* Navigation Links */
+.main-nav a, .site-footer a, a {
+  color: #38bdf8 !important;
+  text-decoration: none;
+}
+
+.main-nav a:hover, .site-footer a:hover, a:hover {
+  color: #7dd3fc !important;
+  text-decoration: underline;
+}
+
+/* Grid Spacing */
+.grid {
+  display: grid;
+  gap: 20px;
+}
