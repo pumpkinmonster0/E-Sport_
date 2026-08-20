@@ -24,6 +24,8 @@ function deleteCookie(name) {
 // jQuery
 $(document).ready(function () {
 
+    $('#createTeamModal').appendTo('body'); // package out division .screen-area，prevent from overflow:hidden cut
+
     // create Bootstrap Modal 
     const teamModal = new bootstrap.Modal(document.getElementById('createTeamModal'));
 
@@ -84,7 +86,7 @@ $(document).ready(function () {
 
         if (validUser) {
             alert("Log In sucessfully! Welcome back " + username);
-            setCookie("logged_in_user", username, 7); // 存入 Cookie 7 天
+            setCookie("logged_in_user", username, 7); // save 7 days
             checkLoginStatus();
         } else {
             alert("Wrong username or password.Pls always ensure you have a account.");

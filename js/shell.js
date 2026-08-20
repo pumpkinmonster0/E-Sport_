@@ -1,20 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    const pageContent = document.body.innerHTML; //html body content 
 
-    //Define the HTML Switch layout 
-    const switchLayout = `
-        <div class="switch-container">
-        
-            <!-- Left Screen Area -->
-            <div class="screen-area">
-                <div class="screen-content" id="screenContent">
-                    ${pageContent}
-                </div>
-            </div>
+    // 抓「真实节点」而不是文字，这样节点上已绑定的事件监听器不会遗失
+    const originalChildren = Array.from(document.body.childNodes);
 
-            <!-- Right Controller Area -->
-            <div class="controller-area">
+    // Left Screen Area
+    const screenArea = document.createElement('div');
+    screenArea.className = 'screen-area';
+
+    const screenContent = document.createElement('div');
+    screenContent.className = 'screen-content';
+    screenContent.id = 'screenContent';
+
+    // 把原本 body 底下的节点「搬」进 screenContent，而不是重新生成
+    originalChildren.forEach(node => screenContent.appendChild(node));
+
+    screenArea.appendChild(screenContent);
+
+    // Right Controller Area
+    const controllerArea = document.createElement('div');
+    controllerArea.className = 'controller-area';
+    controllerArea.innerHTML = `
                 <!-- Button Group (YABX) -->
                 <div class="diamond-group">
                     <button class="btn btn-y">Y</button>
@@ -28,11 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <!-- TOP BUTTON -->
                 <button class="btn-top" id="btnTop">Top</button>
-
-            </div>
-        </div>
     `;
 
+    // switch-container
+    const switchContainer = document.createElement('div');
+    switchContainer.className = 'switch-container';
+    switchContainer.appendChild(screenArea);
+    switchContainer.appendChild(controllerArea);
+
     // Inject the layout into body
-    document.body.innerHTML = switchLayout;
+    document.body.appendChild(switchContainer);
 });

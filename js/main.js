@@ -60,6 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //  Keyboard event listener --> Monitor keyboard action and pass to key handle
     document.addEventListener('keydown', (e) => {
+        //prevent from if enter "a" or "y" in a text box
+        const tag = e.target.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.target.isContentEditable) {
+            return;
+        }
         const keyMap = {
             'a': 'a',
             'A': 'a',
