@@ -2755,8 +2755,8 @@ header.navbar {
     background: url("../images/index/pexels-yankrukov-9072205.jpg")
 }
 
-/*index*/
-/* Hero Game spotlight banner */
+/*indexpage addon*/
+/* hero game spotlight banner */
 .game-spotlight {
     display: flex;
     gap: 6px;
@@ -2784,7 +2784,7 @@ header.navbar {
 }
 
 .spotlight-item::before {
-    /* dark gradient so the label always stays readable */
+    /* dark gradient - label stays readable */
     content: "";
     position: absolute;
     inset: 0;
@@ -2977,15 +2977,10 @@ header.navbar {
 
     .screen-content table {
         display: block;
-        /* 讓表格可以用水平滑動 */
         overflow-x: auto;
-        /* 啟用水平捲軸 */
         white-space: nowrap;
-        /* 強制文字不換行，讓捲軸生效 */
         transform: scale(0.95);
-        /* 稍微縮小一點點，避免剛好切到邊 */
         font-size: 0.75rem;
-        /* 字體縮小配合版面 */
     }
 
     /* hover-expand doesn't work well on touch, so stack into a scrollable
@@ -3133,14 +3128,11 @@ header.navbar {
         font-size: 2.2rem;
     }
 
-    /* ===== account.html 专用 ===== */
-
-    /* 1. 账号主区域（#auth-section）内边距调整 */
+    /*account*/
     #auth-section {
         padding: 20px 15px;
     }
 
-    /* 2. 登录/注册按钮组（#auth-buttons）允许换行并居中 */
     #auth-buttons {
         flex-wrap: wrap;
         gap: 12px;
@@ -3148,12 +3140,9 @@ header.navbar {
 
     #auth-buttons .btn-generic {
         flex: 0 1 auto;
-        /* 防止按钮被拉伸过宽 */
         min-width: 120px;
-        /* 保持最小宽度，避免太窄 */
     }
 
-    /* 3. 登录/注册卡片（#login-card, #signup-card）宽度适应 */
     #login-card,
     #signup-card {
         max-width: 100%;
@@ -3161,27 +3150,22 @@ header.navbar {
         margin-right: 10px;
     }
 
-    /* 4. 大号按钮（.btn-generic.large）在平板上缩小 */
     .btn-generic.large {
         padding: 10px 24px;
         font-size: 0.95rem;
     }
 
-    /* 5. 队伍区域（#team-section）内边距调整 */
     #team-section {
         padding: 20px 15px;
     }
 
-    /* 6. 队伍列表（#team-list）网格列数调整 – 在平板上显示两列 */
     #team-list {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
 
-    /* 7. 创建队伍模态框（#createTeamModal）内容紧凑 */
     #createTeamModal .modal-content {
         padding: 0;
-        /* 移除额外内边距，Bootstrap 自带内边距 */
     }
 
     #createTeamModal .modal-body {
@@ -3198,7 +3182,6 @@ header.navbar {
         padding: 8px 12px;
     }
 
-    /* 8. 社交卡片（.social-card）内部元素间距缩小 */
     .social-card {
         padding: 14px 14px 16px;
     }
@@ -3218,13 +3201,11 @@ header.navbar {
         font-size: 0.78rem;
     }
 
-    /* 9. YouTube / Instagram 预览小部件适应宽度 */
     .yt-preview-mini .yt-thumb-mini iframe,
     .ig-preview-mini .ig-image-mini iframe {
         width: 100% !important;
         height: auto;
         aspect-ratio: 16 / 9;
-        /* 保持比例，防止变形 */
     }
 
     .ig-preview-mini .ig-image-mini {
@@ -3237,7 +3218,6 @@ header.navbar {
         max-height: 300px;
     }
 
-    /* 10. 社交小按钮（.btn-social-sm）缩小 */
     .btn-social-sm {
         padding: 4px 12px;
         font-size: 0.65rem;
@@ -3320,23 +3300,18 @@ header.navbar {
         max-width: 280px;
     }
 
-    /* 1. 縮小贊助商之間的間距（原本 30px 太大） */
     .sponsor-grid {
         gap: 15px;
     }
 
-    /* 2. 徹底修復表格在小手機上的顯示 */
     .screen-content table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
         transform: scale(1);
-        /* 取消縮放，避免文字太小 */
         font-size: 0.55rem;
-        /* 調整到適合手機閱讀的大小 */
     }
 
-    /* 3. 縮小表格格子內邊距，節省空間 */
     .screen-content table th,
     .screen-content table td {
         padding: 4px 6px;
@@ -3419,9 +3394,8 @@ header.navbar {
         font-size: 0.95rem;
     }
 
-    /* ===== account.html 专用 ===== */
+    /*account*/
 
-    /* 1. 账号主区域进一步压缩内边距 */
     #auth-section {
         padding: 15px 10px;
     }
@@ -3430,7 +3404,6 @@ header.navbar {
         font-size: 1.4rem;
     }
 
-    /* 2. 登录/注册卡片全宽，不留边距 */
     #login-card,
     #signup-card {
         max-width: 100%;
@@ -3438,7 +3411,6 @@ header.navbar {
         margin-right: 0;
     }
 
-    /* 3. 按钮组在极窄屏下纵向排列（可选，或保持换行） */
     #auth-buttons {
         flex-direction: column;
         align-items: center;
@@ -3447,11 +3419,9 @@ header.navbar {
 
     #auth-buttons .btn-generic {
         width: 80%;
-        /* 占屏幕大部分宽度，但不完全贴边 */
         min-width: unset;
     }
 
-    /* 4. 所有 .btn-generic 在手机上缩小 */
     .btn-generic {
         font-size: 0.85rem;
         padding: 8px 18px;
@@ -3467,7 +3437,6 @@ header.navbar {
         font-size: 0.95rem;
     }
 
-    /* 5. 队伍区域极简内边距 */
     #team-section {
         padding: 12px 10px;
     }
@@ -3480,13 +3449,11 @@ header.navbar {
         font-size: 0.85rem;
     }
 
-    /* 6. 队伍列表在手机上改为单列 */
     #team-list {
         grid-template-columns: 1fr;
         gap: 10px;
     }
 
-    /* 7. 队伍卡片内部字体调整 */
     .team-card {
         padding: 12px 14px;
     }
@@ -3503,7 +3470,6 @@ header.navbar {
         font-size: 0.7rem;
     }
 
-    /* 8. 模态框（#createTeamModal）在手机上适应屏幕 */
     #createTeamModal .modal-dialog {
         margin: 10px;
     }
@@ -3542,7 +3508,6 @@ header.navbar {
         font-size: 0.8rem;
     }
 
-    /* 9. 社交卡片区块内边距缩到最小 */
     .social-plugins-section {
         padding: 16px 10px 12px;
         margin: 12px 0 6px;
@@ -3552,7 +3517,6 @@ header.navbar {
         font-size: 1.3rem;
     }
 
-    /* 10. 社交卡片（.social-card）进一步紧凑 */
     .social-card {
         padding: 12px 12px 14px;
         border-radius: 10px;
@@ -3571,14 +3535,12 @@ header.navbar {
         margin-top: 8px;
     }
 
-    /* 11. YouTube / Instagram 预览小部件高度自适应 */
     .yt-preview-mini .yt-thumb-mini iframe {
         aspect-ratio: 16 / 9;
     }
 
     .ig-preview-mini .ig-image-mini iframe {
         height: 250px;
-        /* 限制高度，避免过长 */
     }
 
     .ig-preview-mini .ig-info-mini {
@@ -3594,7 +3556,6 @@ header.navbar {
         font-size: 0.55rem;
     }
 
-    /* 12. 社交小按钮极简 */
     .btn-social-sm {
         padding: 3px 10px;
         font-size: 0.6rem;
