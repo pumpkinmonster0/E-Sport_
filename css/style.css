@@ -2821,11 +2821,12 @@ header.navbar {
 }
 
 /* whichever item is hovered/focused/tapped grows and lights up, the rest dim further */
-.game-spotlight:hover .spotlight-item,
-.game-spotlight:focus-within .spotlight-item {
+.game-spotlight:hover .spotlight-item:not(.active-spotlight),
+.game-spotlight:focus-within .spotlight-item:not(.active-spotlight) {
     filter: grayscale(90%) brightness(30%);
 }
 
+.spotlight-item.active-spotlight,
 .spotlight-item:hover,
 .spotlight-item:focus {
     flex: 3.2 1 0%;
@@ -2833,11 +2834,13 @@ header.navbar {
     outline: none;
 }
 
+.spotlight-item.active-spotlight::after,
 .spotlight-item:hover::after,
 .spotlight-item:focus::after {
     box-shadow: inset 0 0 0 2px rgba(107, 203, 255, 0.6);
 }
 
+.spotlight-item.active-spotlight .spotlight-label,
 .spotlight-item:hover .spotlight-label,
 .spotlight-item:focus .spotlight-label {
     color: #6bcbff;

@@ -33,22 +33,22 @@
             <p style="text-align:center"><small>From tactical FPS to classic MOBA, we cover the most competitive games
                     on campus. <br>Join our team and dominate the battlefield!</small></p>
             <div class="game-spotlight">
-                <div class="spotlight-item" style="background-image:url('images/character_2323/412-4121703_pubg-character-png-transparent-picture-transparent-background-pubg-removebg-preview.png')">
+                <div class="spotlight-item" style="background-image:url('images/character_2323/412-4121703_pubg-character-png-transparent-picture-transparent-background-pubg-removebg-preview.png')" tabindex="0">
                     <span class="spotlight-label">PUBG</span>
                 </div>
-                <div class="spotlight-item" style="background-image:url('images/character_2323/images-removebg-preview.png')">
+                <div class="spotlight-item" style="background-image:url('images/character_2323/images-removebg-preview.png')" tabindex="0">
                     <span class="spotlight-label">CSGO</span>
                 </div>
-                <div class="spotlight-item" style="background-image:url('images/character_2323/dota2.png')">
+                <div class="spotlight-item" style="background-image:url('images/character_2323/dota2.png')" tabindex="0">
                     <span class="spotlight-label">DOTA2</span>
                 </div>
-                <div class="spotlight-item" style="background-image:url('images/character_2323/vorolant.png')">
+                <div class="spotlight-item" style="background-image:url('images/character_2323/vorolant.png')" tabindex="0">
                     <span class="spotlight-label">VALORANT</span>
                 </div>
-                <div class="spotlight-item" style="background-image:url('images/character_2323/rocket.png')">
+                <div class="spotlight-item" style="background-image:url('images/character_2323/rocket.png')" tabindex="0">
                     <span class="spotlight-label">ROCKET LEAGUE</span>
                 </div>
-                <div class="spotlight-item" style="background-image:url('images/character_2323/lol.png')">
+                <div class="spotlight-item" style="background-image:url('images/character_2323/lol.png')" tabindex="0">
                     <span class="spotlight-label">LOL</span>
                 </div>
             </div>
@@ -165,6 +165,20 @@
     <script src="js/neon.js"></script>
     <script src="js/scroll-reveal.js"></script>
     <script src="js/main.js"></script>
+
+    //ensure safari can work
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const spotlightItems = document.querySelectorAll('.spotlight-item');
+            spotlightItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    spotlightItems.forEach(el => el.classList.remove('active-spotlight'));
+                    this.classList.add('active-spotlight');
+                    this.focus();
+                });
+            });
+        });
+    </script>
 
 </body>
 
