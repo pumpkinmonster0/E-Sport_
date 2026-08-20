@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- Button Group (YABX) -->
                 <div class="diamond-group">
                     <button class="btn btn-y">Y</button>
-                    <button class="btn btn-x">X</button>
-                    <button class="btn btn-b">B</button>
+                    <button class="btn btn-x">🎫</button>
+                    <button class="btn btn-b">🧟</button>
                     <button class="btn btn-a">A</button>
                 </div>
 
