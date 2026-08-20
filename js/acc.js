@@ -1,3 +1,8 @@
+//API APPLY- jsonbin.io 
+const CLOUD_BIN_ID = '6a868aaff5f4af5e292b98cc'; //jsonbin.io - Bin ID
+const CLOUD_API_KEY = '$2a$10$w5VIyUruWU9m6MUBTU0CfOzt484kzkX9Pzf5UEwGEbg8zL346nepO'; // access key id
+const CLOUD_URL = `https://api.jsonbin.io/v3/b/${CLOUD_BIN_ID}`;
+
 //Cookie
 function setCookie(name, value, days) {
     const d = new Date();
@@ -33,6 +38,9 @@ $(document).ready(function () {
     checkLoginStatus();
     loadTeams();
 
+    // automatic restore data from cloud (see the console and local storage -- it will display msg and store data in local) -- in diff computer or application
+    restoreFromCloud();
+
     // display card 
     $('#show-login-btn').click(function () {
         $('#login-card').slideDown();
@@ -58,7 +66,7 @@ $(document).ready(function () {
         const existingUser = users.find(u => u.username === username);
 
         if (existingUser) {
-            alert("⚠️ This acc have been sign in. Pls log in.");
+            alert("This acc have been sign in. Pls log in.");
             $('#signup-card').hide();
             $('#login-card').slideDown();
             $('#login-username').val(username);
@@ -68,6 +76,9 @@ $(document).ready(function () {
 
         users.push({ username: username, password: password });
         localStorage.setItem('registered_users', JSON.stringify(users));
+
+        // data save to cloud
+        syncToCloud();
 
         alert("Sign In successfully! Pls Log In now. ");
         $('#signup-card').hide();
@@ -135,7 +146,10 @@ $(document).ready(function () {
         teams.push(newTeam);
         localStorage.setItem('club_teams', JSON.stringify(teams));
 
-        alert("Team" + name + "created sucessfully");
+        // automatic save to cloud
+        syncToCloud();
+
+        alert("Team " + name + " created sucessfully");
         teamModal.hide();
         loadTeams(); // Reload
     });
@@ -191,6 +205,63 @@ $(document).ready(function () {
                 </div>
             `;
             $container.append(cardHtml);
+        });
+    }
+
+
+    // save the user data and team data to cloud
+    function syncToCloud() {
+        const payload = {
+            users: JSON.parse(localStorage.getItem('registered_users')) || [],
+            teams: JSON.parse(localStorage.getItem('club_teams')) || []
+        };
+
+        $.ajax({
+            url: CLOUD_URL,
+            method: 'PUT',
+            contentType: 'application/json',
+            headers: { 'X-Access-Key': CLOUD_API_KEY },
+            data: JSON.stringify(payload),
+            success: function () {
+                console.log('Save successfully');
+            },
+            error: function () {
+                console.warn('Fail to save');
+            }
+        });
+    }
+
+    // restore data from cloud
+    function restoreFromCloud() {
+        const hasLocalData =
+            (JSON.parse(localStorage.getItem('registered_users')) || []).length > 0 ||
+            (JSON.parse(localStorage.getItem('club_teams')) || []).length > 0;
+
+        if (hasLocalData) {
+            console.log('Data is in local storage, skip the restore from cloud');
+            return;
+        }
+
+        $.ajax({
+            url: CLOUD_URL + '/latest',
+            method: 'GET',
+            headers: { 'X-Access-Key': CLOUD_API_KEY },
+            success: function (response) {
+                const data = response.record || {};
+
+                if (Array.isArray(data.users) && data.users.length > 0) {
+                    localStorage.setItem('registered_users', JSON.stringify(data.users));
+                }
+                if (Array.isArray(data.teams) && data.teams.length > 0) {
+                    localStorage.setItem('club_teams', JSON.stringify(data.teams));
+                    loadTeams();
+                }
+
+                console.log('Restore successfully');
+            },
+            error: function () {
+                console.log('Can\'t cannect to cloud');
+            }
         });
     }
 });
