@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 抓「真实节点」而不是文字，这样节点上已绑定的事件监听器不会遗失
     const originalChildren = Array.from(document.body.childNodes);
 
     // Left Screen Area
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     screenContent.className = 'screen-content';
     screenContent.id = 'screenContent';
 
-    // 把原本 body 底下的节点「搬」进 screenContent，而不是重新生成
     originalChildren.forEach(node => screenContent.appendChild(node));
 
     screenArea.appendChild(screenContent);

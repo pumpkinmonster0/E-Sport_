@@ -2,7 +2,6 @@ function loadNavbar() {
     const navbarHTML = `
         <header class="navbar">
             <nav class="nav-container">
-                <!-- 左边 Logo -->
                 <a href="index.html" class="logo-link">
                     <div class="logo-img"></div>
                 </a>
