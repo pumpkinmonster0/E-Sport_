@@ -2755,6 +2755,99 @@ header.navbar {
     background: url("../images/index/pexels-yankrukov-9072205.jpg")
 }
 
+/*index*/
+/* Hero Game spotlight banner */
+.game-spotlight {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    height: 360px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #2a2a4a;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.35);
+}
+
+.spotlight-item {
+    position: relative;
+    flex: 1 1 0%;
+    min-width: 0;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(75%) brightness(42%);
+    transition: flex 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.55s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.spotlight-item::before {
+    /* dark gradient so the label always stays readable */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 55%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.spotlight-item::after {
+    /* thin glow edge that only shows once the item is active */
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 0 rgba(107, 203, 255, 0);
+    transition: box-shadow 0.55s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.spotlight-label {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    font-family: 'Orbitron', 'Courier New', monospace;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: #b9c0d4;
+    white-space: nowrap;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    transition: color 0.4s ease, font-size 0.4s ease, text-shadow 0.4s ease, bottom 0.4s ease;
+    z-index: 2;
+}
+
+/* whichever item is hovered/focused/tapped grows and lights up, the rest dim further */
+.game-spotlight:hover .spotlight-item,
+.game-spotlight:focus-within .spotlight-item {
+    filter: grayscale(90%) brightness(30%);
+}
+
+.spotlight-item:hover,
+.spotlight-item:focus {
+    flex: 3.2 1 0%;
+    filter: grayscale(0%) brightness(100%) !important;
+    outline: none;
+}
+
+.spotlight-item:hover::after,
+.spotlight-item:focus::after {
+    box-shadow: inset 0 0 0 2px rgba(107, 203, 255, 0.6);
+}
+
+.spotlight-item:hover .spotlight-label,
+.spotlight-item:focus .spotlight-label {
+    color: #6bcbff;
+    font-size: 1.25rem;
+    bottom: 22px;
+    text-shadow: 0 0 20px rgba(107, 203, 255, 0.85);
+}
+
+
+
 /* ========== 768px ========== */
 @media (max-width: 768px) {
     body {
@@ -2882,6 +2975,35 @@ header.navbar {
         height: 150px;
     }
 
+    /* hover-expand doesn't work well on touch, so stack into a scrollable
+       row of fixed-width panels and rely on tap (:focus/:active) instead */
+    .game-spotlight {
+        height: 220px;
+        gap: 4px;
+    }
+
+    .spotlight-item {
+        flex: 1 1 0%;
+    }
+
+    .spotlight-item:hover,
+    .spotlight-item:focus,
+    .spotlight-item:active {
+        flex: 2.4 1 0%;
+    }
+
+    .spotlight-label {
+        font-size: 0.7rem;
+        bottom: 10px;
+    }
+
+    .spotlight-item:hover .spotlight-label,
+    .spotlight-item:focus .spotlight-label,
+    .spotlight-item:active .spotlight-label {
+        font-size: 1rem;
+        bottom: 14px;
+    }
+
     .sponsor-item {
         flex: 0 0 100px;
         height: 80px;
@@ -2998,6 +3120,7 @@ header.navbar {
         font-size: 2.2rem;
     }
 
+
 }
 
 /*480pc*/
@@ -3074,6 +3197,22 @@ header.navbar {
         flex: 1 1 100%;
         max-width: 280px;
     }
+
+    .game-spotlight {
+        height: 160px;
+    }
+
+    .spotlight-label {
+        font-size: 0.6rem;
+        bottom: 8px;
+    }
+
+    .spotlight-item:hover .spotlight-label,
+    .spotlight-item:focus .spotlight-label,
+    .spotlight-item:active .spotlight-label {
+        font-size: 0.85rem;
+    }
+
 
     .sponsor-item {
         flex: 0 0 70px;
