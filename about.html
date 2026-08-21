@@ -8,7 +8,6 @@
     <meta name="description" content="About Us - UTAR E-Sports Club">
     <title>About Us | UTAR E-Sports Club</title>
     <link rel="stylesheet" href="css/style.css">
-    
 </head>
 <body>
     <div id="pageContent">
@@ -141,7 +140,7 @@
 
                         </div>
 
-                        <button type="submit" class="btn-generic primary">Send Message</button>
+                        <button type="submit" class="btn-generic primary" id="contactSubmitBtn">Send Message</button>
                     </form>
                 </div>
 
@@ -167,6 +166,131 @@
     <script src="js/scroll-reveal.js"></script>
     <script src="js/main.js"></script>
 
+    <!-- CONTACT FORM -> GOOGLE FORM -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+        //   Google form to see user sent message
+            const GOOGLE_FORM_ID = '1FAIpQLSfpy1ZzTRlLHwW-dX1HJ_NJRPes5jJcgNgWeu98XZst7tVIOw'; 
+            const ENTRY_NAME = 'entry.720511388';    
+            const ENTRY_EMAIL = 'entry.1923506451';    
+            const ENTRY_MESSAGE ='entry.364343603';    
+
+            const GOOGLE_FORM_ACTION = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
+
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('contactSubmitBtn');
+
+            if (!contactForm) return;
+
+            // ---- Toast notification ----
+            function showToast(type, title, text) {
+                // remove any existing toast first
+                const existing = document.querySelector('.form-toast');
+                if (existing) existing.remove();
+
+                const toast = document.createElement('div');
+                toast.className = 'form-toast' + (type === 'error' ? ' error' : '');
+
+                const icon = document.createElement('div');
+                icon.className = 'form-toast-icon';
+                icon.textContent = type === 'error' ? '⚠️' : '✅';
+
+                const body = document.createElement('div');
+                body.className = 'form-toast-body';
+
+                const titleEl = document.createElement('div');
+                titleEl.className = 'form-toast-title';
+                titleEl.textContent = title;
+
+                const textEl = document.createElement('div');
+                textEl.className = 'form-toast-text';
+                textEl.textContent = text;
+
+                body.appendChild(titleEl);
+                body.appendChild(textEl);
+
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'form-toast-close';
+                closeBtn.setAttribute('aria-label', 'Close');
+                closeBtn.textContent = '✕';
+                closeBtn.addEventListener('click', () => hideToast(toast));
+
+                toast.appendChild(icon);
+                toast.appendChild(body);
+                toast.appendChild(closeBtn);
+
+                document.body.appendChild(toast);
+
+                // trigger enter animation
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => toast.classList.add('show'));
+                });
+
+                // auto dismiss after 4.5s
+                setTimeout(() => hideToast(toast), 4500);
+            }
+
+            function hideToast(toast) {
+                if (!toast || !toast.parentNode) return;
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }
+
+            // ---- Submit handler ----
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email) {
+                    showToast('error', 'Missing Info', 'Please fill in your name and email.');
+                    return;
+                }
+
+                if (GOOGLE_FORM_ID === 'YOUR_FORM_ID_HERE') {
+                    console.warn('⚠️ Google Form has not been configured yet. Please set GOOGLE_FORM_ID / ENTRY_* in about.html.');
+                    showToast('error', 'Not Configured', 'Google Form is not set up yet.');
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append(ENTRY_NAME, name);
+                formData.append(ENTRY_EMAIL, email);
+                formData.append(ENTRY_MESSAGE, message);
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                }
+
+                // Google Forms does not allow reading the response (CORS-blocked),
+                // so we submit in 'no-cors' mode and treat a resolved fetch as success.
+                fetch(GOOGLE_FORM_ACTION, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                })
+                    .then(function () {
+                        showToast('success', 'Message Sent!', "Thanks " + name + ", we'll get back to you soon.");
+                        contactForm.reset();
+                    })
+                    .catch(function (error) {
+                        console.error('❌ Failed to send message:', error);
+                        showToast('error', 'Send Failed', 'Something went wrong. Please try again later.');
+                    })
+                    .finally(function () {
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Send Message';
+                        }
+                    });
+            });
+
+        });
+    </script>
 
 </body>
 
