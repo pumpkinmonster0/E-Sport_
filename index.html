@@ -56,45 +56,82 @@
 
 
         <section class="page-section match-section">
-            <h2 class="section-title" style="text-align:center;">UPCOMING MATCH</h2>
-            <p style="text-align:center"><small>Don't miss a second of the hype.<br>Check out the upcoming matches, mark
-                    your calendar, and watch the live streams!</small></p>
-            <div class="match-cards">
-                <div class="match-card">
-                    <img src="images/index/pexels-alef-morais-336305364-34179707.jpg" alt="Match 1">
-                    <h3 span class="badge red">FINAL</h3>
-                    <h3 span class="badge green">ON-GOING</h3>
+            <h2 class="section-title" style="text-align:center;">LIVE MATCH</h2>
+            <p style="text-align:center"><small>Don't miss a second of the hype.<br>Countdown to kickoff, then watch the
+                    stream right here on the page!</small></p>
+
+            <!--
+                Each .match-card below carries two data attributes that drive the countdown script
+                (js/live-countdown.js):
+                  data-start     = match start time in ISO 8601 format, e.g. "2026-08-25T14:00:00+08:00"
+                  data-video-id  = the YouTube VIDEO ID (the part after /embed/ in your embed link)
+                  data-end       = OPTIONAL. Match end time in ISO 8601 format. Once this time is
+                                    reached the card switches to an "ENDED / WATCH REPLAY" state.
+                                    Leave it off if you don't know the end time yet — the card will
+                                    just stay "LIVE" once data-start passes, same as before.
+
+                You don't need a "future match database" for this — just type in the date/time your
+                club already knows for each match, and drop in that match's YouTube video ID once you
+                have it (a scheduled premiere / an already-live video both work). The script does the
+                rest: it counts down automatically, and the moment data-start is reached it swaps the
+                thumbnail for the live iframe on its own, no page reload needed. YouTube automatically
+                turns the same video ID into a replay once the stream ends, so the same iframe/link
+                keeps working after data-end too — the card just relabels itself.
+            -->
+            <div class="match-cards match-list">
+                <div class="match-card live-match-card" data-start="2026-08-20T10:00:00+08:00" data-end="2026-08-20T11:45:00+08:00" data-video-id="mXtzz7UHftw">
+                    <div class="match-media">
+                        <img src="images/index/pexels-alef-morais-336305364-34179707.jpg" alt="PUBG Final" class="match-thumb">
+                        <div class="countdown-overlay">
+                            <span class="countdown-label">STARTS IN</span>
+                            <span class="countdown-timer">00:00:00:00</span>
+                        </div>
+                    </div>
+                    <h3><span class="badge red">Round 1</span> <span class="badge status-badge">LOADING</span></h3>
+                    <h3 style="padding-left: 5px;">DOTA2</h3>
+                    <p style="padding-left: 5px;">2026.08.20 10:00 ｜ <span class="status-text">--</span></p>
+                </div>
+                <div class="match-card live-match-card" data-start="2026-08-20T19:00:00+08:00" data-end="2026-08-2T21:00:00+08:00" data-video-id="cwgPyxlrH_Y">
+                    <div class="match-media">
+                        <img src="images/index/pexels-rdne-7915221.jpg" alt="CS-GO Semi-Final" class="match-thumb">
+                        <div class="countdown-overlay">
+                            <span class="countdown-label">STARTS IN</span>
+                            <span class="countdown-timer">00:00:00:00</span>
+                        </div>
+                    </div>
+                    <h3><span class="badge red">SEMI-FINAL</span> <span class="badge status-badge">LOADING</span></h3>
+                    <h3 style="padding-left: 5px;">DOTA2</h3>
+                    <p style="padding-left: 5px;">2026.08.21 10:00 ｜ <span class="status-text">--</span></p>
+                </div>
+                <div class="match-card live-match-card" data-start="2026-09-15T21:00:00+08:00" data-video-id="cwgPyxlrH_Y">
+                    <div class="match-media">
+                        <img src="images/index/pexels-yankrukov-9072205.jpg" alt="PUBG Final" class="match-thumb">
+                        <div class="countdown-overlay">
+                            <span class="countdown-label">STARTS IN</span>
+                            <span class="countdown-timer">00:00:00:00</span>
+                        </div>
+                    </div>
+                    <h3><span class="badge red">FINAL</span> <span class="badge status-badge">LOADING</span></h3>
                     <h3 style="padding-left: 5px;">PUBG</h3>
-                    <p style="padding-left: 5px;">2026.08.20 19:00 ｜ LIVE</p>
+                    <p style="padding-left: 5px;">2026.09.15 21:00 ｜ <span class="status-text">--</span></p>
                 </div>
-                <div class="match-card">
-                    <img src="images/index/pexels-rdne-7915221.jpg" alt="Match 2">
-                    <h3 span class="badge red">SEMI-FINAL</h3>
-                    <h3 span class="badge yellow">FUTURE</h3>
-                    <h3 style="padding-left: 5px;">CS-GO</h3>
-                    <p style="padding-left: 5px;">2026.08.22 15:00 ｜ LIVE</p>
-                </div>
-            </div>
-            <div class="match-cards">
-                <div class="match-card">
-                    <img src="images/index/pexels-yankrukov-9072205.jpg" alt="Match 3">
-                    <h3><span class="badge red">FINAL</span></h3>
-                    <h3 span class="badge   yellow">FUTURE</h3>
-                    <h3 style="padding-left: 5px;">PUBG</h3>
-                    <p style="padding-left: 5px;">2026.08.25 14:00 ｜ LIVE</p>
-                </div>
-                <div class="match-card">
-                    <img src="images/index//pexels-vladimirsrajber-19228385.jpg" alt="Match 4">
-                    <h3 span class="badge red">SEMI-FINAL</h3>
-                    <h3 span class="badge yellow">FUTURE</h3>
+                <div class="match-card live-match-card" data-start="2026-10-05T18:00:00+08:00" data-video-id="cwgPyxlrH_Y">
+                    <div class="match-media">
+                        <img src="images/index/pexels-vladimirsrajber-19228385.jpg" alt="DOTA 2 Semi-Final" class="match-thumb">
+                        <div class="countdown-overlay">
+                            <span class="countdown-label">STARTS IN</span>
+                            <span class="countdown-timer">00:00:00:00</span>
+                        </div>
+                    </div>
+                    <h3><span class="badge red">SEMI-FINAL</span> <span class="badge status-badge">LOADING</span></h3>
                     <h3 style="padding-left: 5px;">DOTA 2</h3>
-                    <p style="padding-left: 5px;">2026.09.11 21:00 ｜ LIVE</p>
+                    <p style="padding-left: 5px;">2026.10.05 18:00 ｜ <span class="status-text">--</span></p>
                 </div>
             </div>
             <div style="text-align:center;">
                 <a href="schedule.html" class="see-all-link">SEE ALL</a>
             </div>
-            
+
         </section>
 
         <section class="page-section">
@@ -165,8 +202,9 @@
     <script src="js/neon.js"></script>
     <script src="js/scroll-reveal.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/live-countdown.js"></script>
 
-    //ensure safari can work
+    <!-- ensure safari can work -->
         <script>
         document.addEventListener('DOMContentLoaded', function() {
             const spotlightItems = document.querySelectorAll('.spotlight-item');

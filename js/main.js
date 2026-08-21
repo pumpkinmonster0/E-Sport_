@@ -228,52 +228,66 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('MUSIC PLAYER FULLY LOADED (persists across page navigation)');
 
 
-    //youtube and the music
-    let ytPlayingCount = 0;
-    let musicPausedByYT = null;
+let ytPlayingCount = 0;
+let musicPausedByYT = null;
+const ytPlayers = {}; // iframe.id -> YT.Player instance
 
-    function loadYouTubeAPI() {
-        const iframes = document.querySelectorAll('iframe.yt-embed');
-        if (iframes.length === 0) {
-            console.log('No YouTube iframe (.yt-embed) found, skip YouTube integration');
-            return;
-        }
-
-        if (window.YT && window.YT.Player) {
-            initYouTubePlayers();
-            return;
-        }
-        if (document.getElementById('youtube-iframe-api')) return;
-
-        const tag = document.createElement('script');
-        tag.id = 'youtube-iframe-api';
-        tag.src = 'https://www.youtube.com/iframe_api';
-        document.head.appendChild(tag);
-
-        window.onYouTubeIframeAPIReady = initYouTubePlayers;
+function loadYouTubeAPI() {
+    const iframes = document.querySelectorAll('iframe.yt-embed');
+    if (iframes.length === 0) {
+        console.log('No YouTube iframe (.yt-embed) found, skip YouTube integration');
+        return;
     }
 
-    function initYouTubePlayers() {
-        const iframes = document.querySelectorAll('iframe.yt-embed');
-        iframes.forEach((iframe, index) => {
-            //ensure id
-            if (!iframe.id) {
-                iframe.id = `yt-embed-${index}-${Date.now()}`;
-            }
+    if (window.YT && window.YT.Player) {
+        initYouTubePlayers();
+        return;
+    }
+    if (document.getElementById('youtube-iframe-api')) return;
 
-            if (iframe.src.indexOf('enablejsapi=1') === -1) {
-                const sep = iframe.src.indexOf('?') === -1 ? '?' : '&';
-                iframe.src = iframe.src + sep + 'enablejsapi=1';
-            }
+    const tag = document.createElement('script');
+    tag.id = 'youtube-iframe-api';
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
 
-            new YT.Player(iframe.id, {
-                events: {
-                    onStateChange: onYouTubeStateChange
-                }
-            });
+    window.onYouTubeIframeAPIReady = initYouTubePlayers;
+}
+
+function initYouTubePlayers() {
+    const iframes = document.querySelectorAll('iframe.yt-embed');
+    iframes.forEach((iframe, index) => {
+        if (!iframe.id) {
+            iframe.id = `yt-embed-${index}-${Date.now()}`;
+        }
+
+        if (iframe.src && iframe.src.indexOf('enablejsapi=1') === -1) {
+            const sep = iframe.src.indexOf('?') === -1 ? '?' : '&';
+            iframe.src = iframe.src + sep + 'enablejsapi=1';
+        }
+
+        const player = new YT.Player(iframe.id, {
+            events: {
+                onStateChange: onYouTubeStateChange
+            }
         });
-        console.log(`YouTube <-> music integration ready (${iframes.length} video(s))`);
+        ytPlayers[iframe.id] = player;
+    });
+    console.log(`YouTube <-> music integration ready (${iframes.length} video(s))`);
+}
+
+window.setYouTubeVideo = function (iframeId, videoId) {
+    const iframe = document.getElementById(iframeId);
+    if (!iframe) return;
+
+    const player = ytPlayers[iframeId];
+    if (player && typeof player.cueVideoById === 'function') {
+        player.cueVideoById(videoId);
+    } else if (player && typeof player.loadVideoById === 'function') {
+        player.loadVideoById(videoId);
+    } else {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
     }
+};
 
     function onYouTubeStateChange(event) {
 
