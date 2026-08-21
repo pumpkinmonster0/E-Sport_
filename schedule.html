@@ -749,7 +749,7 @@
             }
 
             //    CREATE CALENDAR EVENT
-            function createCalendarEvent(event) {
+            function createCalendarEvent(dateKey,event) {
                 const $eventBox = $("<div>").addClass("calendar-event");
 
                 $("<div>")
@@ -772,6 +772,13 @@
                     .text(event.description)
                     .appendTo($eventBox);
 
+                     if (event.status === "ON-GOING" || event.status === "FUTURE" || event.status === "ENDED") {
+        const eventId = dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
+        $eventBox.on("click", function () {
+            window.location.href = "tournament-details.html?id=" + encodeURIComponent(eventId);
+        });
+        $eventBox.css("cursor", "pointer");
+    }
                     
                 return $eventBox;
             }
@@ -805,7 +812,7 @@
                         $dayElement.css("border", "2px solid #e94560");
                         filteredEvents[dateKey].forEach(function (event) {
                             visibleEventCount++;
-                            $dayElement.append(createCalendarEvent(event));
+                            $dayElement.append(createCalendarEvent(dateKey,event));
                         });
                     } else {
                         $("<div>").addClass("no-event").text("No Event").appendTo($dayElement);
