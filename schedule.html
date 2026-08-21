@@ -646,6 +646,10 @@
                 );
             }
 
+            function createEventId(dateKey, event) {
+            return dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
+            }
+
             //    CREATE YEAR FILTER
             function createYearFilter() {
                 const years = Object.keys(events)
@@ -889,6 +893,16 @@
                 $body.append($title).append($time).append($desc).append($info);
 
                 $card.append($image).append($body);
+                if (event.status === "ON-GOING" || event.status === "FUTURE") {
+        const eventId = dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
+        $card.on("click", function () {
+            window.location.href = "tournament-detail.html?id=" + encodeURIComponent(eventId);
+        });
+        $card.css("cursor", "pointer");
+    }
+
+
+                
                 return $card;
             }
 
