@@ -2,2225 +2,795 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Tournament Details | E-sports"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tournament Details | E-sports">
     <title>Tournament Details | E-sports</title>
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- =====================================================
-         GOOGLE FONT
-    ====================================================== -->
+    <!-- Existing CSS -->
+    <link rel="stylesheet" href="css/style.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <!-- =====================================================
-         EXISTING CSS
-    ====================================================== -->
-
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
-
-    <!-- =====================================================
-         TOURNAMENT DETAILS PAGE CSS
-    ====================================================== -->
-
+    <!-- Tournament Details Page CSS -->
     <style>
-
         /* =====================================================
            PAGE
         ===================================================== */
-
         .tournament-page {
-
             width: 100%;
-
             box-sizing: border-box;
-
             padding: 20px 25px 40px 25px;
-
         }
-
 
         .tournament-page h1 {
-
             font-size: 2.2rem;
-
             color: #e8e8e8;
-
             margin-top: 0;
-
             margin-bottom: 5px;
-
+            font-family: 'Orbitron', 'Courier New', monospace;
         }
-
 
         .tournament-page h2 {
-
             font-size: 1.5rem;
-
             color: #e8e8e8;
-
             margin-top: 28px;
-
             margin-bottom: 14px;
-
+            font-family: 'Orbitron', 'Courier New', monospace;
         }
-
 
         .tournament-subtitle {
-
             color: #888;
-
             font-size: 1rem;
-
             margin-top: 0;
-
             margin-bottom: 15px;
-
         }
-
 
         .tournament-page hr {
-
             border: none;
-
             border-top: 1px solid #333;
-
             margin: 15px 0 20px 0;
-
         }
-
 
         /* =====================================================
            BACK BUTTON
         ===================================================== */
-
         .back-button {
-
             display: inline-block;
-
             padding: 9px 14px;
-
             margin-bottom: 15px;
-
             border-radius: 7px;
-
             background: #1a1a2e;
-
             border: 1px solid #444;
-
             color: #fff;
-
             text-decoration: none;
-
             font-size: .8rem;
-
             transition: .2s ease;
-
         }
-
 
         .back-button:hover {
-
             background: #e94560;
-
             border-color: #e94560;
-
             color: #fff;
-
         }
-
 
         /* =====================================================
            INFORMATION GRID
         ===================================================== */
-
         .detail-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(200px, 1fr)
-                );
-
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
-
             width: 100%;
-
         }
-
 
         /* =====================================================
            DETAIL CARD
         ===================================================== */
-
         .detail-card {
-
             width: 100%;
-
             min-width: 0;
-
-            background:
-                rgba(26,26,46,.85);
-
-            border:
-                1px solid #3a3a3a;
-
+            background: rgba(26, 26, 46, .85);
+            border: 1px solid #3a3a3a;
             border-radius: 10px;
-
             overflow: hidden;
-
             box-sizing: border-box;
-
-            transition:
-                transform .2s ease,
-                box-shadow .2s ease,
-                border-color .2s ease;
-
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
         }
-
 
         .detail-card:hover {
-
-            transform:
-                translateY(-4px);
-
+            transform: translateY(-4px);
             border-color: #e94560;
-
-            box-shadow:
-                0 8px 20px
-                rgba(0,0,0,.35);
-
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
         }
-
 
         /* =====================================================
            CARD ICON
         ===================================================== */
-
         .detail-card-top {
-
             height: 90px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #e94560,
-                    #1a1a2e
-                );
-
+            background: linear-gradient(135deg, #e94560, #1a1a2e);
         }
-
 
         .detail-icon {
-
             font-size: 2.2rem;
-
         }
-
 
         /* =====================================================
            CARD BODY
         ===================================================== */
-
         .detail-card-body {
-
             padding: 14px;
-
         }
-
 
         .detail-card-body h3 {
-
             margin: 0 0 7px 0;
-
             color: #fff;
-
             font-size: .95rem;
-
         }
-
 
         .detail-value {
-
             margin: 0;
-
             color: #ccc;
-
             font-size: .82rem;
-
             line-height: 1.5;
-
             word-break: break-word;
-
         }
-
 
         /* =====================================================
            DESCRIPTION
         ===================================================== */
-
         .description-card {
-
             width: 100%;
-
-            background:
-                rgba(26,26,46,.85);
-
-            border:
-                1px solid #3a3a3a;
-
+            background: rgba(26, 26, 46, .85);
+            border: 1px solid #3a3a3a;
             border-radius: 10px;
-
             padding: 18px;
-
             box-sizing: border-box;
-
         }
-
 
         .description-card h3 {
-
             margin-top: 0;
-
             color: #fff;
-
             font-size: 1rem;
-
         }
-
 
         .description-card p {
-
             color: #ccc;
-
             line-height: 1.7;
-
             font-size: .85rem;
-
             margin-bottom: 0;
-
         }
-
 
         /* =====================================================
            TEAMS
         ===================================================== */
-
         .team-card {
-
             width: 100%;
-
-            background:
-                rgba(26,26,46,.85);
-
-            border:
-                1px solid #3a3a3a;
-
+            background: rgba(26, 26, 46, .85);
+            border: 1px solid #3a3a3a;
             border-radius: 10px;
-
             padding: 15px;
-
             box-sizing: border-box;
-
             text-align: center;
-
             transition: .2s ease;
-
         }
-
 
         .team-card:hover {
-
-            transform:
-                translateY(-4px);
-
+            transform: translateY(-4px);
             border-color: #4ecdc4;
-
         }
-
 
         .team-icon {
-
             font-size: 2rem;
-
             margin-bottom: 7px;
-
         }
-
 
         .team-name {
-
             color: #fff;
-
             font-weight: bold;
-
             font-size: .9rem;
-
         }
-
 
         /* =====================================================
            STATUS
         ===================================================== */
-
         .status-badge {
-
             display: inline-block;
-
             padding: 5px 10px;
-
             border-radius: 5px;
-
             font-size: .7rem;
-
             font-weight: bold;
-
             color: #fff;
-
         }
-
 
         .status-ongoing {
-
             background: #2eaa72;
-
         }
-
 
         .status-future {
-
             background: #d6a329;
-
         }
-
 
         .status-ended {
-
             background: #555;
-
         }
-
 
         /* =====================================================
            NOT FOUND
         ===================================================== */
-
         .not-found {
-
             padding: 30px;
-
             text-align: center;
-
-            background:
-                rgba(26,26,46,.85);
-
-            border:
-                1px solid #444;
-
+            background: rgba(26, 26, 46, .85);
+            border: 1px solid #444;
             border-radius: 10px;
-
             color: #ccc;
-
         }
-
 
         .not-found h2 {
-
             margin-top: 0;
-
             color: #e94560;
-
         }
-
 
         /* =====================================================
            RESPONSIVE
         ===================================================== */
-
         @media (max-width: 600px) {
-
             .tournament-page {
-
-                padding:
-                    15px;
-
+                padding: 15px;
             }
-
             .tournament-page h1 {
-
-                font-size:
-                    1.7rem;
-
+                font-size: 1.7rem;
             }
-
         }
-
     </style>
-
 </head>
 
-
 <body>
-
-
+<div id="pageContent">
     <!-- =====================================================
          TOURNAMENT PAGE
     ====================================================== -->
-
     <main class="tournament-page">
 
+        <!-- BACK TO SCHEDULE -->
+        <a href="schedule.html" class="back-button">← Back to Schedule</a>
 
-        <!-- =================================================
-             BACK TO SCHEDULE
-        ================================================== -->
-
-        <a
-            href="schedule.html"
-            class="back-button"
-        >
-            ← Back to Schedule
-        </a>
-
-
-        <!-- =================================================
-             HEADER
-        ================================================== -->
-
-        <h1 id="eventTitle">
-            Tournament Details
-        </h1>
-
-
-        <p
-            class="tournament-subtitle"
-            id="eventSubtitle"
-        >
-            Loading tournament information...
-        </p>
-
-
+        <!-- HEADER -->
+        <h1 id="eventTitle">Tournament Details</h1>
+        <p class="tournament-subtitle" id="eventSubtitle">Loading tournament information...</p>
         <hr>
 
-
-        <!-- =================================================
-             TOURNAMENT INFORMATION
-        ================================================== -->
-
-        <h2>
-            🎮 Tournament Information
-        </h2>
-
-
+        <!-- TOURNAMENT INFORMATION -->
+        <h2>🎮 Tournament Information</h2>
         <div class="detail-grid">
-
 
             <!-- GAME -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span
-                        class="detail-icon"
-                        id="gameIcon"
-                    >
-                        🎮
-                    </span>
-
+                    <span class="detail-icon" id="gameIcon">🎮</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Game
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="eventGame"
-                    >
-                        -
-                    </p>
-
+                    <h3>Game</h3>
+                    <p class="detail-value" id="eventGame">-</p>
                 </div>
-
             </div>
-
 
             <!-- DATE -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        📅
-                    </span>
-
+                    <span class="detail-icon">📅</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Date
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="eventDate"
-                    >
-                        -
-                    </p>
-
+                    <h3>Date</h3>
+                    <p class="detail-value" id="eventDate">-</p>
                 </div>
-
             </div>
-
 
             <!-- TIME -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        🕒
-                    </span>
-
+                    <span class="detail-icon">🕒</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Time
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="eventTime"
-                    >
-                        -
-                    </p>
-
+                    <h3>Time</h3>
+                    <p class="detail-value" id="eventTime">-</p>
                 </div>
-
             </div>
-
 
             <!-- ROUND -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        🏆
-                    </span>
-
+                    <span class="detail-icon">🏆</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Round
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="eventRound"
-                    >
-                        -
-                    </p>
-
+                    <h3>Round</h3>
+                    <p class="detail-value" id="eventRound">-</p>
                 </div>
-
             </div>
-
 
             <!-- STATUS -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        📢
-                    </span>
-
+                    <span class="detail-icon">📢</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Status
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="eventStatus"
-                    >
-                        -
-                    </p>
-
+                    <h3>Status</h3>
+                    <p class="detail-value" id="eventStatus">-</p>
                 </div>
-
             </div>
-
 
         </div>
 
-
-        <!-- =================================================
-             ABOUT EVENT
-        ================================================== -->
-
-        <h2>
-            📋 About This Event
-        </h2>
-
-
+        <!-- ABOUT THIS EVENT -->
+        <h2>📋 About This Event</h2>
         <div class="description-card">
-
-            <h3 id="descriptionTitle">
-                Tournament Information
-            </h3>
-
-            <p id="eventDescription">
-                -
-            </p>
-
+            <h3 id="descriptionTitle">Tournament Information</h3>
+            <p id="eventDescription">-</p>
         </div>
 
-
-        <!-- =================================================
-             MATCH INFORMATION
-        ================================================== -->
-
-        <h2>
-            ⚔️ Match Information
-        </h2>
-
-
+        <!-- MATCH INFORMATION -->
+        <h2>⚔️ Match Information</h2>
         <div class="detail-grid">
 
-
-            <!-- MATCH ROUND -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        🎯
-                    </span>
-
+                    <span class="detail-icon">🎯</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Match Round
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="matchRound"
-                    >
-                        -
-                    </p>
-
+                    <h3>Match Round</h3>
+                    <p class="detail-value" id="matchRound">-</p>
                 </div>
-
             </div>
 
-
-            <!-- MATCH STATUS -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        🔴
-                    </span>
-
+                    <span class="detail-icon">🔴</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Event Status
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="matchStatus"
-                    >
-                        -
-                    </p>
-
+                    <h3>Event Status</h3>
+                    <p class="detail-value" id="matchStatus">-</p>
                 </div>
-
             </div>
 
-
-            <!-- MATCH DATE -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        📆
-                    </span>
-
+                    <span class="detail-icon">📆</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Scheduled Date
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="matchDate"
-                    >
-                        -
-                    </p>
-
+                    <h3>Scheduled Date</h3>
+                    <p class="detail-value" id="matchDate">-</p>
                 </div>
-
             </div>
 
-
-            <!-- MATCH TIME -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        ⏰
-                    </span>
-
+                    <span class="detail-icon">⏰</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Scheduled Time
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="matchTime"
-                    >
-                        -
-                    </p>
-
+                    <h3>Scheduled Time</h3>
+                    <p class="detail-value" id="matchTime">-</p>
                 </div>
-
             </div>
-
 
         </div>
 
+        <!-- PARTICIPATING TEAMS -->
+        <h2>👥 Participating Teams</h2>
+        <div class="detail-grid" id="teamsContainer"></div>
 
-        <!-- =================================================
-             PARTICIPATING TEAMS
-        ================================================== -->
-
-        <h2>
-            👥 Participating Teams
-        </h2>
-
-
-        <div
-            class="detail-grid"
-            id="teamsContainer"
-        >
-
-        </div>
-
-
-        <!-- =================================================
-             EVENT INFORMATION
-        ================================================== -->
-
-        <h2>
-            📍 Event Information
-        </h2>
-
-
+        <!-- EVENT INFORMATION -->
+        <h2>📍 Event Information</h2>
         <div class="detail-grid">
 
-
-            <!-- VENUE -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        📍
-                    </span>
-
+                    <span class="detail-icon">📍</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Venue
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="eventVenue"
-                    >
-                        -
-                    </p>
-
+                    <h3>Venue</h3>
+                    <p class="detail-value" id="eventVenue">-</p>
                 </div>
-
             </div>
 
-
-            <!-- PRIZE POOL -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        💰
-                    </span>
-
+                    <span class="detail-icon">💰</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Prize Pool
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="eventPrize"
-                    >
-                        -
-                    </p>
-
+                    <h3>Prize Pool</h3>
+                    <p class="detail-value" id="eventPrize">-</p>
                 </div>
-
             </div>
 
-
-            <!-- TEAM SIZE -->
-
             <div class="detail-card">
-
                 <div class="detail-card-top">
-
-                    <span class="detail-icon">
-                        👤
-                    </span>
-
+                    <span class="detail-icon">👤</span>
                 </div>
-
                 <div class="detail-card-body">
-
-                    <h3>
-                        Team Size
-                    </h3>
-
-                    <p
-                        class="detail-value"
-                        id="eventTeamSize"
-                    >
-                        -
-                    </p>
-
+                    <h3>Team Size</h3>
+                    <p class="detail-value" id="eventTeamSize">-</p>
                 </div>
-
             </div>
-
 
         </div>
 
-
-        <!-- =================================================
-             ACTION
-        ================================================== -->
-
-        <h2>
-            🎮 Event Action
-        </h2>
-
-
-        <div
-            class="description-card"
-            id="eventAction"
-        >
-
-            <p>
-                Select an event from the schedule to view
-                complete tournament information.
-            </p>
-
+        <!-- EVENT ACTION -->
+        <h2>🎮 Event Action</h2>
+        <div class="description-card" id="eventAction">
+            <p>Select an event from the schedule to view complete tournament information.</p>
             <br>
-
-            <a
-                href="schedule.html"
-                class="back-button"
-            >
-                ← Return to Schedule
-            </a>
-
+            <a href="schedule.html" class="back-button">← Return to Schedule</a>
         </div>
-
 
     </main>
 
-
     <!-- =====================================================
-         NAVBAR ONLY
-         
-         IMPORTANT:
-         NO shell.js
-         NO main.js
-         NO controller
+         NAVBAR ONLY（沒有 shell.js / main.js / controller）
     ====================================================== -->
-
-    <script src="js/navbar.js"></script>
-
+     <script src="js/navbar.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/neon.js"></script>
+    <script src="js/scroll-reveal.js"></script>
+    <script src="js/main.js"></script>
+   
 
     <!-- =====================================================
          TOURNAMENT DETAILS JAVASCRIPT
+         ✅ 直接使用 schedule.html 的 events 資料
     ====================================================== -->
-
     <script>
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
-
-
-                /* =================================================
-                   TOURNAMENT DATA
-                ================================================= */
-
-                const tournamentEvents = {
-
-
-                    event01: {
-
-                        game: "PUBG",
-
-                        date: "2026-08-20",
-
-                        time: "19:00",
-
-                        round: "FINAL",
-
-                        status: "ON-GOING",
-
-                        description:
-                            "PUBG Championship Final featuring the top teams competing for the championship title.",
-
-                        venue:
-                            "Curtin Games & Esports Arena",
-
-                        prize:
-                            "RM 5,000",
-
-                        teamSize:
-                            "4 Players",
-
-                        teams: [
-                            "Team Phoenix",
-                            "Team Titans",
-                            "Cyber Wolves",
-                            "Red Dragons"
-                        ]
-
-                    },
-
-
-                    event02: {
-
-                        game: "CS-GO",
-
-                        date: "2026-08-22",
-
-                        time: "15:00",
-
-                        round: "SEMI-FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "CS-GO Semi-Final tournament featuring four competitive teams.",
-
-                        venue:
-                            "Curtin Games & Esports Arena",
-
-                        prize:
-                            "RM 4,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Team Alpha",
-                            "Team Nova",
-                            "Shadow Force",
-                            "Cyber Legends"
-                        ]
-
-                    },
-
-
-                    event03: {
-
-                        game: "Dota 2",
-
-                        date: "2026-08-23",
-
-                        time: "17:00",
-
-                        round: "FINAL",
-
-                        status: "ON-GOING",
-
-                        description:
-                            "Dota 2 Championship Final featuring the strongest teams in the club.",
-
-                        venue:
-                            "Main Esports Hall",
-
-                        prize:
-                            "RM 6,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Radiant Warriors",
-                            "Dire Kings",
-                            "Ancient Guardians",
-                            "Dota Legends"
-                        ]
-
-                    },
-
-
-                    event04: {
-
-                        game: "Valorant",
-
-                        date: "2026-08-24",
-
-                        time: "16:00",
-
-                        round: "QUARTER-FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "Valorant Quarter-Final tournament with eight teams competing for a place in the semi-final.",
-
-                        venue:
-                            "Curtin Games & Esports Arena",
-
-                        prize:
-                            "RM 3,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Valorant Kings",
-                            "Night Raiders",
-                            "Phoenix Five",
-                            "Cyber Strike"
-                        ]
-
-                    },
-
-
-                    event05: {
-
-                        game: "PUBG",
-
-                        date: "2026-08-25",
-
-                        time: "14:00",
-
-                        round: "QUARTER-FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "PUBG Quarter-Final match between the top qualifying teams.",
-
-                        venue:
-                            "Online / Esports Arena",
-
-                        prize:
-                            "RM 3,000",
-
-                        teamSize:
-                            "4 Players",
-
-                        teams: [
-                            "Storm Hunters",
-                            "Night Owls",
-                            "PUBG Masters",
-                            "Fire Squad"
-                        ]
-
-                    },
-
-
-                    event06: {
-
-                        game: "Mobile Legends",
-
-                        date: "2026-08-26",
-
-                        time: "18:00",
-
-                        round: "SEMI-FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "Mobile Legends Semi-Final match featuring four strong teams.",
-
-                        venue:
-                            "Main Esports Hall",
-
-                        prize:
-                            "RM 4,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "MLBB Warriors",
-                            "Team Mythic",
-                            "Mobile Titans",
-                            "Legend Squad"
-                        ]
-
-                    },
-
-
-                    event07: {
-
-                        game: "CS-GO",
-
-                        date: "2026-08-27",
-
-                        time: "19:30",
-
-                        round: "FINAL",
-
-                        status: "ON-GOING",
-
-                        description:
-                            "CS-GO Championship Final to determine the tournament winner.",
-
-                        venue:
-                            "Curtin Games & Esports Arena",
-
-                        prize:
-                            "RM 5,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Cyber Wolves",
-                            "Team Alpha",
-                            "Shadow Force",
-                            "Nova Esports"
-                        ]
-
-                    },
-
-
-                    event08: {
-
-                        game: "LOL",
-
-                        date: "2026-08-28",
-
-                        time: "20:00",
-
-                        round: "FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "League of Legends Championship Final.",
-
-                        venue:
-                            "Main Esports Hall",
-
-                        prize:
-                            "RM 5,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "League Titans",
-                            "Summoner Kings",
-                            "Dragon Force",
-                            "Nexus Warriors"
-                        ]
-
-                    },
-
-
-                    event09: {
-
-                        game: "Dota 2",
-
-                        date: "2026-08-29",
-
-                        time: "16:00",
-
-                        round: "SEMI-FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "Dota 2 Semi-Final tournament.",
-
-                        venue:
-                            "Main Esports Hall",
-
-                        prize:
-                            "RM 4,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Ancient Guardians",
-                            "Radiant Warriors",
-                            "Dota Legends",
-                            "Dire Kings"
-                        ]
-
-                    },
-
-
-                    event10: {
-
-                        game: "Valorant",
-
-                        date: "2026-08-30",
-
-                        time: "19:00",
-
-                        round: "FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "Valorant Championship Final.",
-
-                        venue:
-                            "Curtin Games & Esports Arena",
-
-                        prize:
-                            "RM 5,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Phoenix Five",
-                            "Night Raiders",
-                            "Cyber Strike",
-                            "Valorant Kings"
-                        ]
-
-                    },
-
-
-                    event11: {
-
-                        game: "PUBG",
-
-                        date: "2026-09-01",
-
-                        time: "18:00",
-
-                        round: "SEMI-FINAL",
-
-                        status: "ON-GOING",
-
-                        description:
-                            "PUBG Semi-Final match.",
-
-                        venue:
-                            "Online / Esports Arena",
-
-                        prize:
-                            "RM 4,000",
-
-                        teamSize:
-                            "4 Players",
-
-                        teams: [
-                            "Storm Hunters",
-                            "Red Dragons",
-                            "Team Phoenix",
-                            "Fire Squad"
-                        ]
-
-                    },
-
-
-                    event12: {
-
-                        game: "CS-GO",
-
-                        date: "2026-09-03",
-
-                        time: "20:00",
-
-                        round: "QUARTER-FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "CS-GO Quarter-Final tournament.",
-
-                        venue:
-                            "Curtin Games & Esports Arena",
-
-                        prize:
-                            "RM 3,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Team Nova",
-                            "Cyber Legends",
-                            "Shadow Force",
-                            "Team Alpha"
-                        ]
-
-                    },
-
-
-                    event13: {
-
-                        game: "Dota 2",
-
-                        date: "2026-09-05",
-
-                        time: "15:30",
-
-                        round: "FINAL",
-
-                        status: "ON-GOING",
-
-                        description:
-                            "Dota 2 Championship Final.",
-
-                        venue:
-                            "Main Esports Hall",
-
-                        prize:
-                            "RM 6,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Dota Legends",
-                            "Dire Kings",
-                            "Ancient Guardians",
-                            "Radiant Warriors"
-                        ]
-
-                    },
-
-
-                    event14: {
-
-                        game: "PUBG",
-
-                        date: "2026-09-07",
-
-                        time: "17:00",
-
-                        round: "FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "PUBG Final tournament.",
-
-                        venue:
-                            "Curtin Games & Esports Arena",
-
-                        prize:
-                            "RM 5,000",
-
-                        teamSize:
-                            "4 Players",
-
-                        teams: [
-                            "Team Phoenix",
-                            "Storm Hunters",
-                            "Red Dragons",
-                            "PUBG Masters"
-                        ]
-
-                    },
-
-
-                    event15: {
-
-                        game: "LOL",
-
-                        date: "2026-09-08",
-
-                        time: "19:00",
-
-                        round: "SEMI-FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "League of Legends Semi-Final match.",
-
-                        venue:
-                            "Main Esports Hall",
-
-                        prize:
-                            "RM 4,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "League Titans",
-                            "Dragon Force",
-                            "Nexus Warriors",
-                            "Summoner Kings"
-                        ]
-
-                    },
-
-
-                    event16: {
-
-                        game: "CS-GO",
-
-                        date: "2026-09-09",
-
-                        time: "19:00",
-
-                        round: "SEMI-FINAL",
-
-                        status: "ON-GOING",
-
-                        description:
-                            "CS-GO Semi-Final match.",
-
-                        venue:
-                            "Curtin Games & Esports Arena",
-
-                        prize:
-                            "RM 4,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Cyber Wolves",
-                            "Nova Esports",
-                            "Team Alpha",
-                            "Shadow Force"
-                        ]
-
-                    },
-
-
-                    event17: {
-
-                        game: "Mobile Legends",
-
-                        date: "2026-09-10",
-
-                        time: "18:00",
-
-                        round: "SEMI-FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "Mobile Legends Semi-Final tournament.",
-
-                        venue:
-                            "Main Esports Hall",
-
-                        prize:
-                            "RM 4,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "MLBB Warriors",
-                            "Mobile Titans",
-                            "Team Mythic",
-                            "Legend Squad"
-                        ]
-
-                    },
-
-
-                    event18: {
-
-                        game: "Dota 2",
-
-                        date: "2026-09-11",
-
-                        time: "21:00",
-
-                        round: "QUARTER-FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "Dota 2 Quarter-Final match.",
-
-                        venue:
-                            "Main Esports Hall",
-
-                        prize:
-                            "RM 3,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Dota Legends",
-                            "Ancient Guardians",
-                            "Dire Kings",
-                            "Radiant Warriors"
-                        ]
-
-                    },
-
-
-                    event19: {
-
-                        game: "Mobile Legends",
-
-                        date: "2026-09-15",
-
-                        time: "19:00",
-
-                        round: "FINAL",
-
-                        status: "FUTURE",
-
-                        description:
-                            "Mobile Legends Championship Final.",
-
-                        venue:
-                            "Curtin Games & Esports Arena",
-
-                        prize:
-                            "RM 5,000",
-
-                        teamSize:
-                            "5 Players",
-
-                        teams: [
-                            "Team Mythic",
-                            "MLBB Warriors",
-                            "Mobile Titans",
-                            "Legend Squad"
-                        ]
-
-                    }
-
-                };
-
-
-                /* =================================================
-                   GAME ICON
-                ================================================== */
-
-                const gameIcons = {
-
-                    "PUBG": "🎯",
-
-                    "CS-GO": "🔫",
-
-                    "Dota 2": "⚔️",
-
-                    "Valorant": "🎯",
-
-                    "LOL": "🧙",
-
-                    "Mobile Legends": "⚔️"
-
-                };
-
-
-                /* =================================================
-                   GET URL
-                ================================================== */
-
-                const urlParams =
-                    new URLSearchParams(
-                        window.location.search
-                    );
-
-
-                let eventId =
-                    urlParams.get("event");
-
-
-                let selectedEvent = null;
-
-
-                /* =================================================
-                   METHOD 1:
-                   ?event=event01
-                ================================================= */
-
-                if (
-                    eventId &&
-                    tournamentEvents[eventId]
-                ) {
-
-                    selectedEvent =
-                        tournamentEvents[eventId];
-
-                }
-
-
-                /* =================================================
-                   METHOD 2:
-                   DATE + GAME + ROUND + TIME
-                ================================================= */
-
-                if (!selectedEvent) {
-
-                    const date =
-                        urlParams.get("date");
-
-                    const game =
-                        urlParams.get("game");
-
-                    const round =
-                        urlParams.get("round");
-
-                    const time =
-                        urlParams.get("time");
-
-
-                    Object.keys(
-                        tournamentEvents
-                    ).forEach(
-                        function (key) {
-
-                            const event =
-                                tournamentEvents[key];
-
-
-                            if (
-
-                                event.date === date
-
-                                &&
-
-                                event.game === game
-
-                                &&
-
-                                event.round === round
-
-                                &&
-
-                                event.time === time
-
-                            ) {
-
-                                eventId =
-                                    key;
-
-                                selectedEvent =
-                                    event;
-
-                            }
-
-                        }
-                    );
-
-                }
-
-
-                /* =================================================
-                   NOT FOUND
-                ================================================== */
-
-                if (!selectedEvent) {
-
-                    document.querySelector(
-                        ".tournament-page"
-                    ).innerHTML = `
-
-                        <a
-                            href="schedule.html"
-                            class="back-button"
-                        >
-                            ← Back to Schedule
-                        </a>
-
-                        <div class="not-found">
-
-                            <h2>
-                                Tournament Not Found
-                            </h2>
-
-                            <p>
-                                The selected tournament
-                                could not be found.
-                            </p>
-
-                            <p>
-                                Please return to the schedule
-                                and click an event card again.
-                            </p>
-
-                        </div>
-
-                    `;
-
-                    return;
-
-                }
-
-
-                /* =================================================
-                   FORMAT DATE
-                ================================================== */
-
-                function formatDate(
-                    dateString
-                ) {
-
-                    const date =
-                        new Date(
-                            dateString +
-                            "T00:00:00"
-                        );
-
-
-                    return date.toLocaleDateString(
-                        "en-MY",
-                        {
-                            weekday: "long",
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric"
-                        }
-                    );
-
-                }
-
-
-                /* =================================================
-                   TITLE
-                ================================================== */
-
-                const title =
-
-                    selectedEvent.game
-                    +
-                    " "
-                    +
-                    selectedEvent.round
-                    +
-                    " Tournament";
-
-
-                document.getElementById(
-                    "eventTitle"
-                ).textContent =
-                    title;
-
-
-                document.getElementById(
-                    "eventSubtitle"
-                ).textContent =
-                    selectedEvent.description;
-
-
-                /* =================================================
-                   GAME
-                ================================================== */
-
-                document.getElementById(
-                    "eventGame"
-                ).textContent =
-                    selectedEvent.game;
-
-
-                document.getElementById(
-                    "gameIcon"
-                ).textContent =
-                    gameIcons[
-                        selectedEvent.game
-                    ] || "🎮";
-
-
-                /* =================================================
-                   DATE
-                ================================================== */
-
-                document.getElementById(
-                    "eventDate"
-                ).textContent =
-                    formatDate(
-                        selectedEvent.date
-                    );
-
-
-                document.getElementById(
-                    "matchDate"
-                ).textContent =
-                    formatDate(
-                        selectedEvent.date
-                    );
-
-
-                /* =================================================
-                   TIME
-                ================================================== */
-
-                document.getElementById(
-                    "eventTime"
-                ).textContent =
-                    selectedEvent.time;
-
-
-                document.getElementById(
-                    "matchTime"
-                ).textContent =
-                    selectedEvent.time;
-
-
-                /* =================================================
-                   ROUND
-                ================================================== */
-
-                document.getElementById(
-                    "eventRound"
-                ).textContent =
-                    selectedEvent.round;
-
-
-                document.getElementById(
-                    "matchRound"
-                ).textContent =
-                    selectedEvent.round;
-
-
-                /* =================================================
-                   STATUS
-                ================================================== */
-
-                const statusElement =
-                    document.getElementById(
-                        "eventStatus"
-                    );
-
-
-                statusElement.innerHTML = "";
-
-
-                const statusBadge =
-                    document.createElement(
-                        "span"
-                    );
-
-
-                statusBadge.className =
-                    "status-badge";
-
-
-                if (
-                    selectedEvent.status ===
-                    "ON-GOING"
-                ) {
-
-                    statusBadge.classList.add(
-                        "status-ongoing"
-                    );
-
-                }
-
-                else if (
-                    selectedEvent.status ===
-                    "FUTURE"
-                ) {
-
-                    statusBadge.classList.add(
-                        "status-future"
-                    );
-
-                }
-
-                else {
-
-                    statusBadge.classList.add(
-                        "status-ended"
-                    );
-
-                }
-
-
-                statusBadge.textContent =
-                    selectedEvent.status;
-
-
-                statusElement.appendChild(
-                    statusBadge
-                );
-
-
-                document.getElementById(
-                    "matchStatus"
-                ).textContent =
-                    selectedEvent.status;
-
-
-                /* =================================================
-                   DESCRIPTION
-                ================================================== */
-
-                document.getElementById(
-                    "descriptionTitle"
-                ).textContent =
-                    selectedEvent.game
-                    +
-                    " Event";
-
-
-                document.getElementById(
-                    "eventDescription"
-                ).textContent =
-                    selectedEvent.description;
-
-
-                /* =================================================
-                   VENUE
-                ================================================== */
-
-                document.getElementById(
-                    "eventVenue"
-                ).textContent =
-                    selectedEvent.venue;
-
-
-                /* =================================================
-                   PRIZE
-                ================================================== */
-
-                document.getElementById(
-                    "eventPrize"
-                ).textContent =
-                    selectedEvent.prize;
-
-
-                /* =================================================
-                   TEAM SIZE
-                ================================================== */
-
-                document.getElementById(
-                    "eventTeamSize"
-                ).textContent =
-                    selectedEvent.teamSize;
-
-
-                /* =================================================
-                   TEAMS
-                ================================================== */
-
-                const teamsContainer =
-                    document.getElementById(
-                        "teamsContainer"
-                    );
-
-
-                teamsContainer.innerHTML =
-                    "";
-
-
-                selectedEvent.teams.forEach(
-                    function (team) {
-
-                        const teamCard =
-                            document.createElement(
-                                "div"
-                            );
-
-
-                        teamCard.className =
-                            "team-card";
-
-
-                        teamCard.innerHTML = `
-
-                            <div class="team-icon">
-                                👥
-                            </div>
-
-                            <div class="team-name">
-                                ${team}
-                            </div>
-
-                        `;
-
-
-                        teamsContainer.appendChild(
-                            teamCard
-                        );
-
-                    }
-                );
-
-
-                /* =================================================
-                   ACTION MESSAGE
-                ================================================== */
-
-                const action =
-                    document.getElementById(
-                        "eventAction"
-                    );
-
-
-                let message = "";
-
-
-                if (
-                    selectedEvent.status ===
-                    "ON-GOING"
-                ) {
-
-                    message =
-                        "🔴 This event is currently ongoing.";
-
-                }
-
-                else if (
-                    selectedEvent.status ===
-                    "FUTURE"
-                ) {
-
-                    message =
-                        "🟢 This event is scheduled for the future.";
-
-                }
-
-                else {
-
-                    message =
-                        "⚫ This event has ended.";
-
-                }
-
-
-                action.innerHTML = `
-
-                    <p>
-                        ${message}
-                    </p>
-
-                    <br>
-
-                    <a
-                        href="schedule.html"
-                        class="back-button"
-                    >
-                        ← Return to Schedule
-                    </a>
-
-                `;
-
-
-                /* =================================================
-                   PAGE TITLE
-                ================================================== */
-
-                document.title =
-
-                    selectedEvent.game
-                    +
-                    " "
-                    +
-                    selectedEvent.round
-                    +
-                    " | Tournament Details";
-
-
-                console.log(
-                    "Tournament loaded:",
-                    eventId,
-                    selectedEvent
-                );
-
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /* =====================================================
+               ⚠️ 重要：這裡的 events 必須與 schedule.html 完全一致！
+               ✅ 直接複製 schedule.html 的 events 過來
+            ====================================================== */
+
+            const events = {
+                "2026-08-04": [
+                    { id: "1", game: "PUBG", round: "FINAL", status: "ENDED", time: "19:30", description: "PUBG championship final match." }
+                ],
+                "2026-08-05": [
+                    { id: "2", game: "Dota 2", round: "FINAL", status: "ENDED", time: "17:00", description: "Dota 2 final tournament match." }
+                ],
+                "2026-08-06": [
+                    { id: "3", game: "CS-GO", round: "QUARTER-FINAL", status: "ENDED", time: "15:00", description: "CS-GO quarter-final competition." }
+                ],
+                "2026-08-07": [
+                    { id: "4", game: "PUBG", round: "QUARTER-FINAL", status: "ENDED", time: "19:00", description: "PUBG quarter-final match." }
+                ],
+                "2026-08-08": [
+                    { id: "5", game: "Dota 2", round: "SEMI-FINAL", status: "ENDED", time: "16:00", description: "Dota 2 semi-final tournament." }
+                ],
+                "2026-08-09": [
+                    { id: "6", game: "CS-GO", round: "FINAL", status: "ENDED", time: "20:00", description: "CS-GO championship final." }
+                ],
+                "2026-08-10": [
+                    { id: "7", game: "PUBG", round: "SEMI-FINAL", status: "ENDED", time: "18:30", description: "PUBG semi-final match." }
+                ],
+                "2026-08-11": [
+                    { id: "8", game: "Dota 2", round: "QUARTER-FINAL", status: "ENDED", time: "17:00", description: "Dota 2 quarter-final match." }
+                ],
+                "2026-08-12": [
+                    { id: "9", game: "CS-GO", round: "SEMI-FINAL", status: "ENDED", time: "15:00", description: "CS-GO semi-final competition." }
+                ],
+                "2026-08-13": [
+                    { id: "10", game: "PUBG", round: "FINAL", status: "ENDED", time: "19:00", description: "PUBG final tournament match." }
+                ],
+                "2026-08-14": [
+                    { id: "11", game: "LOL", round: "QUARTER-FINAL", status: "ENDED", time: "18:00", description: "League of Legends quarter-final match." }
+                ],
+                "2026-08-15": [
+                    { id: "12", game: "Valorant", round: "SEMI-FINAL", status: "ENDED", time: "19:30", description: "Valorant semi-final tournament." }
+                ],
+                "2026-08-16": [
+                    { id: "13", game: "Mobile Legends", round: "FINAL", status: "ENDED", time: "20:00", description: "Mobile Legends championship final." }
+                ],
+                "2026-08-20": [
+                    { id: "14", game: "PUBG", round: "FINAL", status: "ON-GOING", time: "19:00", description: "PUBG championship final." }
+                ],
+                "2026-08-22": [
+                    { id: "15", game: "CS-GO", round: "SEMI-FINAL", status: "FUTURE", time: "15:00", description: "CS-GO semi-final tournament." }
+                ],
+                "2026-08-23": [
+                    { id: "16", game: "Dota 2", round: "FINAL", status: "ON-GOING", time: "17:00", description: "Dota 2 championship final." }
+                ],
+                "2026-08-24": [
+                    { id: "17", game: "Valorant", round: "QUARTER-FINAL", status: "FUTURE", time: "16:00", description: "Valorant quarter-final tournament." }
+                ],
+                "2026-08-25": [
+                    { id: "18", game: "PUBG", round: "QUARTER-FINAL", status: "FUTURE", time: "14:00", description: "PUBG quarter-final tournament." }
+                ],
+                "2026-08-26": [
+                    { id: "19", game: "Mobile Legends", round: "SEMI-FINAL", status: "FUTURE", time: "18:00", description: "Mobile Legends semi-final match." }
+                ],
+                "2026-08-27": [
+                    { id: "20", game: "CS-GO", round: "FINAL", status: "ON-GOING", time: "19:30", description: "CS-GO championship final." }
+                ],
+                "2026-08-28": [
+                    { id: "21", game: "LOL", round: "FINAL", status: "FUTURE", time: "20:00", description: "League of Legends championship final." }
+                ],
+                "2026-08-29": [
+                    { id: "22", game: "Dota 2", round: "SEMI-FINAL", status: "FUTURE", time: "16:00", description: "Dota 2 semi-final tournament." }
+                ],
+                "2026-08-30": [
+                    { id: "23", game: "Valorant", round: "FINAL", status: "FUTURE", time: "19:00", description: "Valorant championship final." }
+                ],
+                "2026-09-01": [
+                    { id: "24", game: "PUBG", round: "SEMI-FINAL", status: "ON-GOING", time: "18:00", description: "PUBG semi-final match." }
+                ],
+                "2026-09-03": [
+                    { id: "25", game: "CS-GO", round: "QUARTER-FINAL", status: "FUTURE", time: "20:00", description: "CS-GO quarter-final tournament." }
+                ],
+                "2026-09-05": [
+                    { id: "26", game: "Dota 2", round: "FINAL", status: "ON-GOING", time: "15:30", description: "Dota 2 championship final." }
+                ],
+                "2026-09-07": [
+                    { id: "27", game: "PUBG", round: "FINAL", status: "FUTURE", time: "17:00", description: "PUBG final tournament." }
+                ],
+                "2026-09-08": [
+                    { id: "28", game: "LOL", round: "SEMI-FINAL", status: "FUTURE", time: "19:00", description: "League of Legends semi-final match." }
+                ],
+                "2026-09-09": [
+                    { id: "29", game: "CS-GO", round: "SEMI-FINAL", status: "ON-GOING", time: "19:00", description: "CS-GO semi-final match." }
+                ],
+                "2026-09-10": [
+                    { id: "30", game: "Mobile Legends", round: "SEMI-FINAL", status: "FUTURE", time: "18:00", description: "Mobile Legends semi-final tournament." }
+                ],
+                "2026-09-11": [
+                    { id: "31", game: "Dota 2", round: "QUARTER-FINAL", status: "FUTURE", time: "21:00", description: "Dota 2 quarter-final match." }
+                ],
+                "2026-09-15": [
+                    { id: "32", game: "Mobile Legends", round: "FINAL", status: "FUTURE", time: "19:00", description: "Mobile Legends championship final." }
+                ]
+            };
+
+
+            /* =====================================================
+               GAME ICONS
+            ====================================================== */
+
+            const gameIcons = {
+                "PUBG": "🎯",
+                "CS-GO": "🔫",
+                "Dota 2": "⚔️",
+                "Valorant": "🎯",
+                "LOL": "🧙",
+                "Mobile Legends": "⚔️"
+            };
+
+
+            /* =====================================================
+               TEAM NAMES（依遊戲分類）
+            ====================================================== */
+
+            const teamNames = {
+                "PUBG": ["Team Phoenix", "Storm Hunters", "Red Dragons", "PUBG Masters"],
+                "CS-GO": ["Cyber Wolves", "Team Alpha", "Shadow Force", "Nova Esports"],
+                "Dota 2": ["Ancient Guardians", "Radiant Warriors", "Dota Legends", "Dire Kings"],
+                "Valorant": ["Phoenix Five", "Night Raiders", "Cyber Strike", "Valorant Kings"],
+                "LOL": ["League Titans", "Summoner Kings", "Dragon Force", "Nexus Warriors"],
+                "Mobile Legends": ["MLBB Warriors", "Team Mythic", "Mobile Titans", "Legend Squad"]
+            };
+
+
+            /* =====================================================
+               VENUE MAP（依遊戲分類）
+            ====================================================== */
+
+            const venueMap = {
+                "PUBG": "Curtin Games & Esports Arena",
+                "CS-GO": "Curtin Games & Esports Arena",
+                "Dota 2": "Main Esports Hall",
+                "Valorant": "Curtin Games & Esports Arena",
+                "LOL": "Main Esports Hall",
+                "Mobile Legends": "Main Esports Hall"
+            };
+
+
+            /* =====================================================
+               PRIZE MAP（依回合分類）
+            ====================================================== */
+
+            const prizeMap = {
+                "FINAL": "RM 5,000 - RM 6,000",
+                "SEMI-FINAL": "RM 4,000",
+                "QUARTER-FINAL": "RM 3,000"
+            };
+
+
+            /* =====================================================
+               TEAM SIZE MAP（依遊戲分類）
+            ====================================================== */
+
+            const teamSizeMap = {
+                "PUBG": "4 Players",
+                "CS-GO": "5 Players",
+                "Dota 2": "5 Players",
+                "Valorant": "5 Players",
+                "LOL": "5 Players",
+                "Mobile Legends": "5 Players"
+            };
+
+
+            /* =====================================================
+               建立 EVENT ID（與 schedule.html 一致）
+            ====================================================== */
+
+            function createEventId(dateKey, event) {
+                return dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
             }
 
-        );
 
+            /* =====================================================
+               從 URL 取得 ID
+            ====================================================== */
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const requestedId = urlParams.get("id");
+
+
+            /* =====================================================
+               查找事件
+            ====================================================== */
+
+            let selectedEvent = null;
+            let selectedDate = null;
+
+            Object.keys(events).forEach(function (dateKey) {
+                events[dateKey].forEach(function (event) {
+                    const eventId = createEventId(dateKey, event);
+                    if (eventId === requestedId) {
+                        selectedEvent = event;
+                        selectedDate = dateKey;
+                    }
+                });
+            });
+
+
+            /* =====================================================
+               格式化日期
+            ====================================================== */
+
+            function formatDate(dateString) {
+                const date = new Date(dateString + "T00:00:00");
+                return date.toLocaleDateString("en-MY", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                });
+            }
+
+
+            /* =====================================================
+               顯示遊戲名稱（LOL → League of Legends）
+            ====================================================== */
+
+            function getDisplayGameName(game) {
+                if (game === "LOL") return "League of Legends";
+                if (game === "CS-GO") return "CS:GO";
+                return game;
+            }
+
+
+            /* =====================================================
+               更新頁面（找到事件時）
+            ====================================================== */
+
+            if (selectedEvent) {
+
+                const displayGame = getDisplayGameName(selectedEvent.game);
+
+                /* 標題 */
+                document.title = displayGame + " " + selectedEvent.round + " | Tournament Details";
+                document.getElementById("eventTitle").textContent = displayGame + " " + selectedEvent.round + " Tournament";
+                document.getElementById("eventSubtitle").textContent = selectedEvent.description;
+
+                /* Game */
+                document.getElementById("eventGame").textContent = displayGame;
+                document.getElementById("gameIcon").textContent = gameIcons[selectedEvent.game] || "🎮";
+
+                /* Date */
+                document.getElementById("eventDate").textContent = formatDate(selectedDate);
+                document.getElementById("matchDate").textContent = formatDate(selectedDate);
+
+                /* Time */
+                document.getElementById("eventTime").textContent = selectedEvent.time;
+                document.getElementById("matchTime").textContent = selectedEvent.time;
+
+                /* Round */
+                document.getElementById("eventRound").textContent = selectedEvent.round;
+                document.getElementById("matchRound").textContent = selectedEvent.round;
+
+                /* Status */
+                const statusElement = document.getElementById("eventStatus");
+                statusElement.innerHTML = "";
+                const statusBadge = document.createElement("span");
+                statusBadge.className = "status-badge";
+
+                if (selectedEvent.status === "ON-GOING") {
+                    statusBadge.classList.add("status-ongoing");
+                } else if (selectedEvent.status === "FUTURE") {
+                    statusBadge.classList.add("status-future");
+                } else {
+                    statusBadge.classList.add("status-ended");
+                }
+                statusBadge.textContent = selectedEvent.status;
+                statusElement.appendChild(statusBadge);
+
+                document.getElementById("matchStatus").textContent = selectedEvent.status;
+
+                /* Description */
+                document.getElementById("descriptionTitle").textContent = displayGame + " Event";
+                document.getElementById("eventDescription").textContent = selectedEvent.description;
+
+                /* Venue */
+                document.getElementById("eventVenue").textContent = venueMap[selectedEvent.game] || "TBD";
+
+                /* Prize */
+                document.getElementById("eventPrize").textContent = prizeMap[selectedEvent.round] || "TBD";
+
+                /* Team Size */
+                document.getElementById("eventTeamSize").textContent = teamSizeMap[selectedEvent.game] || "TBD";
+
+                /* Teams */
+                const teamsContainer = document.getElementById("teamsContainer");
+                teamsContainer.innerHTML = "";
+                const teams = teamNames[selectedEvent.game] || ["Team A", "Team B", "Team C", "Team D"];
+
+                teams.forEach(function (team) {
+                    const teamCard = document.createElement("div");
+                    teamCard.className = "team-card";
+                    teamCard.innerHTML = '<div class="team-icon">👥</div><div class="team-name">' + team + '</div>';
+                    teamsContainer.appendChild(teamCard);
+                });
+
+                /* Action Message */
+                const action = document.getElementById("eventAction");
+                var message = "";
+
+                if (selectedEvent.status === "ON-GOING") {
+                    message = "🔴 This event is currently ongoing. Watch the live stream now!";
+                } else if (selectedEvent.status === "FUTURE") {
+                    message = "🟢 This event is scheduled for the future. Mark your calendar!";
+                } else {
+                    message = "⚫ This event has ended. Check back for future tournaments.";
+                }
+
+                action.innerHTML = '<p>' + message + '</p><br><a href="schedule.html" class="back-button">← Return to Schedule</a>';
+
+                console.log("✅ Tournament loaded:", requestedId, selectedEvent);
+
+            } else {
+
+                /* =====================================================
+                   找不到事件
+                ====================================================== */
+
+                document.querySelector(".tournament-page").innerHTML = `
+                    <a href="schedule.html" class="back-button">← Back to Schedule</a>
+                    <div class="not-found">
+                        <h2>🔍 Tournament Not Found</h2>
+                        <p>The selected tournament could not be found.</p>
+                        <p>Please return to the schedule and click an event card again.</p>
+                        <br>
+                        <a href="schedule.html" class="back-button">← Return to Schedule</a>
+                    </div>
+                `;
+
+                console.warn("❌ Tournament not found:", requestedId);
+            }
+
+        });
     </script>
-
 
 </body>
 
