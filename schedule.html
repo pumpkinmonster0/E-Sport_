@@ -232,6 +232,19 @@
     <script src="js/scroll-reveal.js"></script>
     <script src="js/main.js"></script>
 
+<script>
+if (
+    event.status === "ON-GOING" ||event.status === "FUTURE") {
+    card.addEventListener(
+        "click",
+        function () {
+            window.location.href =
+                "tournament-detail.html?id=" +
+                encodeURIComponent(eventId);
+        }
+    );
+}</script>
+    
      <!-- SCHEDULE JAVASCRIPT (jQuery) -->
     <script>
         $(function () {
@@ -833,8 +846,9 @@
             function createEventCard(dateKey, event, isPast) {
                 const $card = $("<div>").addClass("event-card");
                 if (isPast) {
-                    $card.addClass("past-event");
+                    $card.addClass("past-event");   
                 }
+                
 
                 const date = new Date(dateKey + "T00:00:00");
                 const month = monthNames[date.getMonth()].substring(0, 3).toUpperCase();
