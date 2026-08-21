@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style id="ranking-responsive-fix">
-        
+        /* =========================================================
+           RANKING PAGE - RESPONSIVE / CONTENT CLIPPING FIX
+           ========================================================= */
+
         html,
         body {
             width: 100%;
@@ -37,6 +40,7 @@
         /* IMPORTANT:
            These containers must be allowed to grow beyond the
            browser viewport. Do not use height:100vh + overflow:hidden. */
+
         #pageContent,
         .screen-area,
         .screen-content,
@@ -66,7 +70,10 @@
             padding-right: clamp(10px, 3vw, 30px);
         }
 
-        /* Game selector: wrap buttons instead of clipping them. */
+        /* =========================================================
+           GAME SELECTOR
+           ========================================================= */
+
         .cards-container {
             width: 100%;
             max-width: 100%;
@@ -86,8 +93,10 @@
             overflow-wrap: anywhere;
         }
 
-        /* Ranking table: the page stays vertical-scrollable while
-           only the table gets horizontal scrolling when necessary. */
+        /* =========================================================
+           RANKING TABLE
+           ========================================================= */
+
         .table-container {
             width: 100%;
             max-width: 100%;
@@ -123,7 +132,40 @@
             word-break: normal;
         }
 
+        /* =========================================================
+           HIGHLIGHT VIDEO
+           ========================================================= */
+
+        .highlight-video-mini {
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto 0;
+        }
+
+        .yt-title-mini {
+            font-weight: 700;
+        }
+
+        .highlight-video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
+
+        .highlight-video-frame .yt-embed {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* =========================================================
+           TABLET / MOBILE
+           ========================================================= */
+
         @media (max-width: 700px) {
+
             .page-section,
             .page-section_2 {
                 padding-left: 10px;
@@ -150,9 +192,18 @@
             #rankingDescription {
                 font-size: 0.9rem;
             }
+
+            .highlight-video-mini {
+                margin-top: 25px;
+            }
         }
 
+        /* =========================================================
+           SMALL MOBILE
+           ========================================================= */
+
         @media (max-width: 420px) {
+
             .cards-container .card-btn {
                 flex: 1 1 100%;
             }
@@ -163,6 +214,10 @@
 
             #rankingTitle {
                 font-size: 1.2rem;
+            }
+
+            .highlight-video-mini {
+                margin-top: 20px;
             }
         }
     </style>
@@ -180,153 +235,231 @@
         <div class="screen-area">
 
             <div class="screen-content">
-                <section class="page-section">
-                    <div id="team-section">
 
-                        <!-- =================================================
+                <!-- =================================================
                      PAGE HEADER
                 ================================================== -->
 
-                        <h1 style="text-align:center">E-Sports Rankings</h1>
+                <section class="page-section">
+
+                    <div id="team-section">
+
+                        <h1 style="text-align:center">
+                            E-Sports Rankings
+                        </h1>
 
                         <p class="text-muted" style="text-align:center">
                             View the current rankings for each competitive game.
                         </p>
+
+                    </div>
+
                 </section>
-            </div>
 
 
-            <!-- =================================================
+                <!-- =================================================
                      GAME SELECTOR
                 ================================================== -->
 
-            <section class="page-section_2">
+                <section class="page-section_2">
+
+                    <h2
+                        class="schedule-title"
+                        style="text-align:center">
+                        Select a Game
+                    </h2>
 
 
-                <h2 class="schedule-title" style="text-align:center">Select a Game</h2>
+                    <div class="cards-container">
+
+                        <button
+                            class="card-btn"
+                            type="button"
+                            onclick="showRanking('LOL')">
+                            League of Legends
+                        </button>
 
 
-                <div class="cards-container">
+                        <button
+                            class="card-btn"
+                            type="button"
+                            onclick="showRanking('Rocket League')">
+                            Rocket League
+                        </button>
 
 
-                    <button class="card-btn" type="button" onclick="showRanking('LOL')">
-                        League of Legends
-                    </button>
+                        <button
+                            class="card-btn"
+                            type="button"
+                            onclick="showRanking('Dota 2')">
+                            Dota 2
+                        </button>
 
 
-                    <button class="card-btn" type="button" onclick="showRanking('Rocket League')">
-                        Rocket League
-                    </button>
+                        <button
+                            class="card-btn"
+                            type="button"
+                            onclick="showRanking('PUBG')">
+                            PUBG
+                        </button>
 
 
-                    <button class="card-btn" type="button" onclick="showRanking('Dota 2')">
-                        Dota 2
-                    </button>
+                        <button
+                            class="card-btn"
+                            type="button"
+                            onclick="showRanking('CS-GO')">
+                            CS-GO
+                        </button>
 
 
-                    <button class="card-btn" type="button" onclick="showRanking('PUBG')">
-                        PUBG
-                    </button>
+                        <button
+                            class="card-btn"
+                            type="button"
+                            onclick="showRanking('Valorant')">
+                            Valorant
+                        </button>
+
+                    </div>
 
 
-                    <button class="card-btn" type="button" onclick="showRanking('CS-GO')">
-                        CS-GO
-                    </button>
+                    <!-- =================================================
+                         CURRENT GAME
+                    ================================================== -->
+
+                    <div id="team-section_2">
+
+                        <h2
+                            class="schedule-title"
+                            id="rankingTitle"
+                            style="text-align:center">
+                            League of Legends Rankings
+                        </h2>
 
 
-                    <button class="card-btn" type="button" onclick="showRanking('Valorant')">
-                        Valorant
-                    </button>
+                        <p
+                            class="text-muted"
+                            id="rankingDescription"
+                            style="text-align:center">
+                            Current League of Legends tournament rankings.
+                        </p>
 
-                </div>
+
+                        <!-- =================================================
+                             RANKING TABLE
+                        ================================================== -->
+
+                        <div
+                            class="table-container"
+                            role="region"
+                            aria-label="Tournament rankings"
+                            tabindex="0">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Rank
+                                        </th>
+
+                                        <th>
+                                            Team
+                                        </th>
+
+                                        <th>
+                                            Played
+                                        </th>
+
+                                        <th>
+                                            Wins
+                                        </th>
+
+                                        <th>
+                                            Losses
+                                        </th>
+
+                                        <th>
+                                            Points
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="rankingTableBody">
+
+                                    <!-- JavaScript inserts ranking data here -->
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             CHAMPION HIGHLIGHT VIDEO
+                             ================================================== -->
+
+                        <div
+                            id="highlightVideoSection"
+                            class="highlight-video-mini">
+
+                            <div
+                                class="yt-title-mini"
+                                id="highlightVideoTitle"
+                                style="text-align:center; margin-bottom:8px;">
+
+                                🏆 Champion Highlight
+
+                            </div>
+
+
+                            <div class="highlight-video-frame">
+
+                                <iframe
+                                    id="highlightVideoFrame"
+                                    class="yt-embed"
+                                    src="https://www.youtube.com/embed/i21NAHe77UM?enablejsapi=1"
+                                    title="Champion highlight video"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen>
+                                </iframe>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
 
 
                 <!-- =================================================
-                     CURRENT GAME
-                ================================================== -->
-
-                            <div id="team-section_2">
-                <h2 class="schedule-title" id="rankingTitle" style="text-align:center">
-                    League of Legends Rankings
-                </h2>
-
-
-                <p class="text-muted" id="rankingDescription" style="text-align:center">
-                    Current League of Legends tournament rankings.
-                </p>
-
-
-                <!-- =================================================
-                     RANKING TABLE
-                ================================================== -->
-
-                <div class="table-container" role="region" aria-label="Tournament rankings" tabindex="0">
-
-                    <table>
-
-                        <thead>
-
-                            <tr>
-
-                                <th>
-                                    Rank
-                                </th>
-
-                                <th>
-                                    Team
-                                </th>
-
-                                <th>
-                                    Played
-                                </th>
-
-                                <th>
-                                    Wins
-                                </th>
-
-                                <th>
-                                    Losses
-                                </th>
-
-                                <th>
-                                    Points
-                                </th>
-
-                            </tr>
-
-                        </thead>
-
-
-                        <tbody id="rankingTableBody">
-
-                            <!-- JavaScript inserts ranking data here -->
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-                </div>
-            </section>
-
-
-
-            <!-- =================================================
                      BACK TO SCHEDULE
                 ================================================== -->
-            <div class="page-section_2">
-                <p>
 
-                    <a href="schedule.html" class="card-btn_2">
-                        Back to Schedule
-                    </a>
+                <div class="page-section_2">
 
-                </p>
+                    <p>
+
+                        <a
+                            href="schedule.html"
+                            class="card-btn_2">
+                            Back to Schedule
+                        </a>
+
+                    </p>
+
+                </div>
 
             </div>
-        </div>
 
-    </div>
+        </div>
 
     </div>
 
@@ -346,6 +479,8 @@
     <script src="js/scroll-reveal.js"></script>
 
     <script src="js/main.js"></script>
+
+
     <!-- =====================================================
          RANKING JAVASCRIPT
     ====================================================== -->
@@ -355,14 +490,10 @@
         /*
          * =====================================================
          * RANKING DATA
-         *
-         * The structure allows each game to have its own
-         * independent ranking.
          * =====================================================
          */
 
         const rankings = {
-
 
             /* =================================================
                LEAGUE OF LEGENDS
@@ -745,6 +876,30 @@
 
 
         /* =====================================================
+           HIGHLIGHT VIDEOS
+           
+           Key = same game key as rankings
+           Value = YouTube video ID
+        ====================================================== */
+
+        const highlightVideos = {
+
+            "LOL": "i21NAHe77UM",
+
+            "Rocket League": "as5Q5_5c2S0",
+
+            "Dota 2": "4Mv8hxadZcI",
+
+            "PUBG": "pD1RjjOYaU4",
+
+            "CS-GO": "6CIT1hq6YhM",
+
+            "Valorant": "zzA3twZciQA"
+
+        };
+
+
+        /* =====================================================
            DISPLAY RANKING
         ====================================================== */
 
@@ -817,7 +972,6 @@
             selectedRanking.forEach(
                 function (player) {
 
-
                     const row =
                         document.createElement(
                             "tr"
@@ -865,6 +1019,16 @@
                 }
             );
 
+
+            /* =================================================
+               UPDATE CHAMPION HIGHLIGHT VIDEO
+            ================================================== */
+
+            updateHighlightVideo(
+                game,
+                selectedRanking[0]
+            );
+
         }
 
 
@@ -901,6 +1065,76 @@
 
 
         /* =====================================================
+           UPDATE CHAMPION HIGHLIGHT VIDEO
+        ====================================================== */
+
+        function updateHighlightVideo(
+            game,
+            topPlayer
+        ) {
+
+            const frame =
+                document.getElementById(
+                    "highlightVideoFrame"
+                );
+
+
+            const title =
+                document.getElementById(
+                    "highlightVideoTitle"
+                );
+
+
+            const videoId =
+                highlightVideos[game];
+
+
+            if (!videoId) {
+
+                frame.src = "";
+
+                title.textContent =
+                    "🏆 Champion Highlight";
+
+                return;
+
+            }
+
+
+            /*
+             * If shell.js or another existing script
+             * provides setYouTubeVideo(), use it.
+             * Otherwise, directly update the iframe.
+             */
+
+            if (window.setYouTubeVideo) {
+
+                window.setYouTubeVideo(
+                    "highlightVideoFrame",
+                    videoId
+                );
+
+            } else {
+
+                frame.src =
+                    "https://www.youtube.com/embed/" +
+                    videoId +
+                    "?enablejsapi=1";
+
+            }
+
+
+            title.textContent =
+                topPlayer
+                    ? "🏆 " +
+                      topPlayer.team +
+                      " — Champion Highlight"
+                    : "🏆 Champion Highlight";
+
+        }
+
+
+        /* =====================================================
            DEFAULT RANKING
         ====================================================== */
 
@@ -914,6 +1148,7 @@
         );
 
     </script>
+
 </body>
 
 </html>
