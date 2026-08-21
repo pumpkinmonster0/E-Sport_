@@ -772,6 +772,7 @@
                     .text(event.description)
                     .appendTo($eventBox);
 
+                    
                 return $eventBox;
             }
 
@@ -894,7 +895,7 @@
                 $body.append($title).append($time).append($desc).append($info);
 
                 $card.append($image).append($body);
-                if (event.status === "ON-GOING" || event.status === "FUTURE") {
+                if (event.status === "ON-GOING" || event.status === "FUTURE" || event.status === "ENDED") {
         const eventId = dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
         $card.on("click", function () {
             window.location.href = "tournament-details.html?id=" + encodeURIComponent(eventId);
