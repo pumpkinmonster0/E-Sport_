@@ -1,8 +1,3 @@
-// enter.js — runs after shell.js (builds .screen-area + controller)
-// and neon.js (adds the scanline/beam overlay). Everything this file
-// creates is appended inside .screen-area, so it stays inside the
-// switch-container shell. Music (X/B) is intentionally handled by
-// main.js, not here — see the note further down.
 document.addEventListener('DOMContentLoaded', () => {
 
     const screenArea = document.querySelector('.screen-area');
@@ -14,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    let step = 0; // 0 = step1 showing, 1 = step2 showing
+    let step = 0; 
     let locked = false;
 
     function showStep(n) {
@@ -23,10 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     showStep(0);
 
-    /* ---------------------------------------------------------
-       Build the FX layer (spotlight + falling particles + flash),
-       confined entirely inside .screen-area.
-    --------------------------------------------------------- */
+    /* spotlight + falling particles + flash*/
     const fx = document.createElement('div');
     fx.className = 'enter-fx';
     fx.innerHTML = `
@@ -92,22 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     drawParticles();
 
-    /* ---------------------------------------------------------
-       NOTE: X (🎫) / B (🧟) music toggle is intentionally NOT
-       handled here anymore. main.js already owns that (its own
-       audioX/audioB instances + toggleTrack() + the
-       'musicPlayerState' localStorage key), and it's now loaded
-       on this page too. Duplicating that logic here caused two
-       separate Audio objects to fight over the same buttons —
-       one would always force-play, the other would pause a
-       *different* instance — so playback never actually stopped.
-       Let main.js's click listener on .btn-x/.btn-b be the only
-       one; nothing to wire up on this page for that.
-    --------------------------------------------------------- */
 
-    /* ---------------------------------------------------------
-       Step navigation
-    --------------------------------------------------------- */
     function goForward() {
         if (locked) return;
         if (step === 0) {
@@ -135,15 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 850);
     }
 
-    /* ---------------------------------------------------------
-       Wire the REAL controller buttons built by shell.js.
-       Y and A are also bound by main.js (for its generic
-       scrollBy behaviour) — that's harmless here since this
-       page's screen-content has overflow:hidden, so main.js's
-       scroll call is a no-op and our own step logic below still
-       runs. Only .btn-ok is exclusively ours (main.js never
-       touches it), and X/B are exclusively main.js's now.
-    --------------------------------------------------------- */
     const btnY = document.querySelector('.btn-y');
     const btnA = document.querySelector('.btn-a');
     const btnOk = document.querySelector('.btn-ok');
@@ -158,9 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnY) btnY.addEventListener('click', (e) => { e.preventDefault(); pressFeedback(btnY); goBack(); });
     if (btnOk) btnOk.addEventListener('click', (e) => { e.preventDefault(); pressFeedback(btnOk); goForward(); });
 
-    /* ---------------------------------------------------------
-       Keyboard — same key mapping used elsewhere on the site
-    --------------------------------------------------------- */
+    /* keyboard*/
     document.addEventListener('keydown', (e) => {
         if (locked) return;
         const tag = e.target.tagName;
@@ -192,9 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* ---------------------------------------------------------
-       Mouse wheel / touch swipe on the screen itself
-    --------------------------------------------------------- */
+    /* Mouse wheel + scroll */
     let wheelCooldown = false;
     screenArea.addEventListener('wheel', (e) => {
         if (wheelCooldown || locked) return;

@@ -5,34 +5,32 @@ $(document).ready(function () {
     const CONSENT_COOKIE = 'cookie_consent'; // 'accepted' | 'rejected'
     const GA_MEASUREMENT_ID = 'G-4YRRCX6V0L'; // Measurement ID
 
-    // ---- Check existing consent on page load ----
+    // Check existing consent on page load
     const existingConsent = getCookie(CONSENT_COOKIE);
 
     if (!existingConsent) {
-        // No decision yet -> show the banner
+        //show the banner
         $('#cookie-consent-banner').fadeIn();
     } else if (existingConsent === 'accepted') {
         // Already accepted before -> load GA silently
         loadGoogleAnalytics();
     }
-    // if 'rejected' -> do nothing, only essential (login) cookies work
 
-    // ---- Accept button ----
+    //Accept
     $('#cookie-accept-btn').click(function () {
         setCookie(CONSENT_COOKIE, 'accepted', 365);
         $('#cookie-consent-banner').fadeOut();
         loadGoogleAnalytics();
     });
 
-    // ---- Reject button ----
+    //reject
     $('#cookie-reject-btn').click(function () {
         setCookie(CONSENT_COOKIE, 'rejected', 365);
         $('#cookie-consent-banner').fadeOut();
-        // Google Analytics will NOT load.
-        // Essential cookies (e.g. logged_in_user) still work as normal.
+        // the essential cookies work as normal ya.
     });
 
-    // ---- Loads Google Analytics (gtag.js) dynamically ----
+    //loading google analytics (gtag.js) 
     function loadGoogleAnalytics() {
         if (window.gaLoaded) return; // avoid loading twice
         window.gaLoaded = true;
