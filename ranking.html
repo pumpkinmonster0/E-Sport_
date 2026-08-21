@@ -12,6 +12,160 @@
 
     <!-- Existing External CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <style id="ranking-responsive-fix">
+        
+        html,
+        body {
+            width: 100%;
+            min-width: 0;
+            min-height: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* IMPORTANT:
+           These containers must be allowed to grow beyond the
+           browser viewport. Do not use height:100vh + overflow:hidden. */
+        #pageContent,
+        .screen-area,
+        .screen-content,
+        .page-section,
+        .page-section_2,
+        #team-section,
+        #team-section_2 {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            height: auto !important;
+            max-height: none !important;
+            overflow: visible !important;
+        }
+
+        #pageContent {
+            min-height: 100vh;
+        }
+
+        .screen-area {
+            min-height: 100vh;
+        }
+
+        .page-section,
+        .page-section_2 {
+            padding-left: clamp(10px, 3vw, 30px);
+            padding-right: clamp(10px, 3vw, 30px);
+        }
+
+        /* Game selector: wrap buttons instead of clipping them. */
+        .cards-container {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 12px;
+        }
+
+        .cards-container .card-btn {
+            flex: 1 1 160px;
+            min-width: 0;
+            max-width: 240px;
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+
+        /* Ranking table: the page stays vertical-scrollable while
+           only the table gets horizontal scrolling when necessary. */
+        .table-container {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            overflow-x: auto !important;
+            overflow-y: visible !important;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+
+        .table-container table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+        }
+
+        .table-container th,
+        .table-container td {
+            white-space: nowrap;
+        }
+
+        .table-container th:nth-child(2),
+        .table-container td:nth-child(2) {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            min-width: 150px;
+        }
+
+        #rankingTableBody strong,
+        #rankingTitle,
+        #rankingDescription {
+            overflow-wrap: anywhere;
+            word-break: normal;
+        }
+
+        @media (max-width: 700px) {
+            .page-section,
+            .page-section_2 {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .cards-container {
+                gap: 8px;
+            }
+
+            .cards-container .card-btn {
+                flex: 1 1 calc(50% - 8px);
+                max-width: none;
+            }
+
+            .table-container table {
+                min-width: 560px;
+            }
+
+            #rankingTitle {
+                font-size: 1.35rem;
+            }
+
+            #rankingDescription {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .cards-container .card-btn {
+                flex: 1 1 100%;
+            }
+
+            .table-container table {
+                min-width: 540px;
+            }
+
+            #rankingTitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 
 
@@ -106,7 +260,7 @@
                      RANKING TABLE
                 ================================================== -->
 
-                <div class="table-container">
+                <div class="table-container" role="region" aria-label="Tournament rankings" tabindex="0">
 
                     <table>
 
@@ -192,9 +346,6 @@
     <script src="js/scroll-reveal.js"></script>
 
     <script src="js/main.js"></script>
-
-
-<<<<<<< Updated upstream
     <!-- =====================================================
          RANKING JAVASCRIPT
     ====================================================== -->
@@ -763,11 +914,6 @@
         );
 
     </script>
-
-
-=======
-
->>>>>>> Stashed changes
 </body>
 
 </html>
