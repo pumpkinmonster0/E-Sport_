@@ -3286,6 +3286,166 @@ header.navbar {
     flex-shrink: 0;
 }
 
+/* ================= style3 (player pages) ================= */
+/* Dark Panel Overlays (Ensures text readability over animated background) */
+.site-header,
+.hero .container,
+.hero-card,
+.card,
+.stat-strip,
+.share-section,
+.site-footer .container,
+#cookie-banner {
+    background: rgba(20, 24, 33, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    color: #e2e8f0;
+}
+
+.hero .container {
+    padding: 32px !important;
+    margin-bottom: 24px;
+}
+
+.site-header {
+    margin: 16px auto;
+    max-width: 1200px;
+    padding: 8px 24px;
+}
+
+.site-footer {
+    margin-top: 48px;
+    padding: 32px 0;
+}
+
+/* Text & Link Contrast Fixes */
+h1, h2, h3, h4, h5, h6, .brand, .num {
+    color: #ffffff !important;
+}
+
+p, .lead, .label, .storage-note, td, th {
+    color: #cbd5e1 !important;
+}
+
+.main-nav a, .site-footer a, a {
+    color: #38bdf8 !important;
+    text-decoration: none;
+}
+
+.main-nav a:hover, .site-footer a:hover, a:hover {
+    color: #7dd3fc !important;
+    text-decoration: underline;
+}
+
+/* Avatar Component */
+.avatar-ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #1e293b;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    flex-shrink: 0;
+}
+
+.avatar-ring img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Game Category Badges */
+.badge-cs2 { background-color: #0d6efd !important; color: #ffffff !important; }
+.badge-valorant { background-color: #dc3545 !important; color: #ffffff !important; }
+.badge-lol { background-color: #ffc107 !important; color: #000000 !important; }
+.badge-dota2 { background-color: #8b0000 !important; color: #ffffff !important; }
+.badge-rl { background-color: #0dcaf0 !important; color: #000000 !important; }
+
+/* Social Icons */
+.social-links a {
+    font-size: 1.25rem;
+    color: #38bdf8 !important;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.social-links a:hover {
+    opacity: 0.8;
+}
+
+/* ===== FORM SUBMIT TOAST NOTIFICATION ===== */
+.form-toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 2000;
+    min-width: 260px;
+    max-width: 340px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border: 1px solid rgba(233, 69, 96, 0.5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(233, 69, 96, 0.25);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #ffffff;
+    transform: translateX(120%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+}
+
+.form-toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.form-toast.error {
+    border-color: rgba(255, 99, 99, 0.6);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 99, 99, 0.25);
+}
+
+.form-toast-icon {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.form-toast-body {
+    flex: 1;
+}
+
+.form-toast-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.form-toast-text {
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.4;
+}
+
+.form-toast-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.form-toast-close:hover {
+    color: #ffffff;
+}
 
 /* ========== 768px ========== */
 @media (max-width: 768px) {
@@ -4025,78 +4185,7 @@ header.navbar {
         width: 100%;
         text-align: center;
     }
-}
 
-/* ===== FORM SUBMIT TOAST NOTIFICATION ===== */
-.form-toast {
-    position: fixed;
-    top: 24px;
-    right: 24px;
-    z-index: 2000;
-    min-width: 260px;
-    max-width: 340px;
-    padding: 16px 18px;
-    border-radius: 12px;
-    background: linear-gradient(145deg, #1a1a2e, #16213e);
-    border: 1px solid rgba(233, 69, 96, 0.5);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(233, 69, 96, 0.25);
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    color: #ffffff;
-    transform: translateX(120%);
-    opacity: 0;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
-}
-
-.form-toast.show {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.form-toast.error {
-    border-color: rgba(255, 99, 99, 0.6);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 99, 99, 0.25);
-}
-
-.form-toast-icon {
-    font-size: 20px;
-    line-height: 1;
-    flex-shrink: 0;
-}
-
-.form-toast-body {
-    flex: 1;
-}
-
-.form-toast-title {
-    font-weight: 700;
-    font-size: 14px;
-    margin-bottom: 2px;
-}
-
-.form-toast-text {
-    font-size: 12.5px;
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.4;
-}
-
-.form-toast-close {
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 16px;
-    line-height: 1;
-    cursor: pointer;
-    padding: 0;
-    flex-shrink: 0;
-}
-
-.form-toast-close:hover {
-    color: #ffffff;
-}
-
-@media (max-width: 480px) {
     .form-toast {
         left: 16px;
         right: 16px;
@@ -4105,3 +4194,5 @@ header.navbar {
         max-width: none;
     }
 }
+
+
