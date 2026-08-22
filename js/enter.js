@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         locked = true;
         flashOverlay.classList.add('flash-active');
         setTimeout(() => {
-            window.location.href = 'index.html';
+            window.location.href = 'enter.html';
         }, 850);
     }
 
