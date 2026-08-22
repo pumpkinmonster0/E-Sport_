@@ -7,7 +7,7 @@ function loadNavbar() {
                 </a>
 
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="enter.html">Home</a></li>
                     <li><a href="ranking.html">Rankings</a></li>
                     <li><a href="player.html">Player</a></li>
                     <li><a href="schedule.html">Schedule</a></li>
