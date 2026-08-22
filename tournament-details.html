@@ -430,9 +430,7 @@
 
     </main>
 
-    <!-- =====================================================
-         NAVBAR ONLY（沒有 shell.js / main.js / controller）
-    ====================================================== -->
+    
      <script src="js/navbar.js"></script>
     <script src="js/shell.js"></script>
     <script src="js/footer.js"></script>
@@ -441,114 +439,265 @@
     <script src="js/main.js"></script>
    
 
-    <!-- =====================================================
-         TOURNAMENT DETAILS JAVASCRIPT
-         ✅ 直接使用 schedule.html 的 events 資料
-    ====================================================== -->
+ 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
-            /* =====================================================
-               ⚠️ 重要：這裡的 events 必須與 schedule.html 完全一致！
-               ✅ 直接複製 schedule.html 的 events 過來
-            ====================================================== */
-
+          
             const events = {
                 "2026-08-04": [
-                    { id: "1", game: "PUBG", round: "FINAL", status: "ENDED", time: "19:30", description: "PUBG championship final match." }
+                    { id: "1", 
+                     game: "PUBG", 
+                     round: "FINAL", 
+                     status: "ENDED", 
+                     time: "19:30", 
+                     description: "PUBG championship final match." }
                 ],
                 "2026-08-05": [
-                    { id: "2", game: "Dota 2", round: "FINAL", status: "ENDED", time: "17:00", description: "Dota 2 final tournament match." }
+                    { id: "2", 
+                     game: "Dota 2", 
+                     round: "FINAL", 
+                     status: "ENDED", 
+                     time: "17:00", 
+                     description: "Dota 2 final tournament match." }
                 ],
                 "2026-08-06": [
-                    { id: "3", game: "CS-GO", round: "QUARTER-FINAL", status: "ENDED", time: "15:00", description: "CS-GO quarter-final competition." }
+                    { id: "3", 
+                     game: "CS-GO", 
+                     round: "QUARTER-FINAL", 
+                     status: "ENDED", 
+                     time: "15:00", 
+                     description: "CS-GO quarter-final competition." }
                 ],
                 "2026-08-07": [
-                    { id: "4", game: "PUBG", round: "QUARTER-FINAL", status: "ENDED", time: "19:00", description: "PUBG quarter-final match." }
+                    { id: "4", 
+                     game: "PUBG", 
+                     round: "QUARTER-FINAL", 
+                     status: "ENDED", 
+                     time: "19:00", 
+                     description: "PUBG quarter-final match." }
                 ],
                 "2026-08-08": [
-                    { id: "5", game: "Dota 2", round: "SEMI-FINAL", status: "ENDED", time: "16:00", description: "Dota 2 semi-final tournament." }
+                    { id: "5", 
+                     game: "Dota 2", 
+                     round: "SEMI-FINAL", 
+                     status: "ENDED", 
+                     time: "16:00", 
+                     description: "Dota 2 semi-final tournament." }
                 ],
                 "2026-08-09": [
-                    { id: "6", game: "CS-GO", round: "FINAL", status: "ENDED", time: "20:00", description: "CS-GO championship final." }
+                    { id: "6", 
+                     game: "CS-GO", 
+                     round: "FINAL", 
+                     status: "ENDED", 
+                     time: "20:00", 
+                     description: "CS-GO championship final." }
                 ],
                 "2026-08-10": [
-                    { id: "7", game: "PUBG", round: "SEMI-FINAL", status: "ENDED", time: "18:30", description: "PUBG semi-final match." }
+                    { id: "7", 
+                     game: "PUBG", 
+                     round: "SEMI-FINAL", 
+                     status: "ENDED", 
+                     time: "18:30", 
+                     description: "PUBG semi-final match." }
                 ],
                 "2026-08-11": [
-                    { id: "8", game: "Dota 2", round: "QUARTER-FINAL", status: "ENDED", time: "17:00", description: "Dota 2 quarter-final match." }
+                    { id: "8", 
+                     game: "Dota 2", 
+                     round: "QUARTER-FINAL", 
+                     status: "ENDED", 
+                     time: "17:00", 
+                     description: "Dota 2 quarter-final match." }
                 ],
                 "2026-08-12": [
-                    { id: "9", game: "CS-GO", round: "SEMI-FINAL", status: "ENDED", time: "15:00", description: "CS-GO semi-final competition." }
+                    { id: "9", 
+                     game: "CS-GO", 
+                     round: "SEMI-FINAL", 
+                     status: "ENDED", 
+                     time: "15:00", 
+                     description: "CS-GO semi-final competition." }
                 ],
                 "2026-08-13": [
-                    { id: "10", game: "PUBG", round: "FINAL", status: "ENDED", time: "19:00", description: "PUBG final tournament match." }
+                    { id: "10", 
+                     game: "PUBG", 
+                     round: "FINAL", 
+                     status: "ENDED", 
+                     time: "19:00", 
+                     description: "PUBG final tournament match." }
                 ],
                 "2026-08-14": [
-                    { id: "11", game: "LOL", round: "QUARTER-FINAL", status: "ENDED", time: "18:00", description: "League of Legends quarter-final match." }
+                    { id: "11", 
+                     game: "LOL", 
+                     round: "QUARTER-FINAL", 
+                     status: "ENDED", 
+                     time: "18:00", 
+                     description: "League of Legends quarter-final match." }
                 ],
                 "2026-08-15": [
-                    { id: "12", game: "Valorant", round: "SEMI-FINAL", status: "ENDED", time: "19:30", description: "Valorant semi-final tournament." }
+                    { id: "12", 
+                     game: "Valorant",
+                     round: "SEMI-FINAL", 
+                     status: "ENDED", 
+                     time: "19:30", 
+                     description: "Valorant semi-final tournament." }
                 ],
                 "2026-08-16": [
-                    { id: "13", game: "Mobile Legends", round: "FINAL", status: "ENDED", time: "20:00", description: "Mobile Legends championship final." }
+                    { id: "13", 
+                     game: "Rocket League", 
+                     round: "FINAL", 
+                     status: "ENDED", 
+                     time: "20:00", 
+                     description: "Mobile Legends championship final." }
                 ],
                 "2026-08-20": [
-                    { id: "14", game: "PUBG", round: "FINAL", status: "ON-GOING", time: "19:00", description: "PUBG championship final." }
+                    { id: "14", 
+                     game: "PUBG", 
+                     round: "FINAL", 
+                     status: "ON-GOING", 
+                     time: "19:00", 
+                     description: "PUBG championship final." }
                 ],
                 "2026-08-22": [
-                    { id: "15", game: "CS-GO", round: "SEMI-FINAL", status: "FUTURE", time: "15:00", description: "CS-GO semi-final tournament." }
+                    { id: "15", 
+                     game: "CS-GO", 
+                     round: "SEMI-FINAL", 
+                     status: "FUTURE", 
+                     time: "15:00", 
+                     description: "CS-GO semi-final tournament." }
                 ],
                 "2026-08-23": [
-                    { id: "16", game: "Dota 2", round: "FINAL", status: "ON-GOING", time: "17:00", description: "Dota 2 championship final." }
+                    { id: "16", 
+                     game: "Dota 2", 
+                     round: "FINAL", 
+                     status: "ON-GOING", 
+                     time: "17:00", 
+                     description: "Dota 2 championship final." }
                 ],
                 "2026-08-24": [
-                    { id: "17", game: "Valorant", round: "QUARTER-FINAL", status: "FUTURE", time: "16:00", description: "Valorant quarter-final tournament." }
+                    { id: "17", 
+                     game: "Valorant", 
+                     round: "QUARTER-FINAL",
+                     status: "FUTURE", 
+                     time: "16:00", 
+                     description: "Valorant quarter-final tournament." }
                 ],
                 "2026-08-25": [
-                    { id: "18", game: "PUBG", round: "QUARTER-FINAL", status: "FUTURE", time: "14:00", description: "PUBG quarter-final tournament." }
+                    { id: "18", 
+                     game: "PUBG", 
+                     round: "QUARTER-FINAL", 
+                     status: "FUTURE", 
+                     time: "14:00", 
+                     description: "PUBG quarter-final tournament." }
                 ],
                 "2026-08-26": [
-                    { id: "19", game: "Mobile Legends", round: "SEMI-FINAL", status: "FUTURE", time: "18:00", description: "Mobile Legends semi-final match." }
+                    { id: "19", 
+                     game: "Rocket League", 
+                     round: "SEMI-FINAL", 
+                     status: "FUTURE", 
+                     time: "18:00", description: "Mobile Legends semi-final match." }
                 ],
                 "2026-08-27": [
-                    { id: "20", game: "CS-GO", round: "FINAL", status: "ON-GOING", time: "19:30", description: "CS-GO championship final." }
+                    { id: "20", 
+                     game: "CS-GO", 
+                     round: "FINAL", 
+                     status: "ON-GOING", 
+                     time: "19:30",
+                     description: "CS-GO championship final." }
                 ],
                 "2026-08-28": [
-                    { id: "21", game: "LOL", round: "FINAL", status: "FUTURE", time: "20:00", description: "League of Legends championship final." }
+                    { id: "21", 
+                     game: "LOL", 
+                     round: "FINAL", 
+                     status: "FUTURE", 
+                     time: "20:00", 
+                     description: "League of Legends championship final." }
                 ],
                 "2026-08-29": [
-                    { id: "22", game: "Dota 2", round: "SEMI-FINAL", status: "FUTURE", time: "16:00", description: "Dota 2 semi-final tournament." }
+                    { id: "22", 
+                     game: "Dota 2",
+                     round: "SEMI-FINAL", 
+                     status: "FUTURE", 
+                     time: "16:00", 
+                     description: "Dota 2 semi-final tournament." }
                 ],
                 "2026-08-30": [
-                    { id: "23", game: "Valorant", round: "FINAL", status: "FUTURE", time: "19:00", description: "Valorant championship final." }
+                    { id: "23", 
+                     game: "Valorant", 
+                     round: "FINAL", 
+                     status: "FUTURE", 
+                     time: "19:00", 
+                     description: "Valorant championship final." }
                 ],
                 "2026-09-01": [
-                    { id: "24", game: "PUBG", round: "SEMI-FINAL", status: "ON-GOING", time: "18:00", description: "PUBG semi-final match." }
+                    { id: "24", 
+                     game: "PUBG",
+                     round: "SEMI-FINAL", 
+                     status: "ON-GOING", 
+                     time: "18:00", description: "PUBG semi-final match." }
                 ],
                 "2026-09-03": [
-                    { id: "25", game: "CS-GO", round: "QUARTER-FINAL", status: "FUTURE", time: "20:00", description: "CS-GO quarter-final tournament." }
+                    { id: "25", 
+                     game: "CS-GO", 
+                     round: "QUARTER-FINAL", 
+                     status: "FUTURE", 
+                     time: "20:00", 
+                     description: "CS-GO quarter-final tournament." }
                 ],
                 "2026-09-05": [
-                    { id: "26", game: "Dota 2", round: "FINAL", status: "ON-GOING", time: "15:30", description: "Dota 2 championship final." }
+                    { id: "26", 
+                     game: "Dota 2", 
+                     round: "FINAL", 
+                     status: "ON-GOING", 
+                     time: "15:30", 
+                     description: "Dota 2 championship final." }
                 ],
                 "2026-09-07": [
-                    { id: "27", game: "PUBG", round: "FINAL", status: "FUTURE", time: "17:00", description: "PUBG final tournament." }
+                    { id: "27", 
+                     game: "PUBG", 
+                     round: "FINAL", 
+                     status: "FUTURE", 
+                     time: "17:00", 
+                     description: "PUBG final tournament." }
                 ],
                 "2026-09-08": [
-                    { id: "28", game: "LOL", round: "SEMI-FINAL", status: "FUTURE", time: "19:00", description: "League of Legends semi-final match." }
+                    { id: "28", 
+                     game: "LOL", 
+                     round: "SEMI-FINAL", 
+                     status: "FUTURE", 
+                     time: "19:00", 
+                     description: "League of Legends semi-final match." }
                 ],
                 "2026-09-09": [
-                    { id: "29", game: "CS-GO", round: "SEMI-FINAL", status: "ON-GOING", time: "19:00", description: "CS-GO semi-final match." }
+                    { id: "29", 
+                     game: "CS-GO", 
+                     round: "SEMI-FINAL", 
+                     status: "ON-GOING", 
+                     time: "19:00", 
+                     description: "CS-GO semi-final match." }
                 ],
                 "2026-09-10": [
-                    { id: "30", game: "Mobile Legends", round: "SEMI-FINAL", status: "FUTURE", time: "18:00", description: "Mobile Legends semi-final tournament." }
+                    { id: "30", 
+                     game: "Rocket League", 
+                     round: "SEMI-FINAL", 
+                     status: "FUTURE", 
+                     time: "18:00", 
+                     description: "Mobile Legends semi-final tournament." }
                 ],
                 "2026-09-11": [
-                    { id: "31", game: "Dota 2", round: "QUARTER-FINAL", status: "FUTURE", time: "21:00", description: "Dota 2 quarter-final match." }
+                    { id: "31", 
+                     game: "Dota 2",
+                     round: "QUARTER-FINAL", 
+                     status: "FUTURE", 
+                     time: "21:00", 
+                     description: "Dota 2 quarter-final match." }
                 ],
                 "2026-09-15": [
-                    { id: "32", game: "Mobile Legends", round: "FINAL", status: "FUTURE", time: "19:00", description: "Mobile Legends championship final." }
+                    { id: "32", 
+                     game: "Rocket League", 
+                     round: "FINAL", 
+                     status: "FUTURE", 
+                     time: "19:00", 
+                     description: "Mobile Legends championship final." }
                 ]
             };
 
@@ -563,12 +712,12 @@
                 "Dota 2": "⚔️",
                 "Valorant": "🎯",
                 "LOL": "🧙",
-                "Mobile Legends": "⚔️"
+                "Rocket League": "⚔️"
             };
 
 
             /* =====================================================
-               TEAM NAMES（依遊戲分類）
+               TEAM NAMES
             ====================================================== */
 
             const teamNames = {
@@ -577,12 +726,12 @@
                 "Dota 2": ["Ancient Guardians", "Radiant Warriors", "Dota Legends", "Dire Kings"],
                 "Valorant": ["Phoenix Five", "Night Raiders", "Cyber Strike", "Valorant Kings"],
                 "LOL": ["League Titans", "Summoner Kings", "Dragon Force", "Nexus Warriors"],
-                "Mobile Legends": ["MLBB Warriors", "Team Mythic", "Mobile Titans", "Legend Squad"]
+                "Rocket League": ["MLBB Warriors", "Team Mythic", "Mobile Titans", "Legend Squad"]
             };
 
 
             /* =====================================================
-               VENUE MAP（依遊戲分類）
+               VENUE MAP
             ====================================================== */
 
             const venueMap = {
@@ -591,12 +740,12 @@
                 "Dota 2": "Main Esports Hall",
                 "Valorant": "Curtin Games & Esports Arena",
                 "LOL": "Main Esports Hall",
-                "Mobile Legends": "Main Esports Hall"
+                "Rocket League": "Main Esports Hall"
             };
 
 
             /* =====================================================
-               PRIZE MAP（依回合分類）
+               PRIZE MAP
             ====================================================== */
 
             const prizeMap = {
@@ -607,7 +756,7 @@
 
 
             /* =====================================================
-               TEAM SIZE MAP（依遊戲分類）
+               TEAM SIZE MAP
             ====================================================== */
 
             const teamSizeMap = {
@@ -616,12 +765,12 @@
                 "Dota 2": "5 Players",
                 "Valorant": "5 Players",
                 "LOL": "5 Players",
-                "Mobile Legends": "5 Players"
+                "Rocket League": "5 Players"
             };
 
 
             /* =====================================================
-               建立 EVENT ID（與 schedule.html 一致）
+               EVENT ID
             ====================================================== */
 
             function createEventId(dateKey, event) {
@@ -629,18 +778,13 @@
             }
 
 
-            /* =====================================================
-               從 URL 取得 ID
-            ====================================================== */
+           
 
             const urlParams = new URLSearchParams(window.location.search);
             const requestedId = urlParams.get("id");
 
 
-            /* =====================================================
-               查找事件
-            ====================================================== */
-
+            
             let selectedEvent = null;
             let selectedDate = null;
 
@@ -655,10 +799,7 @@
             });
 
 
-            /* =====================================================
-               格式化日期
-            ====================================================== */
-
+           
             function formatDate(dateString) {
                 const date = new Date(dateString + "T00:00:00");
                 return date.toLocaleDateString("en-MY", {
@@ -670,10 +811,7 @@
             }
 
 
-            /* =====================================================
-               顯示遊戲名稱（LOL → League of Legends）
-            ====================================================== */
-
+            
             function getDisplayGameName(game) {
                 if (game === "LOL") return "League of Legends";
                 if (game === "CS-GO") return "CS:GO";
@@ -681,9 +819,7 @@
             }
 
 
-            /* =====================================================
-               更新頁面（找到事件時）
-            ====================================================== */
+      
 
             if (selectedEvent) {
 
@@ -771,9 +907,7 @@
 
             } else {
 
-                /* =====================================================
-                   找不到事件
-                ====================================================== */
+              
 
                 document.querySelector(".tournament-page").innerHTML = `
                     <a href="schedule.html" class="back-button">← Back to Schedule</a>
