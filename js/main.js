@@ -136,6 +136,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const tracks = { x: audioX, b: audioB };
     const MUSIC_STORAGE_KEY = 'musicPlayerState';
 
+    // Safari (incl. iOS Safari) detection --> only Safari needs a tap-to-resume prompt
+    // when a page-load autoplay attempt gets blocked; other browsers just try to
+    // autoplay and quietly stay silent if it fails.
+    function isSafari() {
+        const ua = navigator.userAgent;
+        return /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(ua);
+    }
+
+    // sessionStorage instead of localStorage --> music state now only survives
+    // navigation between pages within the SAME tab session. Closing the tab/browser
+    // and reopening the site starts fresh (no leftover "resume" attempt, no stale
+    // autoplay-blocked prompt on a brand new visit).
     function saveMusicState(track, playing) {
         const audio = track ? tracks[track] : null;
         const state = {
@@ -143,17 +155,55 @@ document.addEventListener('DOMContentLoaded', () => {
             playing: playing,
             time: audio ? audio.currentTime : 0
         };
-        localStorage.setItem(MUSIC_STORAGE_KEY, JSON.stringify(state));
+        sessionStorage.setItem(MUSIC_STORAGE_KEY, JSON.stringify(state));
     }
 
     function loadMusicState() {
-        const raw = localStorage.getItem(MUSIC_STORAGE_KEY);
+        const raw = sessionStorage.getItem(MUSIC_STORAGE_KEY);
         if (!raw) return null;
         try {
             return JSON.parse(raw);
         } catch (e) {
             return null;
         }
+    }
+
+    // Small unobtrusive "tap to resume" banner --> only ever shown on Safari,
+    // and only when a page-load autoplay attempt actually got blocked.
+    function showResumeMusicPrompt(trackKey) {
+        if (document.getElementById('musicResumePrompt')) return; // already showing
+
+        const prompt = document.createElement('div');
+        prompt.id = 'musicResumePrompt';
+        prompt.textContent = '🔇 Tap to resume music';
+        prompt.style.cssText = [
+            'position:fixed',
+            'top:16px',
+            'left:50%',
+            'transform:translateX(-50%)',
+            'z-index:9999',
+            'background:#111',
+            'color:#fff',
+            'padding:10px 16px',
+            'border-radius:8px',
+            'cursor:pointer',
+            'font-size:14px',
+            'font-family:sans-serif',
+            'box-shadow:0 2px 10px rgba(0,0,0,0.4)'
+        ].join(';');
+
+        prompt.addEventListener('click', () => {
+            const audio = tracks[trackKey];
+            audio.play()
+                .then(() => {
+                    saveMusicState(trackKey, true);
+                    console.log(`${trackKey.toUpperCase()} resumed after tap`);
+                })
+                .catch(err => console.error('Resume after tap error:', err));
+            prompt.remove();
+        }, { once: true });
+
+        document.body.appendChild(prompt);
     }
 
     // stop and continue
@@ -217,11 +267,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // continue if before next html it is playing
     (function resumeMusicOnLoad() {
         const state = loadMusicState();
-        if (state && state.track && state.playing) {
-            const audio = tracks[state.track];
-            audio.currentTime = state.time || 0;
-            audio.play().catch(err => console.error('Resume play error:', err));
-            console.log(`Resuming ${state.track.toUpperCase()} at ${Math.floor(state.time)}s`);
+        if (!state || !state.track || !state.playing) return;
+
+        const audio = tracks[state.track];
+        audio.currentTime = state.time || 0;
+
+        const playPromise = audio.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+            playPromise
+                .then(() => {
+                    console.log(`Resuming ${state.track.toUpperCase()} at ${Math.floor(state.time)}s`);
+                })
+                .catch(err => {
+                    console.warn('Autoplay blocked on page load:', err);
+                    // keep the saved "playing:true" state as-is so the tap-to-resume
+                    // button knows what to resume; only Safari gets bothered with a prompt.
+                    if (isSafari()) {
+                        showResumeMusicPrompt(state.track);
+                    }
+                });
         }
     })();
 
