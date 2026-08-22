@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
@@ -28,7 +27,7 @@
                 — Check out our upcoming events and join the community! —
             </p>
         </section>
-        <hr>
+
         <!-- CALENDAR -->
         <div class="calendar-wrapper">
             <!-- MONTH -->
@@ -233,7 +232,7 @@
     <script src="js/scroll-reveal.js"></script>
     <script src="js/main.js"></script>
 
-   
+
     <!-- SCHEDULE JAVASCRIPT (jQuery) -->
     <script>
         $(function () {
@@ -648,7 +647,7 @@
             }
 
             function createEventId(dateKey, event) {
-            return dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
+                return dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
             }
 
             //    CREATE YEAR FILTER
@@ -676,9 +675,9 @@
             function saveFilters() {
                 try {
                     sessionStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(getFilters()));
-                    console.log("✅ Filters saved:", getFilters());
+                    console.log("Filters saved:", getFilters());
                 } catch (error) {
-                    console.error("❌ Cannot save filters:", error);
+                    console.error("Cannot save filters:", error);
                 }
             }
 
@@ -687,11 +686,11 @@
                 try {
                     const saved = sessionStorage.getItem(FILTER_STORAGE_KEY);
                     if (!saved) {
-                        console.log("ℹ️ No saved filters");
+                        console.log("ℹNo saved filters");
                         return;
                     }
                     const filters = JSON.parse(saved);
-                    console.log("✅ Loaded filters:", filters);
+                    console.log("Loaded filters:", filters);
 
                     /* MONTH */
                     if (filters.month !== undefined && $monthFilter.find(`option[value="${filters.month}"]`).length) {
@@ -706,7 +705,7 @@
                         $gameFilter.val(filters.game);
                     }
                 } catch (error) {
-                    console.error("❌ Cannot load saved filters:", error);
+                    console.error("Cannot load saved filters:", error);
                 }
             }
 
@@ -749,7 +748,7 @@
             }
 
             //    CREATE CALENDAR EVENT
-            function createCalendarEvent(dateKey,event) {
+            function createCalendarEvent(dateKey, event) {
                 const $eventBox = $("<div>").addClass("calendar-event");
 
                 $("<div>")
@@ -772,14 +771,14 @@
                     .text(event.description)
                     .appendTo($eventBox);
 
-                     if (event.status === "ON-GOING" || event.status === "FUTURE" || event.status === "ENDED") {
-        const eventId = dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
-        $eventBox.on("click", function () {
-            window.location.href = "tournament-details.html?id=" + encodeURIComponent(eventId);
-        });
-        $eventBox.css("cursor", "pointer");
-    }
-                    
+                if (event.status === "ON-GOING" || event.status === "FUTURE" || event.status === "ENDED") {
+                    const eventId = dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
+                    $eventBox.on("click", function () {
+                        window.location.href = "tournament-details.html?id=" + encodeURIComponent(eventId);
+                    });
+                    $eventBox.css("cursor", "pointer");
+                }
+
                 return $eventBox;
             }
 
@@ -812,7 +811,7 @@
                         $dayElement.css("border", "2px solid #e94560");
                         filteredEvents[dateKey].forEach(function (event) {
                             visibleEventCount++;
-                            $dayElement.append(createCalendarEvent(dateKey,event));
+                            $dayElement.append(createCalendarEvent(dateKey, event));
                         });
                     } else {
                         $("<div>").addClass("no-event").text("No Event").appendTo($dayElement);
@@ -903,15 +902,15 @@
 
                 $card.append($image).append($body);
                 if (event.status === "ON-GOING" || event.status === "FUTURE" || event.status === "ENDED") {
-        const eventId = dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
-        $card.on("click", function () {
-            window.location.href = "tournament-details.html?id=" + encodeURIComponent(eventId);
-        });
-        $card.css("cursor", "pointer");
-    }
+                    const eventId = dateKey + "_" + event.game.trim().replace(/\s+/g, "-") + "_" + event.round;
+                    $card.on("click", function () {
+                        window.location.href = "tournament-details.html?id=" + encodeURIComponent(eventId);
+                    });
+                    $card.css("cursor", "pointer");
+                }
 
 
-                
+
                 return $card;
             }
 
@@ -990,7 +989,7 @@
                 saveFilters();
                 renderCalendar();
                 renderSchedule();
-                console.log("🧹 Filters cleared");
+                console.log("Filters cleared");
             });
 
             //    PREVIOUS MONTH
