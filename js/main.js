@@ -137,17 +137,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const MUSIC_STORAGE_KEY = 'musicPlayerState';
 
     // Safari (incl. iOS Safari) detection --> only Safari needs a tap-to-resume prompt
-    // when a page-load autoplay attempt gets blocked; other browsers just try to
-    // autoplay and quietly stay silent if it fails.
     function isSafari() {
         const ua = navigator.userAgent;
         return /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(ua);
     }
 
-    // sessionStorage instead of localStorage --> music state now only survives
-    // navigation between pages within the SAME tab session. Closing the tab/browser
-    // and reopening the site starts fresh (no leftover "resume" attempt, no stale
-    // autoplay-blocked prompt on a brand new visit).
+
     function saveMusicState(track, playing) {
         const audio = track ? tracks[track] : null;
         const state = {

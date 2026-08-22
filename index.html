@@ -60,24 +60,6 @@
             <p style="text-align:center"><small>Don't miss a second of the hype.<br>Countdown to kickoff, then watch the
                     stream right here on the page!</small></p>
 
-            <!--
-                Each .match-card below carries two data attributes that drive the countdown script
-                (js/live-countdown.js):
-                  data-start     = match start time in ISO 8601 format, e.g. "2026-08-25T14:00:00+08:00"
-                  data-video-id  = the YouTube VIDEO ID (the part after /embed/ in your embed link)
-                  data-end       = OPTIONAL. Match end time in ISO 8601 format. Once this time is
-                                    reached the card switches to an "ENDED / WATCH REPLAY" state.
-                                    Leave it off if you don't know the end time yet — the card will
-                                    just stay "LIVE" once data-start passes, same as before.
-
-                You don't need a "future match database" for this — just type in the date/time your
-                club already knows for each match, and drop in that match's YouTube video ID once you
-                have it (a scheduled premiere / an already-live video both work). The script does the
-                rest: it counts down automatically, and the moment data-start is reached it swaps the
-                thumbnail for the live iframe on its own, no page reload needed. YouTube automatically
-                turns the same video ID into a replay once the stream ends, so the same iframe/link
-                keeps working after data-end too — the card just relabels itself.
-            -->
             <div class="match-cards match-list">
                 <div class="match-card live-match-card" data-start="2026-08-20T10:00:00+08:00" data-end="2026-08-20T11:45:00+08:00" data-video-id="mXtzz7UHftw">
                     <div class="match-media">
