@@ -4526,7 +4526,7 @@ p, .lead, .label, .storage-note, td, th {
     }
 
       /* =====================================================
-           TABLET
+           TABLET-RANKING
         ====================================================== */
 
         @media (max-width: 900px) {
@@ -4539,6 +4539,151 @@ p, .lead, .label, .storage-note, td, th {
                 gap: 16px;
 
                 padding: 0 15px;
+
+            }
+
+        }
+
+      /* =====================================================
+           MOBILE-RANKING
+        ====================================================== */
+
+        @media (max-width: 600px) {
+
+            .cards-container {
+
+                grid-template-columns: 1fr;
+
+                gap: 14px;
+
+                padding: 0 15px;
+
+                margin-top: 20px;
+
+                margin-bottom: 25px;
+
+            }
+
+
+            .cards-container .card-btn {
+
+                min-height: 58px;
+
+                padding: 14px 12px;
+
+                font-size: 15px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE-RANKING
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+            .cards-container {
+
+                padding: 0 10px;
+
+                gap: 12px;
+
+            }
+
+
+            .cards-container .card-btn {
+
+                min-height: 55px;
+
+                padding: 13px 10px;
+
+                font-size: 14px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RANKING TABLE
+        ====================================================== */
+
+        .table-container {
+
+            width: 100%;
+
+            max-width: 100%;
+
+            box-sizing: border-box;
+
+            overflow-x: auto;
+
+            -webkit-overflow-scrolling: touch;
+
+        }
+
+
+        .table-container table {
+
+            width: 100%;
+
+            min-width: 620px;
+
+            border-collapse: collapse;
+
+        }
+
+
+        /* =====================================================
+           VIDEO-RANKING
+        ====================================================== */
+
+        .highlight-video-mini {
+
+            width: 100%;
+
+            max-width: 100%;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .highlight-video-frame {
+
+            width: 100%;
+
+            max-width: 100%;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .highlight-video-frame iframe {
+
+            display: block;
+
+            width: 100%;
+
+            max-width: 100%;
+
+            box-sizing: border-box;
+
+        }
+
+
+        /* =====================================================
+           MOBILE VIDEO - RANKING
+        ====================================================== */
+
+        @media (max-width: 600px) {
+
+            .highlight-video-frame {
+
+                width: 100%;
 
             }
 
