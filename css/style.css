@@ -337,6 +337,71 @@ h4 {
     font-size: 1.1rem;
 }
 
+#createTeamModal .btn-generic {
+    display: inline-block;
+    padding: 10px 28px;
+    background: linear-gradient(145deg, #2a2a4a, #1e1e3a);
+    color: #fff;
+    border: 1px solid #4a4a6a;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    user-select: none;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+#createTeamModal .btn-generic:hover {
+    background: linear-gradient(145deg, #3a3a6a, #2a2a5a);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+    border-color: #6a6a8a;
+}
+
+#createTeamModal .btn-generic:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#createTeamModal .btn-generic.primary {
+    background: linear-gradient(145deg, #4a6acf, #3a5abf);
+    border-color: #5a7adf;
+}
+
+#createTeamModal .btn-generic.primary:hover {
+    background: linear-gradient(145deg, #5a7adf, #4a6acf);
+}
+
+#createTeamModal .btn-generic.success {
+    background: linear-gradient(145deg, #4ad94a, #2db82d);
+    border-color: #5ae95a;
+}
+
+#createTeamModal .btn-generic.success:hover {
+    background: linear-gradient(145deg, #5ae95a, #4ad94a);
+}
+
+#createTeamModal .btn-generic.danger {
+    background: linear-gradient(145deg, #d94a4a, #b82d2d);
+    border-color: #e95a5a;
+}
+
+#createTeamModal .btn-generic.danger:hover {
+    background: linear-gradient(145deg, #e95a5a, #d94a4a);
+}
+
+#createTeamModal .btn-generic.small {
+    padding: 6px 16px;
+    font-size: 0.8rem;
+}
+
+#createTeamModal .btn-generic.large {
+    padding: 14px 36px;
+    font-size: 1.1rem;
+}
+
 /* table */
 .screen-content table {
     width: 100%;
@@ -433,6 +498,12 @@ h4 {
     background: #4a3a1a;
     border-color: #7a6a3a;
     color: #ffd93d;
+}
+
+.screen-content .badge.gray {
+    background: #2a2a3a;
+    border-color: #4a4a5a;
+    color: #a0a0b0;
 }
 
 /* hr */
@@ -1247,6 +1318,146 @@ h4 {
     font-size: 0.9rem;
     margin-top: 4px;
     margin-bottom: 4px;
+}
+
+/* ---- Live match media (thumbnail / countdown overlay / iframe) ---- */
+.match-media {
+    position: relative;
+    width: 100%;
+}
+
+.match-thumb,
+.match-media .match-iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid #2a2a4a;
+    background: #05050a;
+    object-fit: cover;
+}
+
+.match-media .match-iframe {
+    border: 0;
+}
+
+.countdown-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: rgba(5, 5, 15, 0.55);
+    text-align: center;
+}
+
+.countdown-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: #ffd93d;
+    font-family: 'Orbitron', 'Courier New', monospace;
+}
+
+.countdown-timer {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: 'Orbitron', 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* status-badge inherits .badge / .badge.green / .badge.yellow colors already
+   defined above; the JS just toggles those classes on it */
+.status-badge.pulse {
+    animation: statusPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% { box-shadow: 0 0 0 rgba(122, 224, 154, 0.5); }
+    50% { box-shadow: 0 0 12px rgba(122, 224, 154, 0.8); }
+}
+
+.watch-on-youtube {
+    display: block;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #6bcbff;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.25s ease;
+}
+
+.watch-on-youtube:hover {
+    color: #ffd93d;
+    border-bottom-color: #ffd93d;
+}
+
+/* ---- Home page match list: full cards so the live video / countdown
+   is visible immediately, not just a game name + status text ---- */
+.match-cards.match-list {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
+    gap: 20px;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 20px;
+    transform: none;
+}
+
+.match-cards.match-list .match-card {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 0;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.match-cards.match-list .match-card h3 {
+    margin: 0;
+    padding-left: 0 !important;
+    font-size: 1.1rem;
+}
+
+/* row 1: round badge (FINAL/SEMI-FINAL) + live status badge */
+.match-cards.match-list .match-card h3:first-of-type {
+    order: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* row 2: game name */
+.match-cards.match-list .match-card h3:last-of-type {
+    order: 3;
+    font-family: 'Orbitron', monospace;
+    letter-spacing: 0.5px;
+}
+
+/* video / thumbnail + countdown sits on top */
+.match-cards.match-list .match-card .match-media {
+    order: 1;
+}
+
+/* date + status text stays at the bottom */
+.match-cards.match-list .match-card p {
+    order: 4;
+    margin: 0;
+}
+
+.match-cards.match-list .match-card .status-badge {
+    font-size: 0.85rem;
+    padding: 6px 14px;
 }
 
 .see-all-link {
@@ -2078,6 +2289,41 @@ header.navbar {
     font-weight: 500;
 }
 
+/* =====================================================
+   #1 HIGHLIGHT VIDEO (newly added, does not touch
+   .yt-preview-mini or any existing rule above)
+====================================================== */
+
+.highlight-video-mini {
+    background: #0d0d1a;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #2a2a4a;
+    padding: 14px 14px 16px;
+    margin-top: 20px;
+}
+
+.highlight-video-mini .yt-title-mini {
+    color: #e8e8e8;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+}
+
+.highlight-video-frame {
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.highlight-video-frame iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
 .ig-preview-mini {
     background: #0d0d1a;
     border-radius: 8px;
@@ -2594,6 +2840,7 @@ header.navbar {
     margin-top: 14px;
     margin-bottom: 10px;
     color: #e8e8e8;
+    margin-left:35px;
 }
 
 
@@ -2689,6 +2936,364 @@ header.navbar {
     color: #fff;
     background: url("../images/index/pexels-yankrukov-9072205.jpg")
 }
+
+/*indexpage addon*/
+/* hero game spotlight banner */
+.game-spotlight {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    height: 360px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #2a2a4a;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.35);
+}
+
+.spotlight-item {
+    position: relative;
+    flex: 1 1 0%;
+    min-width: 0;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(75%) brightness(42%);
+    transition: flex 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.55s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.spotlight-item::before {
+    /* dark gradient - label stays readable */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 55%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.spotlight-item::after {
+    /* thin glow edge that only shows once the item is active */
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 0 rgba(107, 203, 255, 0);
+    transition: box-shadow 0.55s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.spotlight-label {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    font-family: 'Orbitron', 'Courier New', monospace;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: #b9c0d4;
+    white-space: nowrap;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    transition: color 0.4s ease, font-size 0.4s ease, text-shadow 0.4s ease, bottom 0.4s ease;
+    z-index: 2;
+}
+
+/* whichever item is hovered/focused/tapped grows and lights up, the rest dim further */
+.game-spotlight:hover .spotlight-item:not(.active-spotlight),
+.game-spotlight:focus-within .spotlight-item:not(.active-spotlight) {
+    filter: grayscale(90%) brightness(30%);
+}
+
+.spotlight-item.active-spotlight,
+.spotlight-item:hover,
+.spotlight-item:focus {
+    flex: 3.2 1 0%;
+    filter: grayscale(0%) brightness(100%) !important;
+    outline: none;
+}
+
+.spotlight-item.active-spotlight::after,
+.spotlight-item:hover::after,
+.spotlight-item:focus::after {
+    box-shadow: inset 0 0 0 2px rgba(107, 203, 255, 0.6);
+}
+
+.spotlight-item.active-spotlight .spotlight-label,
+.spotlight-item:hover .spotlight-label,
+.spotlight-item:focus .spotlight-label {
+    color: #6bcbff;
+    font-size: 1.25rem;
+    bottom: 22px;
+    text-shadow: 0 0 20px rgba(107, 203, 255, 0.85);
+}
+
+/*enter*/
+/* ---- this page doesn't need the normal scrollable document flow ---- */
+.enter-page .screen-content {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* ================= Step panels (live inside .screen-content) ================= */
+.enter-step {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: center;
+    padding: 8% 8%;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease;
+    transform: translateY(8px);
+    filter: blur(4px);
+}
+
+.enter-step.step-active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* ---- floating glow text ---- */
+.enter-line {
+    font-family: 'Audiowide', 'Orbitron', cursive;
+    color: #eaf6ff;
+    letter-spacing: 2px;
+    margin: 0;
+    animation: textFloat 4.5s ease-in-out infinite;
+    text-shadow:
+        0 0 6px rgba(170, 225, 255, 0.9),
+        0 0 16px rgba(120, 200, 255, 0.7),
+        0 0 34px rgba(90, 170, 255, 0.45),
+        0 0 60px rgba(90, 140, 255, 0.25);
+}
+
+.enter-line-emoji {
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    margin-top:100px;
+}
+
+.enter-line-sub {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(0.72rem, 2.6vw, 1rem);
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #b9d6f2;
+    text-shadow:
+        0 0 8px rgba(150, 210, 255, 0.5),
+        0 0 20px rgba(120, 190, 255, 0.22);
+    animation: textFloat 4.5s ease-in-out infinite 0.25s;
+    text-transform: uppercase;
+        margin-top:10px;
+}
+
+.enter-line-controls {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(0.65rem, 2.2vw, 0.85rem);
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #8fd6c4;
+    text-shadow:
+        0 0 8px rgba(140, 240, 210, 0.5),
+        0 0 18px rgba(120, 230, 200, 0.25);
+    animation: textFloat 4.5s ease-in-out infinite 0.5s;
+    text-transform: uppercase;
+    margin-top: 50px;
+}
+
+.enter-line-main {
+    font-size: clamp(1rem, 4.6vw, 1.7rem);
+    max-width: 90%;
+    line-height: 1.5;
+}
+
+@keyframes textFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ================= FX layer — confined to .screen-area ================= */
+.enter-fx {
+    position: absolute;
+    inset: 0;
+    z-index: 11;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.enter-particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* overhead spotlight, sized relative to the screen itself */
+.spotlight-cone {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    width: 65%;
+    height: 95%;
+    transform: translateX(-50%);
+    clip-path: polygon(46% 0%, 54% 0%, 88% 100%, 12% 100%);
+    background: linear-gradient(180deg,
+            rgba(180, 225, 255, 0.30) 0%,
+            rgba(150, 210, 255, 0.15) 30%,
+            rgba(120, 190, 255, 0.06) 55%,
+            rgba(120, 190, 255, 0.0) 80%);
+    filter: blur(5px);
+    animation: spotlightFlicker 6s ease-in-out infinite;
+    mix-blend-mode: screen;
+}
+
+@keyframes spotlightFlicker {
+
+    0%,
+    100% {
+        opacity: 0.85;
+    }
+
+    45% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    52% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0.9;
+    }
+}
+
+.spotlight-floor {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 55%;
+    height: 45%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse at center,
+            rgba(160, 220, 255, 0.22) 0%,
+            rgba(140, 200, 255, 0.08) 42%,
+            transparent 72%);
+    filter: blur(8px);
+    animation: floorPulse 6s ease-in-out infinite;
+    mix-blend-mode: screen;
+}
+
+@keyframes floorPulse {
+
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ================= exit flash transition ================= */
+.flash-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 46%,
+            #ffffff 0%,
+            #cfe9ff 25%,
+            rgba(150, 210, 255, 0.6) 50%,
+            transparent 75%);
+    opacity: 0;
+    transform: scale(0.2);
+    transition: opacity 0.5s ease, transform 0.9s cubic-bezier(0.15, 0.8, 0.3, 1);
+}
+
+.flash-overlay.flash-active {
+    opacity: 1;
+    transform: scale(3);
+}
+
+/* ================= reduced motion ================= */
+@media (prefers-reduced-motion: reduce) {
+
+    .enter-line,
+    .enter-line-sub,
+    .enter-line-controls,
+    .spotlight-cone,
+    .spotlight-floor {
+        animation: none !important;
+    }
+}
+
+/*cookie*/
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(20, 20, 20, 0.97);
+    color: #fff;
+    z-index: 2000;
+    padding: 16px 24px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.4);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.cookie-banner-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cookie-text {
+    margin: 0;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 240px;
+}
+
+.cookie-text a {
+    color: #4dabf7;
+    text-decoration: underline;
+}
+
+.cookie-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
 
 /* ========== 768px ========== */
 @media (max-width: 768px) {
@@ -2817,6 +3422,43 @@ header.navbar {
         height: 150px;
     }
 
+    .screen-content table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        transform: scale(0.95);
+        font-size: 0.75rem;
+    }
+
+    /* hover-expand doesn't work well on touch, so stack into a scrollable
+       row of fixed-width panels and rely on tap (:focus/:active) instead */
+    .game-spotlight {
+        height: 220px;
+        gap: 4px;
+    }
+
+    .spotlight-item {
+        flex: 1 1 0%;
+    }
+
+    .spotlight-item:hover,
+    .spotlight-item:focus,
+    .spotlight-item:active {
+        flex: 2.4 1 0%;
+    }
+
+    .spotlight-label {
+        font-size: 0.7rem;
+        bottom: 10px;
+    }
+
+    .spotlight-item:hover .spotlight-label,
+    .spotlight-item:focus .spotlight-label,
+    .spotlight-item:active .spotlight-label {
+        font-size: 1rem;
+        bottom: 14px;
+    }
+
     .sponsor-item {
         flex: 0 0 100px;
         height: 80px;
@@ -2933,6 +3575,109 @@ header.navbar {
         font-size: 2.2rem;
     }
 
+    /*account*/
+    #auth-section {
+        padding: 20px 15px;
+    }
+
+    #auth-buttons {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    #auth-buttons .btn-generic {
+        flex: 0 1 auto;
+        min-width: 120px;
+    }
+
+    #login-card,
+    #signup-card {
+        max-width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .btn-generic.large {
+        padding: 10px 24px;
+        font-size: 0.95rem;
+    }
+
+    #team-section {
+        padding: 20px 15px;
+    }
+
+    #team-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    #createTeamModal .modal-content {
+        padding: 0;
+    }
+
+    #createTeamModal .modal-body {
+        padding: 15px 18px;
+    }
+
+    #createTeamModal .modal-footer {
+        padding: 12px 18px;
+    }
+
+    #createTeamModal .form-control,
+    #createTeamModal .form-select {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .social-card {
+        padding: 14px 14px 16px;
+    }
+
+    .social-card .card-top {
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    .social-card .card-top .icon-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
+    }
+
+    .social-card .card_acc-body {
+        font-size: 0.78rem;
+    }
+
+    .yt-preview-mini .yt-thumb-mini iframe,
+    .ig-preview-mini .ig-image-mini iframe {
+        width: 100% !important;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .ig-preview-mini .ig-image-mini {
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+    }
+
+    .ig-preview-mini .ig-image-mini iframe {
+        height: 100%;
+        max-height: 300px;
+    }
+
+    .btn-social-sm {
+        padding: 4px 12px;
+        font-size: 0.65rem;
+    }
+
+    .cookie-banner-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .cookie-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
 }
 
 /*480pc*/
@@ -3010,6 +3755,39 @@ header.navbar {
         max-width: 280px;
     }
 
+    .sponsor-grid {
+        gap: 15px;
+    }
+
+    .screen-content table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        transform: scale(1);
+        font-size: 0.55rem;
+    }
+
+    .screen-content table th,
+    .screen-content table td {
+        padding: 4px 6px;
+    }
+
+    .game-spotlight {
+        height: 160px;
+    }
+
+    .spotlight-label {
+        font-size: 0.6rem;
+        bottom: 8px;
+    }
+
+    .spotlight-item:hover .spotlight-label,
+    .spotlight-item:focus .spotlight-label,
+    .spotlight-item:active .spotlight-label {
+        font-size: 0.85rem;
+    }
+
+
     .sponsor-item {
         flex: 0 0 70px;
         height: 60px;
@@ -3071,7 +3849,192 @@ header.navbar {
         font-size: 0.95rem;
     }
 
+    /*account*/
+
+    #auth-section {
+        padding: 15px 10px;
+    }
+
+    #auth-section h2 {
+        font-size: 1.4rem;
+    }
+
+    #login-card,
+    #signup-card {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #auth-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #auth-buttons .btn-generic {
+        width: 80%;
+        min-width: unset;
+    }
+
+    .btn-generic {
+        font-size: 0.85rem;
+        padding: 8px 18px;
+    }
+
+    .btn-generic.large {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-generic.full {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    #team-section {
+        padding: 12px 10px;
+    }
+
+    #team-section h3 {
+        font-size: 1.1rem;
+    }
+
+    #team-section .text-secondary {
+        font-size: 0.85rem;
+    }
+
+    #team-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .team-card {
+        padding: 12px 14px;
+    }
+
+    .team-card h4 {
+        font-size: 0.95rem;
+    }
+
+    .team-card .team-desc {
+        font-size: 0.75rem;
+    }
+
+    .team-card .team-meta {
+        font-size: 0.7rem;
+    }
+
+    #createTeamModal .modal-dialog {
+        margin: 10px;
+    }
+
+    #createTeamModal .modal-content {
+        border-radius: 12px;
+    }
+
+    #createTeamModal .modal-header {
+        padding: 12px 15px;
+    }
+
+    #createTeamModal .modal-body {
+        padding: 12px 15px;
+    }
+
+    #createTeamModal .modal-footer {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #createTeamModal .modal-footer .btn-generic {
+        flex: 1 1 auto;
+        min-width: 80px;
+        font-size: 0.8rem;
+    }
+
+    #createTeamModal .form-control,
+    #createTeamModal .form-select {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    #createTeamModal .form-label {
+        font-size: 0.8rem;
+    }
+
+    .social-plugins-section {
+        padding: 16px 10px 12px;
+        margin: 12px 0 6px;
+    }
+
+    .social-plugins-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .social-card {
+        padding: 12px 12px 14px;
+        border-radius: 10px;
+    }
+
+    .social-card .card-top .platform-name {
+        font-size: 0.75rem;
+    }
+
+    .social-card .card_acc-body {
+        font-size: 0.7rem;
+    }
+
+    .social-card .card-footer-actions {
+        gap: 6px;
+        margin-top: 8px;
+    }
+
+    .yt-preview-mini .yt-thumb-mini iframe {
+        aspect-ratio: 16 / 9;
+    }
+
+    .ig-preview-mini .ig-image-mini iframe {
+        height: 250px;
+    }
+
+    .ig-preview-mini .ig-info-mini {
+        padding: 4px 8px 6px;
+        font-size: 0.6rem;
+    }
+
+    .ig-preview-mini .ig-info-mini .ig-user {
+        font-size: 0.7rem;
+    }
+
+    .ig-preview-mini .ig-info-mini .ig-hashtag {
+        font-size: 0.55rem;
+    }
+
+    .btn-social-sm {
+        padding: 3px 10px;
+        font-size: 0.6rem;
+        gap: 4px;
+    }
+
+    .btn-social-sm i {
+        font-size: 0.7rem;
+    }
+
+        .cookie-text {
+        font-size: 0.8rem;
+    }
+    
+    .cookie-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .cookie-actions .btn-generic {
+        width: 100%;
+        text-align: center;
+    }
 }
+
 /* ===== FORM SUBMIT TOAST NOTIFICATION ===== */
 .form-toast {
     position: fixed;
