@@ -1,298 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta  name="description" content="E-Sports Tournament Rankings">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Sports Tournament Rankings">
     <title>Rankings | E-Sports</title>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
-
 <body>
-
 
     <!-- =====================================================
          RANKING PAGE CONTENT
     ====================================================== -->
-
-
     <div id="pageContent">
-
 
         <!-- =================================================
              PAGE HEADER
         ================================================== -->
-
-        <section class="page-section">
-
-
-            <div id="team-section">
-
-
-                <h1 style="text-align:center">
-
-                    E-Sports Rankings
-
-                </h1>
-
-
-                <p
-                    class="text-muted"
-                    style="text-align:center"
-                >
-
-                    View the current rankings for each
-                    competitive game.
-
-                </p>
-
-
-            </div>
-
-
-        </section>
-
-
+        <div id="team-section">
+            <h1 style="text-align:center">E-Sports Rankings</h1>
+            <p class="text-muted" style="text-align:center">View the current rankings for each competitive game.</p>
+        </div>
 
         <!-- =================================================
              GAME SELECTOR
         ================================================== -->
-
         <section class="page-section_2">
+            <h2 class="schedule-title" style="text-align:center">Select a Game</h2>
 
-
-            <h2
-                class="schedule-title"
-                style="text-align:center"
-            >
-
-                Select a Game
-
-            </h2>
-
-
-
-            <!-- =================================================
-                 GAME BUTTONS
-            ================================================== -->
-
+            <!-- GAME BUTTONS -->
             <div class="cards-container">
-
-
-                <button
-                    class="card-btn"
-                    type="button"
-                    onclick="showRanking('LOL')"
-                >
-
-                    League of Legends
-
-                </button>
-
-
-
-                <button
-                    class="card-btn"
-                    type="button"
-                    onclick="showRanking('Rocket League')"
-                >
-
-                    Rocket League
-
-                </button>
-
-
-
-                <button
-                    class="card-btn"
-                    type="button"
-                    onclick="showRanking('Dota 2')"
-                >
-
-                    Dota 2
-
-                </button>
-
-
-
-                <button
-                    class="card-btn"
-                    type="button"
-                    onclick="showRanking('PUBG')"
-                >
-
-                    PUBG
-
-                </button>
-
-
-
-                <button
-                    class="card-btn"
-                    type="button"
-                    onclick="showRanking('CS-GO')"
-                >
-
-                    CS-GO
-
-                </button>
-
-
-
-                <button
-                    class="card-btn"
-                    type="button"
-                    onclick="showRanking('Valorant')"
-                >
-
-                    Valorant
-
-                </button>
-
-
+                <button class="card-btn" type="button" onclick="showRanking('LOL')">League of Legends</button>
+                <button class="card-btn" type="button" onclick="showRanking('Rocket League')">Rocket League</button>
+                <button class="card-btn" type="button" onclick="showRanking('Dota 2')">Dota 2</button>
+                <button class="card-btn" type="button" onclick="showRanking('PUBG')">PUBG</button>
+                <button class="card-btn" type="button" onclick="showRanking('CS-GO')">CS-GO</button>
+                <button class="card-btn" type="button" onclick="showRanking('Valorant')">Valorant</button>
             </div>
-
-
 
             <!-- =================================================
                  CURRENT RANKING
             ================================================== -->
-
             <div id="team-section_2">
 
+                <!-- RANKING TITLE -->
+                <h2 class="schedule-title" id="rankingTitle" style="text-align:center">League of Legends Rankings</h2>
+                <p class="text-muted" id="rankingDescription" style="text-align:center">Current League of Legends tournament rankings.</p>
 
-                <!-- =================================================
-                     RANKING TITLE
-                ================================================== -->
-
-                <h2
-                    class="schedule-title"
-                    id="rankingTitle"
-                    style="text-align:center"
-                >
-
-                    League of Legends Rankings
-
-                </h2>
-
-
-
-                <p
-                    class="text-muted"
-                    id="rankingDescription"
-                    style="text-align:center"
-                >
-
-                    Current League of Legends tournament rankings.
-
-                </p>
-
-
-
-                <!-- =================================================
-                     RANKING TABLE
-                ================================================== -->
-
+                <!-- RANKING TABLE -->
                 <div class="table-container">
-
-
                     <table>
-
-
                         <thead>
-
-
                             <tr>
-
-
-                                <th>
-                                    Rank
-                                </th>
-
-
-                                <th>
-                                    Team
-                                </th>
-
-
-                                <th>
-                                    Played
-                                </th>
-
-
-                                <th>
-                                    Wins
-                                </th>
-
-
-                                <th>
-                                    Losses
-                                </th>
-
-
-                                <th>
-                                    Points
-                                </th>
-
-
+                                <th>Rank</th>
+                                <th>Team</th>
+                                <th>Played</th>
+                                <th>Wins</th>
+                                <th>Losses</th>
+                                <th>Points</th>
                             </tr>
-
-
                         </thead>
-
-
-
                         <tbody id="rankingTableBody">
-
                             <!-- JavaScript inserts ranking data -->
-
                         </tbody>
-
-
                     </table>
-
-
                 </div>
 
-
-
-                <!-- =================================================
-                     CHAMPION HIGHLIGHT VIDEO
-                ================================================== -->
-
-                <div
-                    id="highlightVideoSection"
-                    class="highlight-video-mini"
-                >
-
-
-                    <div
-                        class="yt-title-mini"
-                        id="highlightVideoTitle"
-                        style="
-                            text-align:center;
-                            margin-bottom:8px;
-                        "
-                    >
-
+                <!-- CHAMPION HIGHLIGHT VIDEO -->
+                <div id="highlightVideoSection" class="highlight-video-mini">
+                    <div class="yt-title-mini" id="highlightVideoTitle" style="text-align:center; margin-bottom:8px;">
                         🏆 Champion Highlight
-
                     </div>
-
-
-
                     <div class="highlight-video-frame">
-
-
                         <iframe
                             id="highlightVideoFrame"
                             class="yt-embed"
@@ -300,820 +80,188 @@
                             title="Champion highlight video"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
-                        >
+                            allowfullscreen>
                         </iframe>
-
-
                     </div>
-
-
                 </div>
 
-
             </div>
-
-
         </section>
 
-
-
-        <!-- =================================================
-             BACK TO SCHEDULE
-        ================================================== -->
-
-        <div class="page-section_2">
-
-
-            <p>
-
-
-                <a
-                    href="schedule.html"
-                    class="card-btn_2"
-                >
-
-                    Back to Schedule
-
-                </a>
-
-
-            </p>
-
-
-        </div>
-
+        <!-- BACK TO SCHEDULE -->
+        <p>
+            <a href="schedule.html" class="card-btn_2">Back to Schedule</a>
+        </p>
 
     </div>
 
-
-
     <!-- =====================================================
          EXISTING JAVASCRIPT FILES
-         
-         Keep shell.js here.
-         It will automatically create the Controller.
+         Keep shell.js here. It will automatically create the Controller.
     ====================================================== -->
-
-
     <script src="js/navbar.js"></script>
-
     <script src="js/shell.js"></script>
-
     <script src="js/footer.js"></script>
-
     <script src="js/neon.js"></script>
-
     <script src="js/scroll-reveal.js"></script>
-
     <script src="js/main.js"></script>
-
-
 
     <!-- =====================================================
          RANKING JAVASCRIPT
     ====================================================== -->
-
     <script>
-
 
         /* =====================================================
            RANKING DATA
         ====================================================== */
-
         const rankings = {
 
-
-            /* =================================================
-               LEAGUE OF LEGENDS
-            ================================================== */
-
             "LOL": [
-
-                {
-                    rank: 1,
-                    team: "Team Alpha",
-                    played: 5,
-                    wins: 5,
-                    losses: 0,
-                    points: 15
-                },
-
-                {
-                    rank: 2,
-                    team: "Team Nova",
-                    played: 5,
-                    wins: 4,
-                    losses: 1,
-                    points: 12
-                },
-
-                {
-                    rank: 3,
-                    team: "Team Phoenix",
-                    played: 5,
-                    wins: 3,
-                    losses: 2,
-                    points: 9
-                },
-
-                {
-                    rank: 4,
-                    team: "Team Eclipse",
-                    played: 5,
-                    wins: 2,
-                    losses: 3,
-                    points: 6
-                },
-
-                {
-                    rank: 5,
-                    team: "Team Titan",
-                    played: 5,
-                    wins: 1,
-                    losses: 4,
-                    points: 3
-                },
-
-                {
-                    rank: 6,
-                    team: "Team Storm",
-                    played: 5,
-                    wins: 0,
-                    losses: 5,
-                    points: 0
-                }
-
+                { rank: 1, team: "Team Alpha", played: 5, wins: 5, losses: 0, points: 15 },
+                { rank: 2, team: "Team Nova", played: 5, wins: 4, losses: 1, points: 12 },
+                { rank: 3, team: "Team Phoenix", played: 5, wins: 3, losses: 2, points: 9 },
+                { rank: 4, team: "Team Eclipse", played: 5, wins: 2, losses: 3, points: 6 },
+                { rank: 5, team: "Team Titan", played: 5, wins: 1, losses: 4, points: 3 },
+                { rank: 6, team: "Team Storm", played: 5, wins: 0, losses: 5, points: 0 }
             ],
-
-
-
-            /* =================================================
-               ROCKET LEAGUE
-            ================================================== */
 
             "Rocket League": [
-
-                {
-                    rank: 1,
-                    team: "Rocket Titans",
-                    played: 5,
-                    wins: 5,
-                    losses: 0,
-                    points: 15
-                },
-
-                {
-                    rank: 2,
-                    team: "Boost Masters",
-                    played: 5,
-                    wins: 4,
-                    losses: 1,
-                    points: 12
-                },
-
-                {
-                    rank: 3,
-                    team: "Velocity",
-                    played: 5,
-                    wins: 3,
-                    losses: 2,
-                    points: 9
-                },
-
-                {
-                    rank: 4,
-                    team: "Aerial Force",
-                    played: 5,
-                    wins: 2,
-                    losses: 3,
-                    points: 6
-                },
-
-                {
-                    rank: 5,
-                    team: "Turbo Squad",
-                    played: 5,
-                    wins: 1,
-                    losses: 4,
-                    points: 3
-                },
-
-                {
-                    rank: 6,
-                    team: "Goal Hunters",
-                    played: 5,
-                    wins: 0,
-                    losses: 5,
-                    points: 0
-                }
-
+                { rank: 1, team: "Rocket Titans", played: 5, wins: 5, losses: 0, points: 15 },
+                { rank: 2, team: "Boost Masters", played: 5, wins: 4, losses: 1, points: 12 },
+                { rank: 3, team: "Velocity", played: 5, wins: 3, losses: 2, points: 9 },
+                { rank: 4, team: "Aerial Force", played: 5, wins: 2, losses: 3, points: 6 },
+                { rank: 5, team: "Turbo Squad", played: 5, wins: 1, losses: 4, points: 3 },
+                { rank: 6, team: "Goal Hunters", played: 5, wins: 0, losses: 5, points: 0 }
             ],
-
-
-
-            /* =================================================
-               DOTA 2
-            ================================================== */
 
             "Dota 2": [
-
-                {
-                    rank: 1,
-                    team: "Dragon Knights",
-                    played: 5,
-                    wins: 5,
-                    losses: 0,
-                    points: 15
-                },
-
-                {
-                    rank: 2,
-                    team: "Ancient Warriors",
-                    played: 5,
-                    wins: 4,
-                    losses: 1,
-                    points: 12
-                },
-
-                {
-                    rank: 3,
-                    team: "Shadow Legion",
-                    played: 5,
-                    wins: 3,
-                    losses: 2,
-                    points: 9
-                },
-
-                {
-                    rank: 4,
-                    team: "Radiant Force",
-                    played: 5,
-                    wins: 2,
-                    losses: 3,
-                    points: 6
-                },
-
-                {
-                    rank: 5,
-                    team: "Dire Wolves",
-                    played: 5,
-                    wins: 1,
-                    losses: 4,
-                    points: 3
-                },
-
-                {
-                    rank: 6,
-                    team: "Storm Riders",
-                    played: 5,
-                    wins: 0,
-                    losses: 5,
-                    points: 0
-                }
-
+                { rank: 1, team: "Dragon Knights", played: 5, wins: 5, losses: 0, points: 15 },
+                { rank: 2, team: "Ancient Warriors", played: 5, wins: 4, losses: 1, points: 12 },
+                { rank: 3, team: "Shadow Legion", played: 5, wins: 3, losses: 2, points: 9 },
+                { rank: 4, team: "Radiant Force", played: 5, wins: 2, losses: 3, points: 6 },
+                { rank: 5, team: "Dire Wolves", played: 5, wins: 1, losses: 4, points: 3 },
+                { rank: 6, team: "Storm Riders", played: 5, wins: 0, losses: 5, points: 0 }
             ],
-
-
-
-            /* =================================================
-               PUBG
-            ================================================== */
 
             "PUBG": [
-
-                {
-                    rank: 1,
-                    team: "PUBG Elite",
-                    played: 5,
-                    wins: 4,
-                    losses: 1,
-                    points: 14
-                },
-
-                {
-                    rank: 2,
-                    team: "Battle Royale",
-                    played: 5,
-                    wins: 4,
-                    losses: 1,
-                    points: 13
-                },
-
-                {
-                    rank: 3,
-                    team: "Storm Hunters",
-                    played: 5,
-                    wins: 3,
-                    losses: 2,
-                    points: 10
-                },
-
-                {
-                    rank: 4,
-                    team: "Drop Zone",
-                    played: 5,
-                    wins: 2,
-                    losses: 3,
-                    points: 7
-                },
-
-                {
-                    rank: 5,
-                    team: "Survival Squad",
-                    played: 5,
-                    wins: 1,
-                    losses: 4,
-                    points: 4
-                },
-
-                {
-                    rank: 6,
-                    team: "Last Circle",
-                    played: 5,
-                    wins: 0,
-                    losses: 5,
-                    points: 2
-                }
-
+                { rank: 1, team: "PUBG Elite", played: 5, wins: 4, losses: 1, points: 14 },
+                { rank: 2, team: "Battle Royale", played: 5, wins: 4, losses: 1, points: 13 },
+                { rank: 3, team: "Storm Hunters", played: 5, wins: 3, losses: 2, points: 10 },
+                { rank: 4, team: "Drop Zone", played: 5, wins: 2, losses: 3, points: 7 },
+                { rank: 5, team: "Survival Squad", played: 5, wins: 1, losses: 4, points: 4 },
+                { rank: 6, team: "Last Circle", played: 5, wins: 0, losses: 5, points: 2 }
             ],
-
-
-
-            /* =================================================
-               CS-GO
-            ================================================== */
 
             "CS-GO": [
-
-                {
-                    rank: 1,
-                    team: "Counter Force",
-                    played: 5,
-                    wins: 5,
-                    losses: 0,
-                    points: 15
-                },
-
-                {
-                    rank: 2,
-                    team: "Headshot Kings",
-                    played: 5,
-                    wins: 4,
-                    losses: 1,
-                    points: 12
-                },
-
-                {
-                    rank: 3,
-                    team: "Tactical Five",
-                    played: 5,
-                    wins: 3,
-                    losses: 2,
-                    points: 9
-                },
-
-                {
-                    rank: 4,
-                    team: "Elite Strikers",
-                    played: 5,
-                    wins: 2,
-                    losses: 3,
-                    points: 6
-                },
-
-                {
-                    rank: 5,
-                    team: "Rush Squad",
-                    played: 5,
-                    wins: 1,
-                    losses: 4,
-                    points: 3
-                },
-
-                {
-                    rank: 6,
-                    team: "Shadow Aim",
-                    played: 5,
-                    wins: 0,
-                    losses: 5,
-                    points: 0
-                }
-
+                { rank: 1, team: "Counter Force", played: 5, wins: 5, losses: 0, points: 15 },
+                { rank: 2, team: "Headshot Kings", played: 5, wins: 4, losses: 1, points: 12 },
+                { rank: 3, team: "Tactical Five", played: 5, wins: 3, losses: 2, points: 9 },
+                { rank: 4, team: "Elite Strikers", played: 5, wins: 2, losses: 3, points: 6 },
+                { rank: 5, team: "Rush Squad", played: 5, wins: 1, losses: 4, points: 3 },
+                { rank: 6, team: "Shadow Aim", played: 5, wins: 0, losses: 5, points: 0 }
             ],
 
-
-
-            /* =================================================
-               VALORANT
-            ================================================== */
-
             "Valorant": [
-
-                {
-                    rank: 1,
-                    team: "Valorant Elite",
-                    played: 5,
-                    wins: 5,
-                    losses: 0,
-                    points: 15
-                },
-
-                {
-                    rank: 2,
-                    team: "Radiant Squad",
-                    played: 5,
-                    wins: 4,
-                    losses: 1,
-                    points: 12
-                },
-
-                {
-                    rank: 3,
-                    team: "Vanguard",
-                    played: 5,
-                    wins: 3,
-                    losses: 2,
-                    points: 9
-                },
-
-                {
-                    rank: 4,
-                    team: "Phantom Force",
-                    played: 5,
-                    wins: 2,
-                    losses: 3,
-                    points: 6
-                },
-
-                {
-                    rank: 5,
-                    team: "Spike Hunters",
-                    played: 5,
-                    wins: 1,
-                    losses: 4,
-                    points: 3
-                },
-
-                {
-                    rank: 6,
-                    team: "Agent Five",
-                    played: 5,
-                    wins: 0,
-                    losses: 5,
-                    points: 0
-                }
-
+                { rank: 1, team: "Valorant Elite", played: 5, wins: 5, losses: 0, points: 15 },
+                { rank: 2, team: "Radiant Squad", played: 5, wins: 4, losses: 1, points: 12 },
+                { rank: 3, team: "Vanguard", played: 5, wins: 3, losses: 2, points: 9 },
+                { rank: 4, team: "Phantom Force", played: 5, wins: 2, losses: 3, points: 6 },
+                { rank: 5, team: "Spike Hunters", played: 5, wins: 1, losses: 4, points: 3 },
+                { rank: 6, team: "Agent Five", played: 5, wins: 0, losses: 5, points: 0 }
             ]
 
         };
 
-
-
         /* =====================================================
            HIGHLIGHT VIDEOS
         ====================================================== */
-
         const highlightVideos = {
-
-            "LOL":
-                "i21NAHe77UM",
-
-            "Rocket League":
-                "as5Q5_5c2S0",
-
-            "Dota 2":
-                "4Mv8hxadZcI",
-
-            "PUBG":
-                "pD1RjjOYaU4",
-
-            "CS-GO":
-                "6CIT1hq6YhM",
-
-            "Valorant":
-                "zzA3twZciQA"
-
+            "LOL": "i21NAHe77UM",
+            "Rocket League": "as5Q5_5c2S0",
+            "Dota 2": "4Mv8hxadZcI",
+            "PUBG": "pD1RjjOYaU4",
+            "CS-GO": "6CIT1hq6YhM",
+            "Valorant": "zzA3twZciQA"
         };
-
-
 
         /* =====================================================
            DISPLAY RANKING
         ====================================================== */
-
         function showRanking(game) {
-
-
-            const title =
-                document.getElementById(
-                    "rankingTitle"
-                );
-
-
-            const description =
-                document.getElementById(
-                    "rankingDescription"
-                );
-
-
-            const tableBody =
-                document.getElementById(
-                    "rankingTableBody"
-                );
-
-
-            const selectedRanking =
-                rankings[game];
-
-
-            /* =================================================
-               CHECK RANKING DATA
-            ================================================== */
+            const title = document.getElementById("rankingTitle");
+            const description = document.getElementById("rankingDescription");
+            const tableBody = document.getElementById("rankingTableBody");
+            const selectedRanking = rankings[game];
 
             if (!selectedRanking) {
-
-                tableBody.innerHTML = `
-
-                    <tr>
-
-                        <td colspan="6">
-
-                            No ranking data available.
-
-                        </td>
-
-                    </tr>
-
-                `;
-
+                tableBody.innerHTML = `<tr><td colspan="6">No ranking data available.</td></tr>`;
                 return;
-
             }
 
-
-
-            /* =================================================
-               UPDATE TITLE
-            ================================================== */
-
-            title.textContent =
-                game + " Rankings";
-
-
-            description.textContent =
-                "Current " +
-                game +
-                " tournament rankings.";
-
-
-
-            /* =================================================
-               CLEAR OLD TABLE
-            ================================================== */
+            title.textContent = game + " Rankings";
+            description.textContent = "Current " + game + " tournament rankings.";
 
             tableBody.innerHTML = "";
 
+            selectedRanking.forEach(function (player) {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${getRankIcon(player.rank)} ${player.rank}</td>
+                    <td><strong>${player.team}</strong></td>
+                    <td>${player.played}</td>
+                    <td>${player.wins}</td>
+                    <td>${player.losses}</td>
+                    <td><strong>${player.points}</strong></td>
+                `;
+                tableBody.appendChild(row);
+            });
 
-
-            /* =================================================
-               ADD RANKING ROWS
-            ================================================== */
-
-            selectedRanking.forEach(
-                function (player) {
-
-
-                    const row =
-                        document.createElement(
-                            "tr"
-                        );
-
-
-                    row.innerHTML = `
-
-                        <td>
-
-                            ${getRankIcon(player.rank)}
-
-                            ${player.rank}
-
-                        </td>
-
-
-                        <td>
-
-                            <strong>
-
-                                ${player.team}
-
-                            </strong>
-
-                        </td>
-
-
-                        <td>
-
-                            ${player.played}
-
-                        </td>
-
-
-                        <td>
-
-                            ${player.wins}
-
-                        </td>
-
-
-                        <td>
-
-                            ${player.losses}
-
-                        </td>
-
-
-                        <td>
-
-                            <strong>
-
-                                ${player.points}
-
-                            </strong>
-
-                        </td>
-
-                    `;
-
-
-                    tableBody.appendChild(row);
-
-                }
-            );
-
-
-
-            /* =================================================
-               UPDATE HIGHLIGHT VIDEO
-            ================================================== */
-
-            updateHighlightVideo(
-                game,
-                selectedRanking[0]
-            );
-
+            updateHighlightVideo(game, selectedRanking[0]);
         }
-
-
 
         /* =====================================================
            RANK ICON
         ====================================================== */
-
         function getRankIcon(rank) {
-
-
-            if (rank === 1) {
-
-                return "🥇";
-
-            }
-
-
-            if (rank === 2) {
-
-                return "🥈";
-
-            }
-
-
-            if (rank === 3) {
-
-                return "🥉";
-
-            }
-
-
+            if (rank === 1) return "🥇";
+            if (rank === 2) return "🥈";
+            if (rank === 3) return "🥉";
             return "";
-
         }
-
-
 
         /* =====================================================
            UPDATE HIGHLIGHT VIDEO
         ====================================================== */
-
-        function updateHighlightVideo(
-            game,
-            topPlayer
-        ) {
-
-
-            const frame =
-                document.getElementById(
-                    "highlightVideoFrame"
-                );
-
-
-            const title =
-                document.getElementById(
-                    "highlightVideoTitle"
-                );
-
-
-            const videoId =
-                highlightVideos[game];
-
-
-
-            /* =================================================
-               NO VIDEO AVAILABLE
-            ================================================== */
+        function updateHighlightVideo(game, topPlayer) {
+            const frame = document.getElementById("highlightVideoFrame");
+            const title = document.getElementById("highlightVideoTitle");
+            const videoId = highlightVideos[game];
 
             if (!videoId) {
-
                 frame.src = "";
-
-                title.textContent =
-                    "🏆 Champion Highlight";
-
+                title.textContent = "🏆 Champion Highlight";
                 return;
-
             }
 
-
-
-            /* =================================================
-               USE EXISTING YOUTUBE FUNCTION
-            ================================================== */
-
-            if (
-                typeof window.setYouTubeVideo ===
-                "function"
-            ) {
-
-
-                window.setYouTubeVideo(
-                    "highlightVideoFrame",
-                    videoId
-                );
-
-
+            if (typeof window.setYouTubeVideo === "function") {
+                window.setYouTubeVideo("highlightVideoFrame", videoId);
+            } else {
+                frame.src = "https://www.youtube.com/embed/" + videoId + "?enablejsapi=1";
             }
 
-
-            /* =================================================
-               FALLBACK
-            ================================================== */
-
-            else {
-
-
-                frame.src =
-                    "https://www.youtube.com/embed/" +
-                    videoId +
-                    "?enablejsapi=1";
-
-
-            }
-
-
-
-            /* =================================================
-               UPDATE VIDEO TITLE
-            ================================================== */
-
-            title.textContent =
-
-                topPlayer
-
-                    ? "🏆 " +
-                      topPlayer.team +
-                      " — Champion Highlight"
-
-                    : "🏆 Champion Highlight";
-
+            title.textContent = topPlayer
+                ? "🏆 " + topPlayer.team + " — Champion Highlight"
+                : "🏆 Champion Highlight";
         }
-
-
 
         /* =====================================================
            INITIAL RANKING
         ====================================================== */
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
-
-                showRanking("LOL");
-
-            }
-        );
+        document.addEventListener("DOMContentLoaded", function () {
+            showRanking("LOL");
+        });
 
     </script>
 
-
 </body>
-
 </html>
