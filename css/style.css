@@ -3689,6 +3689,18 @@ p, .lead, .label, .storage-note, td, th {
             color: #e94560;
         }
 
+ /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+        @media (max-width: 600px) {
+            .tournament-page {
+                padding: 15px;
+            }
+            .tournament-page h1 {
+                font-size: 1.7rem;
+            }
+        }
+
 
   <!-- =====================================================
          RANKING 
@@ -3754,19 +3766,6 @@ p, .lead, .label, .storage-note, td, th {
 
             cursor: pointer;
 
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-        @media (max-width: 600px) {
-            .tournament-page {
-                padding: 15px;
-            }
-            .tournament-page h1 {
-                font-size: 1.7rem;
-            }
         }
 
 
