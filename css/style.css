@@ -3489,7 +3489,7 @@ p, .lead, .label, .storage-note, td, th {
     line-height: 1.7;
 }
 
-//Tournament Detail
+ <!-- Tournament Details -->
         .tournament-page {
             width: 100%;
             box-sizing: border-box;
