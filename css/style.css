@@ -263,7 +263,7 @@ h4 {
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transform: scale(0.85);
-    
+
 
 }
 
@@ -1381,8 +1381,15 @@ h4 {
 }
 
 @keyframes statusPulse {
-    0%, 100% { box-shadow: 0 0 0 rgba(122, 224, 154, 0.5); }
-    50% { box-shadow: 0 0 12px rgba(122, 224, 154, 0.8); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 rgba(122, 224, 154, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 12px rgba(122, 224, 154, 0.8);
+    }
 }
 
 .watch-on-youtube {
@@ -2835,7 +2842,7 @@ header.navbar {
     margin-top: 14px;
     margin-bottom: 10px;
     color: #e8e8e8;
-    margin-left:35px;
+    margin-left: 35px;
 }
 
 
@@ -3077,7 +3084,7 @@ header.navbar {
 
 .enter-line-emoji {
     font-size: clamp(1.2rem, 5vw, 2rem);
-    margin-top:100px;
+    margin-top: 100px;
 }
 
 .enter-line-sub {
@@ -3091,7 +3098,7 @@ header.navbar {
         0 0 20px rgba(120, 190, 255, 0.22);
     animation: textFloat 4.5s ease-in-out infinite 0.25s;
     text-transform: uppercase;
-        margin-top:10px;
+    margin-top: 10px;
 }
 
 .enter-line-controls {
@@ -3257,8 +3264,8 @@ header.navbar {
     color: #fff;
     z-index: 2000;
     padding: 16px 24px;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.4);
-    border-top: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cookie-banner-inner {
@@ -3324,20 +3331,36 @@ header.navbar {
 }
 
 /* Text & Link Contrast Fixes */
-h1, h2, h3, h4, h5, h6, .brand, .num {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand,
+.num {
     color: #ffffff !important;
 }
 
-p, .lead, .label, .storage-note, td, th {
+p,
+.lead,
+.label,
+.storage-note,
+td,
+th {
     color: #cbd5e1 !important;
 }
 
-.main-nav a, .site-footer a, a {
+.main-nav a,
+.site-footer a,
+a {
     color: #38bdf8 !important;
     text-decoration: none;
 }
 
-.main-nav a:hover, .site-footer a:hover, a:hover {
+.main-nav a:hover,
+.site-footer a:hover,
+a:hover {
     color: #7dd3fc !important;
     text-decoration: underline;
 }
@@ -3363,11 +3386,30 @@ p, .lead, .label, .storage-note, td, th {
 }
 
 /* Game Category Badges */
-.badge-cs2 { background-color: #0d6efd !important; color: #ffffff !important; }
-.badge-valorant { background-color: #dc3545 !important; color: #ffffff !important; }
-.badge-lol { background-color: #ffc107 !important; color: #000000 !important; }
-.badge-dota2 { background-color: #8b0000 !important; color: #ffffff !important; }
-.badge-rl { background-color: #0dcaf0 !important; color: #000000 !important; }
+.badge-cs2 {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+}
+
+.badge-valorant {
+    background-color: #dc3545 !important;
+    color: #ffffff !important;
+}
+
+.badge-lol {
+    background-color: #ffc107 !important;
+    color: #000000 !important;
+}
+
+.badge-dota2 {
+    background-color: #8b0000 !important;
+    color: #ffffff !important;
+}
+
+.badge-rl {
+    background-color: #0dcaf0 !important;
+    color: #000000 !important;
+}
 
 /* Social Icons */
 .social-links a {
@@ -3461,7 +3503,7 @@ p, .lead, .label, .storage-note, td, th {
 .service-image {
     flex: 0 0 320px;
     max-width: 320px;
-  
+
 }
 
 .service-image img {
@@ -3469,7 +3511,7 @@ p, .lead, .label, .storage-note, td, th {
     height: 220px;
     object-fit: cover;
     border-radius: 12px;
-    display: block;  
+    display: block;
 }
 
 .service-text {
@@ -3489,284 +3531,278 @@ p, .lead, .label, .storage-note, td, th {
     line-height: 1.7;
 }
 
- <!-- Tournament Details -->
-        .tournament-page {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 20px 25px 40px 25px;
-        }
+.tournament-page {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 25px 40px 25px;
+}
 
-        .tournament-page h1 {
-            font-size: 2.2rem;
-            color: #e8e8e8;
-            margin-top: 0;
-            margin-bottom: 5px;
-            font-family: 'Orbitron', 'Courier New', monospace;
-        }
+.tournament-page h1 {
+    font-size: 2.2rem;
+    color: #e8e8e8;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-family: 'Orbitron', 'Courier New', monospace;
+}
 
-        .tournament-page h2 {
-            font-size: 1.5rem;
-            color: #e8e8e8;
-            margin-top: 28px;
-            margin-bottom: 14px;
-            font-family: 'Orbitron', 'Courier New', monospace;
-        }
+.tournament-page h2 {
+    font-size: 1.5rem;
+    color: #e8e8e8;
+    margin-top: 28px;
+    margin-bottom: 14px;
+    font-family: 'Orbitron', 'Courier New', monospace;
+}
 
-        .tournament-subtitle {
-            color: #888;
-            font-size: 1rem;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
+.tournament-subtitle {
+    color: #888;
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
 
-        .tournament-page hr {
-            border: none;
-            border-top: 1px solid #333;
-            margin: 15px 0 20px 0;
-        }
+.tournament-page hr {
+    border: none;
+    border-top: 1px solid #333;
+    margin: 15px 0 20px 0;
+}
 
-        
-        .back-button {
-            display: inline-block;
-            padding: 9px 14px;
-            margin-bottom: 15px;
-            border-radius: 7px;
-            background: #1a1a2e;
-            border: 1px solid #444;
-            color: #fff;
-            text-decoration: none;
-            font-size: .8rem;
-            transition: .2s ease;
-        }
 
-        .back-button:hover {
-            background: #e94560;
-            border-color: #e94560;
-            color: #fff;
-        }
+.back-button {
+    display: inline-block;
+    padding: 9px 14px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    background: #1a1a2e;
+    border: 1px solid #444;
+    color: #fff;
+    text-decoration: none;
+    font-size: .8rem;
+    transition: .2s ease;
+}
 
-       
-        .detail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            width: 100%;
-        }
+.back-button:hover {
+    background: #e94560;
+    border-color: #e94560;
+    color: #fff;
+}
 
-        
-        .detail-card {
-            width: 100%;
-            min-width: 0;
-            background: rgba(26, 26, 46, .85);
-            border: 1px solid #3a3a3a;
-            border-radius: 10px;
-            overflow: hidden;
-            box-sizing: border-box;
-            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-        }
 
-        .detail-card:hover {
-            transform: translateY(-4px);
-            border-color: #e94560;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
-        }
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    width: 100%;
+}
 
-        
-        .detail-card-top {
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #e94560, #1a1a2e);
-        }
 
-        .detail-icon {
-            font-size: 2.2rem;
-        }
+.detail-card {
+    width: 100%;
+    min-width: 0;
+    background: rgba(26, 26, 46, .85);
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
 
-        
-        .detail-card-body {
-            padding: 14px;
-        }
+.detail-card:hover {
+    transform: translateY(-4px);
+    border-color: #e94560;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
+}
 
-        .detail-card-body h3 {
-            margin: 0 0 7px 0;
-            color: #fff;
-            font-size: .95rem;
-        }
 
-        .detail-value {
-            margin: 0;
-            color: #ccc;
-            font-size: .82rem;
-            line-height: 1.5;
-            word-break: break-word;
-        }
+.detail-card-top {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e94560, #1a1a2e);
+}
 
-        
-        .description-card {
-            width: 100%;
-            background: rgba(26, 26, 46, .85);
-            border: 1px solid #3a3a3a;
-            border-radius: 10px;
-            padding: 18px;
-            box-sizing: border-box;
-        }
+.detail-icon {
+    font-size: 2.2rem;
+}
 
-        .description-card h3 {
-            margin-top: 0;
-            color: #fff;
-            font-size: 1rem;
-        }
 
-        .description-card p {
-            color: #ccc;
-            line-height: 1.7;
-            font-size: .85rem;
-            margin-bottom: 0;
-        }
+.detail-card-body {
+    padding: 14px;
+}
 
-        .team-card {
-            width: 100%;
-            background: rgba(26, 26, 46, .85);
-            border: 1px solid #3a3a3a;
-            border-radius: 10px;
-            padding: 15px;
-            box-sizing: border-box;
-            text-align: center;
-            transition: .2s ease;
-        }
+.detail-card-body h3 {
+    margin: 0 0 7px 0;
+    color: #fff;
+    font-size: .95rem;
+}
 
-        .team-card:hover {
-            transform: translateY(-4px);
-            border-color: #4ecdc4;
-        }
+.detail-value {
+    margin: 0;
+    color: #ccc;
+    font-size: .82rem;
+    line-height: 1.5;
+    word-break: break-word;
+}
 
-        .team-icon {
-            font-size: 2rem;
-            margin-bottom: 7px;
-        }
 
-        .team-name {
-            color: #fff;
-            font-weight: bold;
-            font-size: .9rem;
-        }
+.description-card {
+    width: 100%;
+    background: rgba(26, 26, 46, .85);
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+    padding: 18px;
+    box-sizing: border-box;
+}
 
-        .status-badge {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: .7rem;
-            font-weight: bold;
-            color: #fff;
-        }
+.description-card h3 {
+    margin-top: 0;
+    color: #fff;
+    font-size: 1rem;
+}
 
-        .status-ongoing {
-            background: #2eaa72;
-        }
+.description-card p {
+    color: #ccc;
+    line-height: 1.7;
+    font-size: .85rem;
+    margin-bottom: 0;
+}
 
-        .status-future {
-            background: #d6a329;
-        }
+.team-card {
+    width: 100%;
+    background: rgba(26, 26, 46, .85);
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: .2s ease;
+}
 
-        .status-ended {
-            background: #555;
-        }
+.team-card:hover {
+    transform: translateY(-4px);
+    border-color: #4ecdc4;
+}
 
-     
-        .not-found {
-            padding: 30px;
-            text-align: center;
-            background: rgba(26, 26, 46, .85);
-            border: 1px solid #444;
-            border-radius: 10px;
-            color: #ccc;
-        }
+.team-icon {
+    font-size: 2rem;
+    margin-bottom: 7px;
+}
 
-        .not-found h2 {
-            margin-top: 0;
-            color: #e94560;
-        }
+.team-name {
+    color: #fff;
+    font-weight: bold;
+    font-size: .9rem;
+}
 
- /* =====================================================
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: .7rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.status-ongoing {
+    background: #2eaa72;
+}
+
+.status-future {
+    background: #d6a329;
+}
+
+.status-ended {
+    background: #555;
+}
+
+
+.not-found {
+    padding: 30px;
+    text-align: center;
+    background: rgba(26, 26, 46, .85);
+    border: 1px solid #444;
+    border-radius: 10px;
+    color: #ccc;
+}
+
+.not-found h2 {
+    margin-top: 0;
+    color: #e94560;
+}
+
+/* =====================================================
            RESPONSIVE
         ===================================================== */
-        @media (max-width: 600px) {
-            .tournament-page {
-                padding: 15px;
-            }
-            .tournament-page h1 {
-                font-size: 1.7rem;
-            }
-        }
+@media (max-width: 600px) {
+    .tournament-page {
+        padding: 15px;
+    }
+
+    .tournament-page h1 {
+        font-size: 1.7rem;
+    }
+}
 
 
-  <!-- =====================================================
-         RANKING 
-    ====================================================== -->
-
-    <style>
-
-        /* =====================================================
+/* =====================================================
            GAME SELECTOR
         ====================================================== */
 
-        .cards-container {
+.cards-container {
 
-            width: 100%;
+    width: 100%;
 
-            max-width: 1050px;
+    max-width: 1050px;
 
-            margin: 30px auto;
+    margin: 30px auto;
 
-            padding: 0 20px;
+    padding: 0 20px;
 
-            box-sizing: border-box;
+    box-sizing: border-box;
 
-            display: grid;
+    display: grid;
 
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
-            gap: 20px;
+    gap: 20px;
 
-        }
+}
 
 
-        /* =====================================================
+/* =====================================================
            GAME BUTTONS
         ====================================================== */
 
-        .cards-container .card-btn {
+.cards-container .card-btn {
 
-            width: 100%;
+    width: 100%;
 
-            min-width: 0;
+    min-width: 0;
 
-            min-height: 65px;
+    min-height: 65px;
 
-            padding: 15px;
+    padding: 15px;
 
-            box-sizing: border-box;
+    box-sizing: border-box;
 
-            display: flex;
+    display: flex;
 
-            align-items: center;
+    align-items: center;
 
-            justify-content: center;
+    justify-content: center;
 
-            text-align: center;
+    text-align: center;
 
-            white-space: normal;
+    white-space: normal;
 
-            overflow-wrap: break-word;
+    overflow-wrap: break-word;
 
-            word-break: normal;
+    word-break: normal;
 
-            cursor: pointer;
+    cursor: pointer;
 
-        }
+}
 
 
 /* ========== 768px ========== */
@@ -4148,18 +4184,25 @@ p, .lead, .label, .storage-note, td, th {
         flex-direction: column;
         align-items: flex-start;
     }
+
     .cookie-actions {
         width: 100%;
         justify-content: flex-end;
     }
 
-        .service-card {
+    .service-card {
         flex-direction: column;
     }
 
     .service-image {
         max-width: 100%;
         flex: 1 1 100%;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        padding: 0 15px;
     }
 }
 
@@ -4504,14 +4547,15 @@ p, .lead, .label, .storage-note, td, th {
         font-size: 0.7rem;
     }
 
-        .cookie-text {
+    .cookie-text {
         font-size: 0.8rem;
     }
-    
+
     .cookie-actions {
         flex-direction: column;
         gap: 8px;
     }
+
     .cookie-actions .btn-generic {
         width: 100%;
         text-align: center;
@@ -4525,169 +4569,21 @@ p, .lead, .label, .storage-note, td, th {
         max-width: none;
     }
 
-      /* =====================================================
-           TABLET-RANKING
-        ====================================================== */
-
-        @media (max-width: 900px) {
-
-            .cards-container {
-
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
-
-                gap: 16px;
-
-                padding: 0 15px;
-
-            }
-
-        }
-
-      /* =====================================================
-           MOBILE-RANKING
-        ====================================================== */
-
-        @media (max-width: 600px) {
-
-            .cards-container {
-
-                grid-template-columns: 1fr;
-
-                gap: 14px;
-
-                padding: 0 15px;
-
-                margin-top: 20px;
-
-                margin-bottom: 25px;
-
-            }
-
-
-            .cards-container .card-btn {
-
-                min-height: 58px;
-
-                padding: 14px 12px;
-
-                font-size: 15px;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           SMALL MOBILE-RANKING
-        ====================================================== */
-
-        @media (max-width: 380px) {
-
-            .cards-container {
-
-                padding: 0 10px;
-
-                gap: 12px;
-
-            }
-
-
-            .cards-container .card-btn {
-
-                min-height: 55px;
-
-                padding: 13px 10px;
-
-                font-size: 14px;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           RANKING TABLE
-        ====================================================== */
-
-        .table-container {
-
-            width: 100%;
-
-            max-width: 100%;
-
-            box-sizing: border-box;
-
-            overflow-x: auto;
-
-            -webkit-overflow-scrolling: touch;
-
-        }
-
-
-        .table-container table {
-
-            width: 100%;
-
-            min-width: 620px;
-
-            border-collapse: collapse;
-
-        }
-
-
-        /* =====================================================
-           VIDEO-RANKING
-        ====================================================== */
-
-        .highlight-video-mini {
-
-            width: 100%;
-
-            max-width: 100%;
-
-            box-sizing: border-box;
-
-        }
-
-
-        .highlight-video-frame {
-
-            width: 100%;
-
-            max-width: 100%;
-
-            box-sizing: border-box;
-
-        }
-
-
-        .highlight-video-frame iframe {
-
-            display: block;
-
-            width: 100%;
-
-            max-width: 100%;
-
-            box-sizing: border-box;
-
-        }
-
-
-        /* =====================================================
-           MOBILE VIDEO - RANKING
-        ====================================================== */
-
-        @media (max-width: 600px) {
-
-            .highlight-video-frame {
-
-                width: 100%;
-
-            }
-
-        }
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 0 15px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+
+    .cards-container .card-btn {
+        min-height: 58px;
+        padding: 14px 12px;
+        font-size: 15px;
+    }
+
+    .highlight-video-frame {
+        width: 100%;
+    }
 }
-
-
