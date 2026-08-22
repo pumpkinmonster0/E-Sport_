@@ -10,221 +10,14 @@
 
     <title>Rankings | E-Sports</title>
 
-    <!-- Existing External CSS -->
     <link rel="stylesheet" href="css/style.css">
-
-    <style id="ranking-responsive-fix">
-      
-        html,
-        body {
-            width: 100%;
-            min-width: 0;
-            min-height: 100%;
-            height: auto;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            overflow-y: auto;
-            box-sizing: border-box;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        /* IMPORTANT:
-           These containers must be allowed to grow beyond the
-           browser viewport. Do not use height:100vh + overflow:hidden. */
-
-        #pageContent,
-        .screen-area,
-        .screen-content,
-        .page-section,
-        .page-section_2,
-        #team-section,
-        #team-section_2 {
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
-            height: auto !important;
-            max-height: none !important;
-            overflow: visible !important;
-        }
-
-        #pageContent {
-            min-height: 100vh;
-        }
-
-        .screen-area {
-            min-height: 100vh;
-        }
-
-        .page-section,
-        .page-section_2 {
-            padding-left: clamp(10px, 3vw, 30px);
-            padding-right: clamp(10px, 3vw, 30px);
-        }
-
-        /* =========================================================
-           GAME SELECTOR
-           ========================================================= */
-
-        .cards-container {
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: stretch;
-            gap: 12px;
-        }
-
-        .cards-container .card-btn {
-            flex: 1 1 160px;
-            min-width: 0;
-            max-width: 240px;
-            white-space: normal;
-            overflow-wrap: anywhere;
-        }
-
-        /* =========================================================
-           RANKING TABLE
-           ========================================================= */
-
-        .table-container {
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
-            overflow-x: auto !important;
-            overflow-y: visible !important;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-        }
-
-        .table-container table {
-            width: 100%;
-            min-width: 600px;
-            border-collapse: collapse;
-        }
-
-        .table-container th,
-        .table-container td {
-            white-space: nowrap;
-        }
-
-        .table-container th:nth-child(2),
-        .table-container td:nth-child(2) {
-            white-space: normal;
-            overflow-wrap: anywhere;
-            min-width: 150px;
-        }
-
-        #rankingTableBody strong,
-        #rankingTitle,
-        #rankingDescription {
-            overflow-wrap: anywhere;
-            word-break: normal;
-        }
-
-        /* =========================================================
-           HIGHLIGHT VIDEO
-           ========================================================= */
-
-        .highlight-video-mini {
-            width: 100%;
-            max-width: 900px;
-            margin: 30px auto 0;
-        }
-
-        .yt-title-mini {
-            font-weight: 700;
-        }
-
-        .highlight-video-frame {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-        }
-
-        .highlight-video-frame .yt-embed {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* =========================================================
-           TABLET / MOBILE
-           ========================================================= */
-
-        @media (max-width: 700px) {
-
-            .page-section,
-            .page-section_2 {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-
-            .cards-container {
-                gap: 8px;
-            }
-
-            .cards-container .card-btn {
-                flex: 1 1 calc(50% - 8px);
-                max-width: none;
-            }
-
-            .table-container table {
-                min-width: 560px;
-            }
-
-            #rankingTitle {
-                font-size: 1.35rem;
-            }
-
-            #rankingDescription {
-                font-size: 0.9rem;
-            }
-
-            .highlight-video-mini {
-                margin-top: 25px;
-            }
-        }
-
-        /* =========================================================
-           SMALL MOBILE
-           ========================================================= */
-
-        @media (max-width: 420px) {
-
-            .cards-container .card-btn {
-                flex: 1 1 100%;
-            }
-
-            .table-container table {
-                min-width: 540px;
-            }
-
-            #rankingTitle {
-                font-size: 1.2rem;
-            }
-
-            .highlight-video-mini {
-                margin-top: 20px;
-            }
-        }
-    </style>
 </head>
 
 
 <body>
 
     <!-- =====================================================
-         PAGE CONTENT
+         FIXED SCREEN / PAGE CONTENT
     ====================================================== -->
 
     <div id="pageContent">
@@ -260,9 +53,7 @@
 
                 <section class="page-section_2">
 
-                    <h2
-                        class="schedule-title"
-                        style="text-align:center">
+                    <h2 class="schedule-title" style="text-align:center">
                         Select a Game
                     </h2>
 
@@ -273,7 +64,9 @@
                             class="card-btn"
                             type="button"
                             onclick="showRanking('LOL')">
+
                             League of Legends
+
                         </button>
 
 
@@ -281,7 +74,9 @@
                             class="card-btn"
                             type="button"
                             onclick="showRanking('Rocket League')">
+
                             Rocket League
+
                         </button>
 
 
@@ -289,7 +84,9 @@
                             class="card-btn"
                             type="button"
                             onclick="showRanking('Dota 2')">
+
                             Dota 2
+
                         </button>
 
 
@@ -297,7 +94,9 @@
                             class="card-btn"
                             type="button"
                             onclick="showRanking('PUBG')">
+
                             PUBG
+
                         </button>
 
 
@@ -305,7 +104,9 @@
                             class="card-btn"
                             type="button"
                             onclick="showRanking('CS-GO')">
+
                             CS-GO
+
                         </button>
 
 
@@ -313,7 +114,9 @@
                             class="card-btn"
                             type="button"
                             onclick="showRanking('Valorant')">
+
                             Valorant
+
                         </button>
 
                     </div>
@@ -329,7 +132,9 @@
                             class="schedule-title"
                             id="rankingTitle"
                             style="text-align:center">
+
                             League of Legends Rankings
+
                         </h2>
 
 
@@ -337,7 +142,9 @@
                             class="text-muted"
                             id="rankingDescription"
                             style="text-align:center">
+
                             Current League of Legends tournament rankings.
+
                         </p>
 
 
@@ -345,11 +152,7 @@
                              RANKING TABLE
                         ================================================== -->
 
-                        <div
-                            class="table-container"
-                            role="region"
-                            aria-label="Tournament rankings"
-                            tabindex="0">
+                        <div class="table-container">
 
                             <table>
 
@@ -388,7 +191,7 @@
 
                                 <tbody id="rankingTableBody">
 
-                                    <!-- JavaScript inserts ranking data here -->
+                                    <!-- JavaScript inserts ranking data -->
 
                                 </tbody>
 
@@ -399,7 +202,7 @@
 
                         <!-- =================================================
                              CHAMPION HIGHLIGHT VIDEO
-                             ================================================== -->
+                        ================================================== -->
 
                         <div
                             id="highlightVideoSection"
@@ -447,7 +250,9 @@
                         <a
                             href="schedule.html"
                             class="card-btn_2">
+
                             Back to Schedule
+
                         </a>
 
                     </p>
@@ -484,17 +289,11 @@
 
     <script>
 
-        /*
-         * =====================================================
-         * RANKING DATA
-         * =====================================================
-         */
+        /* =====================================================
+           RANKING DATA
+        ====================================================== */
 
         const rankings = {
-
-            /* =================================================
-               LEAGUE OF LEGENDS
-            ================================================== */
 
             "LOL": [
 
@@ -555,10 +354,6 @@
             ],
 
 
-            /* =================================================
-               ROCKET LEAGUE
-            ================================================== */
-
             "Rocket League": [
 
                 {
@@ -617,10 +412,6 @@
 
             ],
 
-
-            /* =================================================
-               DOTA 2
-            ================================================== */
 
             "Dota 2": [
 
@@ -681,10 +472,6 @@
             ],
 
 
-            /* =================================================
-               PUBG
-            ================================================== */
-
             "PUBG": [
 
                 {
@@ -744,10 +531,6 @@
             ],
 
 
-            /* =================================================
-               CS-GO
-            ================================================== */
-
             "CS-GO": [
 
                 {
@@ -806,10 +589,6 @@
 
             ],
 
-
-            /* =================================================
-               VALORANT
-            ================================================== */
 
             "Valorant": [
 
@@ -874,9 +653,6 @@
 
         /* =====================================================
            HIGHLIGHT VIDEOS
-           
-           Key = same game key as rankings
-           Value = YouTube video ID
         ====================================================== */
 
         const highlightVideos = {
@@ -903,21 +679,15 @@
         function showRanking(game) {
 
             const title =
-                document.getElementById(
-                    "rankingTitle"
-                );
+                document.getElementById("rankingTitle");
 
 
             const description =
-                document.getElementById(
-                    "rankingDescription"
-                );
+                document.getElementById("rankingDescription");
 
 
             const tableBody =
-                document.getElementById(
-                    "rankingTableBody"
-                );
+                document.getElementById("rankingTableBody");
 
 
             const selectedRanking =
@@ -926,14 +696,13 @@
 
             if (!selectedRanking) {
 
-                tableBody.innerHTML =
-                    `
+                tableBody.innerHTML = `
                     <tr>
                         <td colspan="6">
                             No ranking data available.
                         </td>
                     </tr>
-                    `;
+                `;
 
                 return;
 
@@ -945,8 +714,7 @@
             ================================================== */
 
             title.textContent =
-                game +
-                " Rankings";
+                game + " Rankings";
 
 
             description.textContent =
@@ -966,59 +734,53 @@
                ADD RANKING ROWS
             ================================================== */
 
-            selectedRanking.forEach(
-                function (player) {
+            selectedRanking.forEach(function (player) {
 
-                    const row =
-                        document.createElement(
-                            "tr"
-                        );
+                const row =
+                    document.createElement("tr");
 
 
-                    row.innerHTML = `
+                row.innerHTML = `
 
-                        <td>
-                            ${getRankIcon(player.rank)}
-                            ${player.rank}
-                        </td>
+                    <td>
+                        ${getRankIcon(player.rank)}
+                        ${player.rank}
+                    </td>
 
-                        <td>
-                            <strong>
-                                ${player.team}
-                            </strong>
-                        </td>
+                    <td>
+                        <strong>
+                            ${player.team}
+                        </strong>
+                    </td>
 
-                        <td>
-                            ${player.played}
-                        </td>
+                    <td>
+                        ${player.played}
+                    </td>
 
-                        <td>
-                            ${player.wins}
-                        </td>
+                    <td>
+                        ${player.wins}
+                    </td>
 
-                        <td>
-                            ${player.losses}
-                        </td>
+                    <td>
+                        ${player.losses}
+                    </td>
 
-                        <td>
-                            <strong>
-                                ${player.points}
-                            </strong>
-                        </td>
+                    <td>
+                        <strong>
+                            ${player.points}
+                        </strong>
+                    </td>
 
-                    `;
+                `;
 
 
-                    tableBody.appendChild(
-                        row
-                    );
+                tableBody.appendChild(row);
 
-                }
-            );
+            });
 
 
             /* =================================================
-               UPDATE CHAMPION HIGHLIGHT VIDEO
+               UPDATE HIGHLIGHT VIDEO
             ================================================== */
 
             updateHighlightVideo(
@@ -1062,13 +824,10 @@
 
 
         /* =====================================================
-           UPDATE CHAMPION HIGHLIGHT VIDEO
+           UPDATE HIGHLIGHT VIDEO
         ====================================================== */
 
-        function updateHighlightVideo(
-            game,
-            topPlayer
-        ) {
+        function updateHighlightVideo(game, topPlayer) {
 
             const frame =
                 document.getElementById(
@@ -1097,12 +856,6 @@
 
             }
 
-
-            /*
-             * If shell.js or another existing script
-             * provides setYouTubeVideo(), use it.
-             * Otherwise, directly update the iframe.
-             */
 
             if (window.setYouTubeVideo) {
 
